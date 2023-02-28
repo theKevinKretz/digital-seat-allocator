@@ -250,7 +250,7 @@ $c_{coach} = c_{rel, coach} \times c_{train}$
 ##### Absolute Auslastung $a_{coach}$
 
 Kennt man die Fahrgastzahl $c_{train}$ im Zug, so lassen sich die absoluten Zahlen berechnen.
-Aus der ermittelten relativen Auslastung eines Waggons $a_{rel, coach}$ und der absoluten Auslastung des Zuges $a_{train} lässt sich die absolute Auslastung $a_{coach}$ im Waggon ermitteln.
+Aus der ermittelten relativen Auslastung eines Waggons $a_{rel, coach}$ und der absoluten Auslastung des Zuges $a_{train}$ lässt sich die absolute Auslastung $a_{coach}$ im Waggon ermitteln.
 
 $a_{coach} = a_{rel, coach} \times a_{train} = \frac{d_{coach} \times s_{train}}{s_{coach} \times d_{train}} \times a_{train}$
 
@@ -396,6 +396,8 @@ Der Vorteil von Computersimulationen ist jedoch, dass sich durch sie schnell und
 Die Simulation hilft dabei, Vorgänge im System zu verstehen und sie zu optimieren.
 
 ### Herangehensweise
+
+<!-- ADD CONTENT -->
 
 ## Schnittstellen
 
