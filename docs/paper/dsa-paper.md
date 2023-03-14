@@ -171,22 +171,17 @@ Die relative Auslastung beschreibt den Anteil der belegten Plätze in einem Bere
 
 Ein Zug $train$ hat $s_{train}$ Sitzplätze und $c_{train}$ Fahrgäste.
 
-##### Sitzplätze
+* **Sitzplätze**  
+  Die Zahl der Sitzplätze eines Zugs ist abhängig von dessen Typ.
+  Dieser kann anhand der Zugnummer ermittelt werden.
 
-Die Zahl der Sitzplätze eines Zugs ist abhängig von dessen Typ.
-Dieser kann anhand der Zugnummer ermittelt werden.
+* **Auslastung**  
+  Die Auslastung $a_{train}$ des Zuges $train$ ist:  
+  $a_{train} = \frac{c_{train}}{s_{train}}$
 
-##### Auslastung
-
-Die Auslastung $a_{train}$ des Zuges $train$ ist:
-
-$a_{train} = \frac{c_{train}}{s_{train}}$
-
-##### Wahrscheinlichkeit für besetzten Platz
-
-Die Wahrscheinlichkeit $p_{train, random}$, dass ein zufälliger Sitzplatz besetzt ist liegt (unter der Annahme, dass jede Person im Waggon einen Sitzplatz einnimmt) bei:
-
-$p_{train, random} = \frac{c_{train}}{s_{train}}$
+* **Wahrscheinlichkeit für besetzten Platz**  
+  Die Wahrscheinlichkeit $p_{train, random}$, dass ein zufälliger Sitzplatz besetzt ist liegt (unter der Annahme, dass jede Person im Waggon einen Sitzplatz einnimmt) bei:  
+  $p_{train, random} = \frac{c_{train}}{s_{train}}$
 
 
 #### Waggons
@@ -206,64 +201,40 @@ Dennoch lassen sich Rückschlüsse auf die relative Auslastung $a_{rel, coach}$ 
 
 Hierbei ist es wichtig, zu beachten, dass nicht jeder Waggon gleich viele Sitzplätze hat.
 
-##### Relative Zahl von Sitzplätzen $s_{rel, coach}$
+* **Relative Zahl von Sitzplätzen $s_{rel, coach}$**  
+  Die relative Anzahl von Sitzplätzen $s_{rel, coach}$ in einem Waggon $coach$ ist:  
+  $s_{rel, coach} = \frac{s_{coach}}{s_{train}}$
 
-Die relative Anzahl von Sitzplätzen $s_{rel, coach}$ in einem Waggon $coach$ ist:
+* **Relative Zahl von Fahrgästen $c_{rel, coach}$**  
+  Die relative Anzahl von Fahrgästen $c_{rel, coach}$ in einem Waggon $coach$ ist:  
+  $c_{rel, coach} = \frac{d_{coach}}{d_{train}}$
 
-$s_{rel, coach} = \frac{s_{coach}}{s_{train}}$
+* **Relative Auslastung $a_{rel, coach}$**  
+  Die relative Auslastung $a_{rel, coach}$ ergibt sich nun aus:  
+  $a_{rel, coach} = \frac{c_{rel, coach}}{s_{rel, coach}}$  
+  Alternative Form:  
+  $a_{rel, coach} = \frac{d_{coach} \div d_{train}}{s_{coach} \div s_{train}} = \frac{d_{coach} \times s_{train}}{s_{coach} \times d_{train}}$
 
+* **Absolute Zahlen**  
+  Kennt man die Fahrgastzahl $c_{train}$ im Zug, so lassen sich die absoluten Zahlen berechnen.  
+  Die Zahl $k_{d/p}$ ist innerhalb eines Zuges gleich, was die Berechnung von $c_{coach}$ mithilfe der Zahl $c_{train}$ zulässt. <!--SRC-->
 
-##### Relative Zahl von Fahrgästen $c_{rel, coach}$
+* **Absolute Zahl von Sitzplätzen $s_{coach}$ (Der Vollständigkeit halber)**  
+  $s_{coach} = s_{rel, coach} \times s_{train}$
 
-Die relative Anzahl von Fahrgästen $c_{rel, coach}$ in einem Waggon $coach$ ist:
+* **Absolute Zahl von Fahrgästen $c_{coach}$**  
+  $c_{coach} = c_{rel, coach} \times c_{train}$
 
-$c_{rel, coach} = \frac{d_{coach}}{d_{train}}$
+* **Absolute Auslastung $a_{coach}$**  
+  Kennt man die Fahrgastzahl $c_{train}$ im Zug, so lassen sich die absoluten Zahlen berechnen.  
+  Aus der ermittelten relativen Auslastung eines Waggons $a_{rel, coach}$ und der absoluten Auslastung des Zuges $a_{train}$ lässt sich die absolute Auslastung $a_{coach}$ im Waggon ermitteln.  
+  $a_{coach} = a_{rel, coach} \times a_{train} = \frac{d_{coach} \times s_{train}}{s_{coach} \times d_{train}} \times a_{train}$
 
-
-##### Relative Auslastung $a_{rel, coach}$
-
-Die relative Auslastung $a_{rel, coach}$ ergibt sich nun aus:
-
-$a_{rel, coach} = \frac{c_{rel, coach}}{s_{rel, coach}}$
-
-Alternative Form:
-
-$a_{rel, coach} = \frac{d_{coach} \div d_{train}}{s_{coach} \div s_{train}} = \frac{d_{coach} \times s_{train}}{s_{coach} \times d_{train}}$
-
-
-##### Absolute Zahlen
-
-Kennt man die Fahrgastzahl $c_{train}$ im Zug, so lassen sich die absoluten Zahlen berechnen.
-
-Die Zahl $k_{d/p}$ ist innerhalb eines Zuges gleich, was die Berechnung von $c_{coach}$ mithilfe der Zahl $c_{train}$ zulässt. <!--SRC-->
-
-##### Absolute Zahl von Sitzplätzen $s_{coach}$ (Der Vollständigkeit halber)
-
-$s_{coach} = s_{rel, coach} \times s_{train}$
-
-
-##### Absolute Zahl von Fahrgästen $c_{coach}$
-
-$c_{coach} = c_{rel, coach} \times c_{train}$
-
-
-##### Absolute Auslastung $a_{coach}$
-
-Kennt man die Fahrgastzahl $c_{train}$ im Zug, so lassen sich die absoluten Zahlen berechnen.
-Aus der ermittelten relativen Auslastung eines Waggons $a_{rel, coach}$ und der absoluten Auslastung des Zuges $a_{train}$ lässt sich die absolute Auslastung $a_{coach}$ im Waggon ermitteln.
-
-$a_{coach} = a_{rel, coach} \times a_{train} = \frac{d_{coach} \times s_{train}}{s_{coach} \times d_{train}} \times a_{train}$
-
-
-##### Zahl der WLAN-Geräte pro Fahrgast $k_{d/p}$
-
-Wenn man annimmt, dass ein Fahrgast durchschnittlich mit $k_{d/p}$ Geräten im WLAN eines Waggons ${coach}$ angemeldet ist, so ergibt sich für einen Waggon ${coach}$ eine Personenzahl $c_{coach}$ von:
-
-$c_{train} = k_{d/p} \times d_{coach}$
-
-somit beläuft sich die Wahrscheinlichkeit besetzt zu sein $p_{random}$ für einen zufälligen Sitzplatz $random$ auf:
-
-$p_{random} = \frac{k_{d/p} \times d}{s_{coach}}$
+* **Zahl der WLAN-Geräte pro Fahrgast $k_{d/p}$**  
+  Wenn man annimmt, dass ein Fahrgast durchschnittlich mit $k_{d/p}$ Geräten im WLAN eines Waggons ${coach}$ angemeldet ist, so ergibt sich für einen Waggon ${coach}$ eine Personenzahl $c_{coach}$ von:  
+  $c_{train} = k_{d/p} \times d_{coach}$  
+  somit beläuft sich die Wahrscheinlichkeit besetzt zu sein $p_{random}$ für einen zufälligen Sitzplatz $random$ auf:  
+  $p_{random} = \frac{k_{d/p} \times d}{s_{coach}}$
 
 #### Reservierungen
 
@@ -283,31 +254,31 @@ Die Wahrscheinlichkeit besetzt zu sein $p_{KCI}$ ist:
 
 $p_{KCI} = p_{random} + (1-p_{random}) * k_{KCI}$
 
-#### Kontrollierte Plätze
-
+#### Kontrollierte Plätze <!-- ERGÄNZEN -->
 
 Kontrollierte Plätze sind zu einer Wahrscheinlichkeit von $k_{con}$ tatsächlich belegt.
-    Fehler des Kontrolleurs möglich (eingerechnet)
-    Umsetzen möglich (muss extra eingerechnet werden)
-
-
+    <!-- Fehler des Kontrolleurs möglich (eingerechnet)
+    Umsetzen möglich (muss extra eingerechnet werden) -->
 $p_r = x$
 
 #### $k$-Werte
 
-Die Zahl der Geräte pro Person muss nicht genau bestimmt werden (siehe Ausführungen oben).
-
+* $k_{d/p}$
+Die Zahl der Geräte pro Person muss nicht genau bestimmt werden (siehe Ausführungen oben).  
 $k_{d/p} = X$
 
+* $k_{res}$
 Ein Großteil der Reservierung wird wahrgenommen. Nach einer eigenen Umfrage liegt dieser Wert bei 80%.
-Eventuell wird der Wert angepasst, wenn aussagekräftigere Daten vorliegen.
+Eventuell wird der Wert angepasst, wenn aussagekräftigere Daten vorliegen.  
 <!-- In einem vollen Zug machen mehr Fahrgäste von einer Reservierung Gebrauch als in einem leeren. SRC -->
 $k_{res} = 80\%$
 
-Es ist davon auszugehen, dass Fahrgäste größtenteils gewissenhafte Annahmen machen. <!-- SRC -->
+* $k_{KCI}$
+Es ist davon auszugehen, dass Fahrgäste größtenteils gewissenhafte Annahmen machen.  <!-- SRC -->
 $k_{KCI} = 95\%$
 
-Die Daten von Kontrolleuren sind sehr zuverlässig, da sie sehen, wo sich Fahrgäste befinden. Da menschliche Fehler jedoch nicht auszuschließen sind, gilt:
+* $k_{con}$
+Die Daten von Kontrolleuren sind sehr zuverlässig, da sie sehen, wo sich Fahrgäste befinden. Da menschliche Fehler jedoch nicht auszuschließen sind, gilt:  
 $k_{con} = 99\%$
 
 ### Optimalen Sitzplatz / Sitzgruppe wählen
@@ -354,20 +325,20 @@ $v_{distance to dining car} = \frac{1}{|optimum - tatsächlicher Wert|}$
 Der Wert liegt zwischen Null und Eins.
 
 Der Nutzer hat die Möglichkeit, die einzelnen Kiterien verschieden zu gewichten.
-Die Formel zur Berechnung der Eignung $v_{seat}$ eines Platzes ${seat}$ lautet:
-
+Die Formel zur Berechnung der Eignung $v_{seat}$ eines Platzes ${seat}$ lautet:  
 $v_{seat} = \frac{w_1 \times v_{window/aisle} + w_2 \times v_{distance to dining car} + ...}{sum of weights}$
 
-Hierbei stellen $w_1$, $w_2$, etc. die Gewichtungen für die jeweiligen Eigenschaften dar und $v_{window/aisle}$, $v_{distance_to_dining_car}$, etc. sinddie Werte für die Eigenschaften des Platzes.
+Hierbei stellen $w_1$, $w_2$, etc. die Gewichtungen für die jeweiligen Eigenschaften dar und $v_{window/aisle}$, $v_{distance_to_dining_car}$, etc. sind die Werte für die Eigenschaften des Platzes.
 
 Der Nutzer kann die Gewichtungen anpassen, um die Eigenschaften zu priorisieren, die ihm am wichtigsten sind.
 Je höher der Faktor einer Eigenschaft ist, desto stärker beeinflusst dieser Eigenschaft die Eignung des Platzes.
 
-Zuletzt kann der Nutzer einen Risikofaktor $r$ festlegen.
+Zuletzt kann der Nutzer ein Sicherheitsverhältnis $r$ festlegen.
 Dieser gibt die Gewichtung von der Wahrscheinlichkeit frei zu sein $p_{seat}$ und der Eignung $v_{seat}$ an.
-Die Formel für den Gesamtscore $score_{seat}$ eines Sitzplatzes lautet:
-
-$score_{seat} = p_{seat} + r * v_{seat}$
+Je höher das Sicherheitsverhältnis, desto stärker wird $p_{seat}$ gegenüber $v_{seat}$ berücksichtigt.
+Es gilt $0 \leq r \leq 1$.
+Die Formel für den Gesamtscore $score_{seat}$ eines Sitzplatzes lautet:  
+$score_{seat} = r * p_{seat} + (1-r) * v_{seat}$
 
 ### Auswahl und Ranking der Optionen
 
@@ -460,5 +431,180 @@ Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnitt
 
 #### Ausgehend
 * Auslastungen einzelner Waggons
+
+# Kapitel II: Strukturen und Simulation
+
+## Grundlegende Entscheidungen
+
+Rekonstruierbarkeit als Grundlage für Falsifizierbarkeit
+  Code ist öffentlich
+  Verwendete Bibliotheken sind eindeutig gelistet
+Versionskontrolle mit Git
+
+### Programmiersprache
+
+Das System wird in der Sprache Rust entwickelt.
+Rust ist eine Programmiersprache, die sich ideal für die Entwicklung von skalierenden und datenintensiven Systemen eignet. Hier sind einige der Vorteile von Rust:
+
+* **Performance**
+  Rust wurde von Grund auf für eine hohe Leistung entwickelt. Sie bietet durch ihre effiziente Speicherverwaltung und geringere Overhead-Operationen eine verbesserte Leistung. Dies ist besonders wichtig für datenintensive Systeme, die große Datenmengen verarbeiten müssen.
+* **Speichersicherheit**
+  Rust verfügt über einzigartige Eigenschaften, die es ermöglichen, Speicherfehler wie Buffer Overflows, Nullzeigerdereferenzierung und andere sicherheitskritische Fehler zu vermeiden. Dies ist besonders wichtig für skalierende Systeme, die oft in verteilten Umgebungen betrieben werden und viele Prozesse gleichzeitig ausführen.
+* **Parallelität**
+  Rust hat ausgezeichnete Tools und Bibliotheken, um die parallele Verarbeitung von Daten und die gleichzeitige Ausführung von Code zu erleichtern. Dies ermöglicht es, datenintensive Systeme mit mehreren Threads oder Prozessen effizient zu skalieren.
+* **Skalierbarkeit**
+  Rust wurde so konzipiert, dass es skalierbare Systeme unterstützt. Mit der Möglichkeit, nativen Code auszuführen, können Rust-Programme auf verschiedenen Plattformen ausgeführt werden, einschließlich Cloud-Infrastrukturen und verteilten Systemen.
+* **Strenge Typisierung**
+  SRC
+
+... SRC
+
+
+## Struktur
+
+![Programmstruktur nach Klassen](docs/paper/assets/programmstruktur-klassen.png)
+
+### main.rs - Die Kommandozentrale
+main.rs ist Einstiegspunkt für Programm
+Enthält die main()-Funktion
+Wird als erstes ausgeführt
+Initialisiert das Programm und lädt Module
+Importiert externe Module
+Wird später verwendet, um den Hauptteil des Programms zu schreiben
+
+
+### train.rs - Mehr als nur ICEs
+Ermöglicht Implementierung diverser Züge
+Klare und dennoch flexible Struktur
+Der Aufbau des Zuges kann vom Betreiber der Software angepasst werden.
+#### Zug
+#### Wagon
+#### Sitzreihe
+#### Sitzplatz
+
+#### Funktion: new()
+
+Die Funktion erstellt automatisch die Struktur eines neuen Zugs anhand von Parametern.
+
+### passenger.rs - Der Mensch
+Verwaltet Daten über Passagiere
+Definiert Datenstrukturen
+Modelliert Fahrgastverhalten
+  Beim Einstieg
+  Während der Fahrt
+  Am Ende der Fahrt
+
+#### choose_seat()
+Der Verteilungsgenerator füllt den Zug mit Menschen.
+Die Verteilung der Menschen auf die Sitzplätze findet auf Grundlage von Studien zum Fahrgastverhalten statt.
+
+
+### data.rs - Schnittstelle zum Zug
+Verwaltet die Input-Daten
+  WLAN-Geräte
+  Reservierungen
+  Komfort Check-In
+  Kontrollierte Fahrgäste
+
+<!-- TODO Der Datengenerator erstellt anhand der Fahrgastverteilung und weiterer Parameter die Daten, welche die Fahrgäste produzieren. -->
+
+### request.rs - Schnittstelle zum Client
+Definiert Schnittstellen nach außen
+Nimmt Anfragen des Nutzers entgegen
+
+#### Zug
+* Welcher Zug
+* Welche Zeit (Haltestellen)
+
+#### Zugteil ?
+
+#### Wagon
+Mögliche Wünsche:
+* Position im Zug
+
+#### Abteil
+Mögliche Wünsche:
+* Klasse
+
+#### Sitzgruppe
+Mögliche Wünsche:
+* 2er / 4er-Gruppe
+
+#### Sitzplatz
+Mögliche Wünsche:
+* Fensterplatz
+* Entfernung zum Ausgang
+* ...
+
+### simulation.rs - Der Zug. In Bewegung.
+Dient der Generierung von Daten
+
+
+Die Daten sind der Schlüssel
+
+Zugfahrt wird simuliert
+Anfallende Daten werden aufgezeichnet
+Vorteile:
+  Diverse Szenarien testbar
+  Parameter frei wählbar, sodass auch Optimierung im Betrieb möglich
+  Fahrgastverhalten anpassbar
+
+
+Simuliert eine Zugfahrt
+Fährt die Haltestellen einer Strecke ab
+Lässt Menschen ein- und aussteigen
+Dokumentiert Platzbelegung nach jedem Halt
+
+
+
+<!-- TODO: Wird im nächsten Kapitel genauer erläutert 
+### allocator.rs
+Weist einen Platz zu
+Sicherheitsfaktor wägt ab zwischen
+  Wahrscheinlichkeit für Platz, frei zu sein
+  Erfüllung der benutzerdefinierten Anforderungen an den Platz
+
+#### Wahrscheinlichkeitsgenerator
+
+Der Wahrscheinlichkeitsgenerator errechnet anhand der Daten des Datengenerators die Wahrscheinlichkeiten der Belegtheit der Plätze.
+-->
+
+
+
+## Simulation / Ergebnisse
+<!-- TODO: Hier Ausführung der Simulation und Ergebnisse erläutern -->
+
+### Der Zug
+
+Im Beispiel verwenden wir einen Zug mit zwei Wagons.
+Jeder Wagon hat TODO Plätze.
+In jedem Wagon sind außerdem je zwei WLAN-Router mit einem Viertel der Wagonlänge Abstand zu den Wagonenden.
+
+
+
+
+<!--
+# Kapitel III: Platzanweiser / Optimierung
+
+-->
+
+
+<!--
+# Kapitel IV: Verhaltenspsychologie
+
+Persönliche Fehlertoleranz
+  Sicherheitsfaktor
+Konzept für mobile App
+Benutzerfreundlichkeit
+  Anfragen stellen
+  Ergebnisse aufbereiten
+Performanz
+
+## Persönliche Fehlertoleranz
+
+### Genauigkeit
+
+### Transparen
+-->
 
 # Quellen
