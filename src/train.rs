@@ -178,6 +178,52 @@ impl Train {
         }
     }
 
+    pub fn seat_groups(&self, coach_number: i32, starting_point: i32) -> Vec<Vec<Seat>> {
+        // Crate a vector of seat groups
+        let mut seat_groups = Vec::new();
+
+        // Crate a seat group (Vector of seats)
+        let mut seat_group = Vec::new();
+
+        // Find the coach with the given number
+        let coach = self.coaches.iter().find(|coach| coach.number == coach_number).unwrap();
+
+        // Create list of done seats
+        let mut done_seats = Vec::new();
+
+        for row in coach.seats.iter() {
+            for seat in row {
+                // Check if seat is already in a group
+                if done_seats.contains(&seat.id) {
+                    continue;
+                }
+
+                // Create new seat group
+                let mut new_seat_group = Vec::new();
+
+                // Add seat to group
+                new_seat_group.push(seat.clone());
+
+                // Add other seats to group
+                for seat_group in seat_groups.iter() {
+                    // Check if seats are in the same group
+                    // 1. Same row and same side from aisle
+                    
+
+                    // 2. Facing row and same side from aisle
+                }
+
+                // Mark seats in new group as done
+                for seat in new_seat_group.iter() {
+                    done_seats.push(seat.id);
+                }
+            }
+            seat_groups.push(seat_group);
+            seat_group = Vec::new();
+        }
+        seat_groups
+    }
+
     pub fn coach_dimensions(&self) -> (f64, f64) {
         self.coach_dimensions
     }
@@ -192,6 +238,10 @@ impl Train {
 
     pub fn coaches(&self) -> &Vec<Coach> {
         &self.coaches
+    }
+
+    pub fn base_coordinates(&self) -> (f64, f64) {
+        self.base_coordinates
     }
 }
 
@@ -307,4 +357,26 @@ impl RouteSegment {
             end_station: "Hamburg".to_string(),
         }
     }
+}
+
+
+// Seat groups
+#[derive(Debug)]
+pub struct SeatGroup {
+    properties: SeatGroupProperties,
+    seats: Vec<Seat>,
+}
+
+#[derive(Debug)]
+struct SeatGroupProperties {
+    id: i32,
+    rows: Vec<i32>,
+    side_from_aisle: Side,
+}
+
+
+#[derive(Debug)]
+enum Side {
+    Left,
+    Right,
 }
