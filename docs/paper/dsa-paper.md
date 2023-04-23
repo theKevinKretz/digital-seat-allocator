@@ -3,6 +3,8 @@ title: Entwicklung eines digitalen Platzanweisers für Züge des Fernverkehrs
 subtitle: "Erhöhung der Pünktlichkeit durch Reduzierung von Haltezeitüberschreitungen"
 author: Kevin Kretz
 date: \today
+# abstract: |
+#     SRC Abstract
 bibliography: [docs/main.bib]
 csl: docs/ieee-with-url.csl
 link-citations: true
@@ -320,7 +322,9 @@ Die mit *float* gekennzeichneten Werte sind Werte zwischen Null und Eins. Ist ei
 
 Die Eignungen der einzelnen Werte lässt sich wie folgt berechnen (Beispiel für Entfernung vom Speisewagen):
 
-$v_{distance to dining car} = \frac{1}{|optimum - tatsächlicher Wert|}$
+$v_{distance to dining car} = \frac{1}{|optimum - actual value|}$
+
+<!-- TODO use minimation / maximation instead -->
 
 Der Wert liegt zwischen Null und Eins.
 
@@ -381,7 +385,7 @@ Das Format eigent sich für diesen Zweck, da es sprachenunabhängig und für den
 
 Im folgenden werden die Schnittstellen des Programms, sowie deren Zweck und der Umfang der auszutauschenden Daten erläutert.
 
-### Zur Datenerhebung
+### Datenerhebung
 
 Die Schnittstellen zur Datenerhebung muss den entsprechenden APIs des Bahnunternehmens angepasst werden. Die Deutsche Bahn AG stellt unter anderem im *API Marketplace* Lösungen zur Verfügung.
 Es sind mehrere verschiedene Schnittstellen nötig, da keine einzelne API alle Daten zur Verfügung stellt.
@@ -401,7 +405,7 @@ Es sind mehrere verschiedene Schnittstellen nötig, da keine einzelne API alle D
 * Daten zu kontrollierten Gästen
   * Ausstiegsbahnhof
 
-### Für andere Instanzen
+### Andere Instanzen
 
 Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnittstelle nötig.
 
@@ -412,7 +416,7 @@ Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnitt
 * Empfohlene Sitzplätze für Nutzer
 * ggf. Anforderungen des Nutzers
 
-### Für Apps
+### Apps
 
 #### Eingehende Daten
 * ICE-Nummer
@@ -424,7 +428,7 @@ Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnitt
 #### Ausgehende Daten
 * Empfohlene Sitzplätze für Nutzer
 
-### Für Züge und Bahnhöfe
+### Züge und Bahnhöfe
 
 #### Eingehend
 * ICE-Nummer
@@ -432,133 +436,229 @@ Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnitt
 #### Ausgehend
 * Auslastungen einzelner Waggons
 
-# Kapitel II: Strukturen und Simulation
+# Kapitel II: Struktur und Simulation
 
-## Grundlegende Entscheidungen
+In diesem Kapitel wird die Struktur und Simulation des entwickelten Systems zur Vorhersage freier Sitzplätze in Zügen vorgestellt. Zunächst werden die grundlegenden Entscheidungsaspekte wie Rekonstruierbarkeit und Wahl der Programmiersprache erläutert. Anschließend werden die verschiedenen Module und Strukturen des Systems beschrieben, die für die Modellierung von Zügen, Passagieren und deren Interaktionen verantwortlich sind. Schließlich wird die Umsetzung einer Beispiel-Simulation vorgestellt, um die Funktionsweise des Systems zu verdeutlichen und dessen Anwendbarkeit zu demonstrieren.
 
-Rekonstruierbarkeit als Grundlage für Falsifizierbarkeit
-  Code ist öffentlich
-  Verwendete Bibliotheken sind eindeutig gelistet
-Versionskontrolle mit Git
+Der angefertigte Code ist verfügbar unter: <https://github.com/theKevinKretz/digital-seat-allocator/tree/main/src>
 
-### Programmiersprache
+## Grundlegende Entscheidungsaspekte
 
-Das System wird in der Sprache Rust entwickelt.
-Rust ist eine Programmiersprache, die sich ideal für die Entwicklung von skalierenden und datenintensiven Systemen eignet. Hier sind einige der Vorteile von Rust:
+### Rekonstruierbarkeit als Grundlage für Falsifizierbarkeit
+Um die wissenschaftliche Integrität des entwickelten Systems sicherzustellen, ist es wichtig, dass die Ergebnisse reproduzierbar und damit auch falsifizierbar sind. Dies wird durch folgende Maßnahmen erreicht:
 
-* **Performance**
-  Rust wurde von Grund auf für eine hohe Leistung entwickelt. Sie bietet durch ihre effiziente Speicherverwaltung und geringere Overhead-Operationen eine verbesserte Leistung. Dies ist besonders wichtig für datenintensive Systeme, die große Datenmengen verarbeiten müssen.
-* **Speichersicherheit**
-  Rust verfügt über einzigartige Eigenschaften, die es ermöglichen, Speicherfehler wie Buffer Overflows, Nullzeigerdereferenzierung und andere sicherheitskritische Fehler zu vermeiden. Dies ist besonders wichtig für skalierende Systeme, die oft in verteilten Umgebungen betrieben werden und viele Prozesse gleichzeitig ausführen.
-* **Parallelität**
-  Rust hat ausgezeichnete Tools und Bibliotheken, um die parallele Verarbeitung von Daten und die gleichzeitige Ausführung von Code zu erleichtern. Dies ermöglicht es, datenintensive Systeme mit mehreren Threads oder Prozessen effizient zu skalieren.
-* **Skalierbarkeit**
-  Rust wurde so konzipiert, dass es skalierbare Systeme unterstützt. Mit der Möglichkeit, nativen Code auszuführen, können Rust-Programme auf verschiedenen Plattformen ausgeführt werden, einschließlich Cloud-Infrastrukturen und verteilten Systemen.
-* **Strenge Typisierung**
-  SRC
+  * **Offenlegung des Codes**: Der gesamte Quellcode des Systems wird öffentlich zugänglich gemacht, um eine unabhängige Überprüfung und Nachvollziehbarkeit der Ergebnisse zu ermöglichen.
+  * **Dokumentation der verwendeten Bibliotheken**: Alle im System verwendeten externen Bibliotheken werden eindeutig aufgelistet, um die Nachvollziehbarkeit und Reproduzierbarkeit der Ergebnisse zu gewährleisten.
+  * **Versionskontrolle mit Git**: Das System verwendet Git als Versionskontrollsystem, um die Historie der Codeänderungen nachvollziehbar zu machen und die Zusammenarbeit zwischen Entwicklern zu erleichtern.
 
-... SRC
+### Wahl der Programmiersprache
+
+Das System wird in der Programmiersprache Rust entwickelt. Rust ist eine leistungsstarke und sichere Programmiersprache, die sich besonders für die Entwicklung von skalierbaren und datenintensiven Systemen eignet. Die folgenden Vorteile von Rust haben zur Wahl dieser Programmiersprache geführt:
+
+* **Performance**: Rust wurde für hohe Leistung entwickelt und bietet durch effiziente Speicherverwaltung und geringen Overhead eine verbesserte Performance. Dies ist besonders wichtig für datenintensive Systeme wie dieses.
+* **Speichersicherheit**: Die Sprache verfügt über Mechanismen, um Speicherfehler wie Pufferüberläufe, Nullzeigerdereferenzierung und andere sicherheitskritische Fehler zu vermeiden. Spätenstens beim Bedienen mehrerer Nutzer ist dies von großer Bedeutung.
+* **Skalierbarkeit**: Rust unterstützt die Entwicklung von skalierbaren Systemen durch die Möglichkeit, nativen Code auszuführen, der auf verschiedenen Plattformen, einschließlich Cloud-Infrastrukturen und verteilten Systemen, lauffähig ist.
+* **Strenge Typisierung**: Rust verwendet ein strenges Typsystem, das dazu beiträgt, Fehler in der Programmlogik frühzeitig zu erkennen und die Codequalität zu erhöhen.
+
+Durch die Verwendung von Rust als Programmiersprache wird ein solides Fundament für die Entwicklung eines leistungsstarken, sicheren und skalierbaren Simulationssystems geschaffen.
 
 
-## Struktur
+## Strukturen und Fuktionen
+
+Dieses Schaubild zeigt die Aufteilung der im ersten Kapitel beschriebenen Komponenten auf sechs Module. Im Folgenden wird erläutert, wie es zu dieser Aufteilung kommt und wie die Module aufgebaut sind.
 
 ![Programmstruktur nach Klassen](docs/paper/assets/programmstruktur-klassen.png)
 
-### main.rs - Die Kommandozentrale
-main.rs ist Einstiegspunkt für Programm
-Enthält die main()-Funktion
-Wird als erstes ausgeführt
-Initialisiert das Programm und lädt Module
-Importiert externe Module
-Wird später verwendet, um den Hauptteil des Programms zu schreiben
+### `main.rs` - Die Kommandozentrale
+Die `main.rs`-Datei ist die Hauptdatei eines Rust-Projekts und dient als Einstiegspunkt für die Ausführung des Programms. Sie enthält die `main`-Funktion, die beim Start des Programms aufgerufen wird. Die `main.rs`-Datei ist verantwortlich für die Initialisierung und Koordination der verschiedenen Komponenten und Module des Projekts sowie für die Steuerung des Programmablaufs und die Ausgabe von Ergebnissen.
+
+### `train.rs` - Mehr als nur ICEs
+Dieses Modul definiert verschiedene Strukturen und Funktionen für einen Zug, der aus mehreren Waggons besteht, die wiederum aus Sitzreihen und -segmenten bestehen. Der Zug hat eine Route mit verschiedenen Haltestellen. Der Code enthält auch eine Struktur für Sitzgruppen und deren Koordinaten.
+
+#### `Train` - Ein Zug
+In der Train-Struktur werden die grundlegenden Informationen zum Zug wie seine ID, die Koordinaten seiner Waggons und die Abmessungen seiner Sitzreihen und -segmente gespeichert. Die Route wird ebenfalls gespeichert. Die Funktion new generiert den Zug mit seinen Waggons und Sitzreihen und -segmenten.
+
+``` Rust
+pub struct Train {
+    id: String,                         // Train id (e.g. "ICE 608")
+    base_coordinates: (f64, f64),       // (x, y)
+    coach_dimensions: (f64, f64),       // Dimensions of one coach (x, y)
+    coaches: Vec<Coach>,                // [coach]
+    route: Route,                       // Route
+}
+```
+
+#### `Coach` - Ein Wagon
+Die Coach-Struktur enthält die Informationen zu einem einzelnen Waggon, einschließlich seiner Nummer, der Koordinaten und einer Liste von Sitzreihen. Die Funktion seat_groups erstellt Sitzgruppen aus den Sitzreihen.
+``` Rust
+pub struct Coach {
+    number: i32,                        // Coach number (e.g. 1, 2, 3, ...)
+    base_coordinates: (f64, f64),       // (x, y - relative to train base coordinates)
+    rows: Vec<Row>,                     // List of seat rows
+}
+```
+
+#### `Row` - Sitzreihe
+Die Row-Struktur enthält eine ID und eine Liste von Sitzreihen-Segmenten.
+``` Rust
+struct Row {
+    id: i32,                            // Row id (e.g. 1, 2, 3, ...)
+    segments: Vec<RowSegment>,          // List of row segments
+}
+```
+
+#### `RowSegment` - Sitzreihensektion
+Die RowSegment-Struktur enthält eine ID, die Nummer der Sitzreihe, die Seite (links oder rechts) und die Orientierung (vorwärts oder rückwärts). Sie enthält auch eine Liste von Sitzen.
+``` Rust
+struct RowSegment {
+    id: i32,                            // Row segment id (e.g. 1, 2, 3, ...)
+    row_no: i32,                        // Row number (e.g. 1, 2, 3, ...)
+    side: Side,                         // Left or Right from aisle
+    orientation: Orientation,           // Forward or Backward
+    seats: Vec<Seat>,                   // List of seats
+}
+```
+
+#### `Seat` - Sitzplatz
+Ein Sitzplatz stellt die kleinste Einheit in einem Zug dar.
+Die Seat-Struktur enthält die Informationen zu einem einzelnen Sitz, einschließlich seiner ID, Nummer, Koordinaten, Abmessungen, Typ (Fenster oder Gang), Klasse (erste oder zweite), Orientierung (vorwärts oder rückwärts), Abstand zum nächsten Ausgang und Abstand zum nächsten Speisewagen.
+``` Rust
+pub struct Seat {
+    id: i32,                            // Seat id (e.g. 1001, 1002, 1003, ...)
+    number: i32,                        // Seat number (e.g. 1, 2, 3, ...)
+    base_coordinates: (f64, f64),       // (x, y - relative to coach base coordinates)
+    dimensions: (f64, f64),             // (x, y)
+    seat_type: SeatType,                // Window or Aisle
+    limited_view: bool,                 // if seat is next to a window
+    class: SequenceClass,               // First or Second class
+    orientation: Orientation,           // Forward or Backward relative to the train
+    distance_to_exit: f64,              // Distance to the nearest exit
+    distance_to_dining: f64,            // Distance to the nearest dining car
+}
+```
+
+Die `Route`-Struktur enthält eine Liste von Haltestellen und Funktionen zum Erstellen eines zufälligen Routensegments.
+
+Die `RouteSegment`-Struktur enthält die Start- und Endstation eines Routensegments.
+
+Die `SeatGroup`-Struktur enthält die ID und eine Liste von Sitz-IDs, die zu einer Gruppe gehören. Die Funktion center_coordinates berechnet die Koordinaten des Mittelpunkts einer Sitzgruppe.
 
 
-### train.rs - Mehr als nur ICEs
-Ermöglicht Implementierung diverser Züge
-Klare und dennoch flexible Struktur
-Der Aufbau des Zuges kann vom Betreiber der Software angepasst werden.
-#### Zug
-#### Wagon
-#### Sitzreihe
-#### Sitzplatz
-
-#### Funktion: new()
-
-Die Funktion erstellt automatisch die Struktur eines neuen Zugs anhand von Parametern.
-
-### passenger.rs - Der Mensch
-Verwaltet Daten über Passagiere
-Definiert Datenstrukturen
-Modelliert Fahrgastverhalten
-  Beim Einstieg
-  Während der Fahrt
-  Am Ende der Fahrt
-
-#### choose_seat()
-Der Verteilungsgenerator füllt den Zug mit Menschen.
-Die Verteilung der Menschen auf die Sitzplätze findet auf Grundlage von Studien zum Fahrgastverhalten statt.
-
-
-### data.rs - Schnittstelle zum Zug
-Verwaltet die Input-Daten
-  WLAN-Geräte
-  Reservierungen
-  Komfort Check-In
-  Kontrollierte Fahrgäste
-
-<!-- TODO Der Datengenerator erstellt anhand der Fahrgastverteilung und weiterer Parameter die Daten, welche die Fahrgäste produzieren. -->
-
-### request.rs - Schnittstelle zum Client
-Definiert Schnittstellen nach außen
-Nimmt Anfragen des Nutzers entgegen
-
-#### Zug
-* Welcher Zug
-* Welche Zeit (Haltestellen)
-
-#### Zugteil ?
-
-#### Wagon
-Mögliche Wünsche:
-* Position im Zug
-
-#### Abteil
-Mögliche Wünsche:
-* Klasse
 
 #### Sitzgruppe
-Mögliche Wünsche:
-* 2er / 4er-Gruppe
+``` Rust
+pub struct SeatGroup {
+    id: i32,
+    pub seats: Vec<i32>,
+}
+```
 
-#### Sitzplatz
-Mögliche Wünsche:
-* Fensterplatz
-* Entfernung zum Ausgang
-* ...
+Die Struktur `SeatGroup` ist wichtig, da sie eine Gruppierung von Sitzplätzen innerhalb eines Wagens repräsentiert, die aufgrund ihrer räumlichen Nähe und ihrer Zugewandtheit zueinander als Sitzgruppe betrachtet werden. Die `SeatGroup` wird in der `board()`-Funktion verwendet, um die Sitzplatzwahl eines Passagiers zu optimieren, indem die am besten geeignete Sitzgruppe basierend auf den Präferenzen des Passagiers und der aktuellen Zugstruktur ausgewählt wird. Sie speichert anstelle der gesamten Daten zu den Sitzplätzen lediglich einen Verweis auf die Plätze in der `Train`-Struktur in Form einer einzigartigen `seat_id`.
 
-### simulation.rs - Der Zug. In Bewegung.
-Dient der Generierung von Daten
+#### Funktion: `new()`
+
+Die Funktion `new()` ist ein Konstruktor der `Train`-Klasse, der ein neues `Train`-Objekt erstellt. Die Funktion nimmt drei Parameter entgegen: `coach_count`, `coach_size` und `route`. Der Parameter `coach_count` gibt die Anzahl der Waggons im Zug an, `coach_size` bestimmt die Anzahl der Sitzreihen in jedem Waggon, und `route` ist ein `Route`-Objekt, das die Zugroute repräsentiert. Die Funktion generiert dann den Zug mit den gegebenen Parametern, erstellt Waggons und Sitzreihen, bestimmt die Sitzpositionen und -eigenschaften und fügt sie entsprechend in die Struktur des Zuges ein.
+
+### Modul: `passenger.rs` - Der Mensch
+Die Passagier-Komponente ist ein wichtiger Bestandteil des gesamten Simulationssystems. Sie modelliert das Verhalten von Passagieren innerhalb des Zuges und ermöglicht die Analyse der Auswirkungen von verschiedenen Verkehrs- und Betriebsbedingungen auf die Passagiere. In diesem Kapitel wird die Struktur der Passagier-Komponente erläutert.
+
+#### Klasse `Passenger`
+
+Die Hauptklasse der Passagier-Komponente ist die `Passenger`-Klasse. Sie repräsentiert einen einzelnen Passagier und speichert Informationen über dessen Zustand, wie zum Beispiel den aktuellen Sitzplatz, die gewünschte Route und die start_position innerhalb des Zuges. Die Klasse bietet Methoden zur Simulation des Verhaltens eines Passagiers, wie das Einsteigen und Aussteigen aus dem Zug, das Wechseln von Sitzplätzen und das Suchen nach freien Sitzplätzen.
+
+Die wichtigsten Attribute der `Passenger`-Klasse sind:
+
+- `id`: Die eindeutige Identifikationsnummer des Passagiers.
+- `route_segment`: Das gewünschte Fahrtsegment des Passagiers, bestehend aus Start- und Zielstation.
+- `start_position`: Die relative Startposition des Passagiers innerhalb des Zuges, angegeben als (x, y)-Koordinate.
+- `wish_to_seat`: Ein boolescher Wert, der angibt, ob der Passagier einen Sitzplatz bevorzugt oder stehen möchte.
+- `seat`: Die ID des aktuellen Sitzplatzes des Passagiers. Wenn der Wert 0 ist, steht der Passagier.
+
+Die Hauptmethoden der `Passenger`-Klasse sind:
+
+- `new()`: Erstellt ein neues `Passenger`-Objekt mit den angegebenen Attributen.
+- `board()`: Lässt den Passagier in den Zug einsteigen und einen Sitzplatz oder Stehplatz wählen.
+- `sit()`: Lässt den Passagier auf dem angegebenen Sitzplatz Platz nehmen.
+- `exit()`: Lässt den Passagier aus dem Zug aussteigen und gibt den aktuellen Sitzplatz frei.
+
+#### Interaktion mit der Klasse `Train`
+
+Die Passagier-Komponente interagiert eng mit der Train-Komponente, um das Verhalten von Passagieren im Kontext des Zuges zu simulieren. Die `Passenger`-Klasse verwendet Informationen über den Zug, wie zum Beispiel die Anzahl und Anordnung der Wagen und Sitzgruppen, um Entscheidungen über das Ein- und Aussteigen, das Wechseln von Sitzplätzen und das Suchen nach freien Sitzplätzen zu treffen.
+
+Ein wesentlicher Aspekt dieser Interaktion ist die Berücksichtigung der räumlichen Dimensionen des Zuges, um die relative Startposition eines Passagiers innerhalb des Zuges zu berechnen und die Entfernungen zwischen verschiedenen Sitzgruppen und Türen im Zug zu bestimmen. Dies ermöglicht es, die Passagierbewegungen innerhalb des Zuges auf eine realistische Weise zu simulieren. <!-- und die Auswirkungen von verschiedenen räumlichen Faktoren, wie zum Beispiel der Anordnung von Sitzplätzen und Türen, auf das Passagierverhalten zu analysieren. -->
+
+#### Funktion: `board()`
+
+``` Rust
+board(&mut self, train: &Train, passengers: &Vec<Passenger>)
+```
+
+Die `board()`-Funktion ist eine zentrale Methode in der `Passenger`-Klasse, die den Einsteigeprozess eines Passagiers in den Zug simuliert. Diese Funktion ermöglicht es, den Passagier entsprechend seiner Präferenzen und der aktuellen Zugstruktur einen Sitzplatz oder Stehplatz wählen zu lassen. In diesem Abschnitt wird die Funktionsweise der `board()`-Funktion im Detail erläutert.
+
+Die `board()`-Funktion wird aufgerufen, wenn ein Passagier in den Zug einsteigen möchte. Sie nimmt zwei Parameter entgegen:
+
+- `train`: Ein Referenzobjekt der `Train`-Klasse, das den aktuellen Zustand des Zuges repräsentiert.
+- `passengers`: Eine Referenz auf eine Liste von `Passenger`-Objekten, die die aktuell im Zug befindlichen Passagiere repräsentiert.
+
+Der Einsteigeprozess besteht aus mehreren Schritten, die nacheinander ausgeführt werden:
 
 
-Die Daten sind der Schlüssel
+Die Bewertung der Sitzgruppen erfolgt anhand der Verfügbarkeit von Sitzplätzen und der Entfernung der Sitzgruppe zur Startposition des Passagiers in Relation zur Länge des Wagens. Die Liste der bewerteten Sitzgruppen wird dann nach der Verfügbarkeit von Sitzplätzen gefiltert und nach Bewertung sortiert.
 
-Zugfahrt wird simuliert
-Anfallende Daten werden aufgezeichnet
-Vorteile:
-  Diverse Szenarien testbar
-  Parameter frei wählbar, sodass auch Optimierung im Betrieb möglich
-  Fahrgastverhalten anpassbar
+``` Rust
+// Filter seat groups by capacity
+seat_group_evaluations.retain(|seat_group_evaluation| seat_group_evaluation.1 > 0);
+
+if seat_group_evaluations.len() > 0 {
+
+    // Sort seat groups by evaluation
+    seat_group_evaluations.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+    ...
+}
+```
+
+Nun wählt der Passagier die beste Sitzgruppe, welche das erste Element der nach Bewertung sortierten Liste ist.
+
+```Rust
+// Choose seat group
+let seat_group_id = seat_group_evaluations[0].0;
+```
+
+Schließlich wählt der Passagier einen freien Sitzplatz in der ausgesuchten Sitzgruppe aus.
+
+### `data.rs` - Schnittstelle zum Zug
+Um eine Vorhersage darüber zu treffen, welche Plätze in einem Zug wahrscheinlich frei sind, werden verschiedene Daten aus dem Zug gesammelt und verwaltet. Dazu gehören Informationen zu WLAN-Geräten, Reservierungen, Komfort Check-Ins und kontrollierten Fahrgästen. 
+
+Die Input-Daten werden in verschiedenen Datenstrukturen abgelegt. Die WiFi-Daten beinhalten Informationen über die Signalstärke der Router in den verschiedenen Zugwaggons. Die Reservierungsdaten enthalten Angaben zu den reservierten Sitzen auf den verschiedenen Streckenabschnitten. Die Daten zum Komfort Check-In geben Auskunft darüber, welche Sitze von den Passagieren für den Komfort Check-In ausgewählt wurden. Die Daten zu kontrollierten Fahrgästen enthalten Informationen darüber, welche Sitze von Kontrolleuren überprüft wurden. 
+
+Die Verwaltung der Input-Daten erfolgt durch die Strukturen Data, WiFiData, ReservationData, KomfortCheckInData und CheckedPassengersData. Die Struktur Data dient dabei als übergeordnete Struktur, welche alle anderen Datentypen umfasst.
+
+Die Daten werden in der Simulation mitheilfe eines Generators aus der Verteilung der Fahrgäste im Zug und weiterer Parameter, den $k$-Werten, errechnet.
+
+### `request.rs` - Schnittstelle zum Client
+Im Modul `request.rs` wird eine Schnittstelle zur Entgegennahme von Anfragen definiert. Die Anfragen enthalten Informationen zu den vom Nutzer (Client) gewünschten Sitzplätzen, wie beispielsweise Fensterplatz, Nähe zum Ausgang oder zur Speisewagen. Zudem wird der Zug identifiziert, in dem die Platzsuche stattfinden soll, sowie das Segment der Zugstrecke, auf dem sich der Client befindet. Die Klasse des Zuges wird ebenfalls angegeben.
+
+Die Implementierung umfasst die Definition von Datenstrukturen wie `Request` und `SeatRequirements`, die die Anfrageparameter speichern. Eine Beispielanfrage wird durch die Funktion `example()` erstellt.
 
 
-Simuliert eine Zugfahrt
-Fährt die Haltestellen einer Strecke ab
-Lässt Menschen ein- und aussteigen
-Dokumentiert Platzbelegung nach jedem Halt
+### `simulation.rs` - Der Zug. In Bewegung.
+Das Modul `simulation.rs` dient der Generierung von Daten, indem es eine Zugfahrt simuliert. Die Struktur `Journey` repräsentiert eine Zugfahrt, die simuliert werden soll. Die Methode `simulate()` nimmt drei Parameter entgegen: einen `Train`, eine Anzahl von Passagieren `passengers_count` und eine `wish_to_seat_chance`, die die Wahrscheinlichkeit angibt, dass ein Passagier sich hinsetzen möchte. In dieser Methode werden Passagiere generiert, die zufällig an verschiedenen Haltestellen ein- und aussteigen (Verhalten bei der Platzwahl: siehe `passenger.rs`). An jeder Haltestelle wird auch eine Aufzeichnung erstellt, die die Anzahl der Passagiere und ihre Platzbelegung enthält. Die gesamte Zugfahrt wird als `Journey` Struktur zurückgegeben.
 
+Die Methode `save_to_file()` speichert die generierten Daten als JSON-Datei.
+
+Die Struktur `Stop` enthält Informationen über eine Haltestelle, einschließlich der Platzverteilung im Zug nach dem Halt. Diese Informationen werden von der `simulate()` Methode generiert und in jeder Haltestelle aufgezeichnet.
+
+Diese Herangehensweise hat mehrere Vorteile:
+
+1. **Testbarkeit**: Durch die Simulation von verschiedenen Szenarien kann die Leistung des Systems getestet und verbessert werden.
+
+2. **Anpassbarkeit**: Der Code ermöglicht es dem Benutzer, verschiedene Parameter wie die Anzahl der Passagiere und ihre Verhaltensmuster anzupassen, um verschiedene Szenarien zu simulieren und die Leistung des Systems in verschiedenen Situationen zu testen.
+
+3. **Datenerfassung**: Die Simulation erfasst wichtige Daten wie die Anzahl der Passagiere und ihre Platzbelegung, die zur Optimierung des Betriebs genutzt werden können.
 
 
 <!-- TODO: Wird im nächsten Kapitel genauer erläutert 
-### allocator.rs
+### `allocator.rs`
 Weist einen Platz zu
 Sicherheitsfaktor wägt ab zwischen
   Wahrscheinlichkeit für Platz, frei zu sein
@@ -571,21 +671,157 @@ Der Wahrscheinlichkeitsgenerator errechnet anhand der Daten des Datengenerators 
 
 
 
-## Simulation / Ergebnisse
+## Simulation
 <!-- TODO: Hier Ausführung der Simulation und Ergebnisse erläutern -->
 
 ### Der Zug
+Zunächt wird die Reisestrecke festgelegt. Hierzu wird die Beispielstrecke verwendet.
+Als kleines Beispiel wird ein Zug mit zwei Waggons und der Waggongröße 5 generiert.
 
-Im Beispiel verwenden wir einen Zug mit zwei Wagons.
-Jeder Wagon hat TODO Plätze.
-In jedem Wagon sind außerdem je zwei WLAN-Router mit einem Viertel der Wagonlänge Abstand zu den Wagonenden.
+``` Rust
+let route = Route::example();
+let train = Train::new(2, 5, route);
+```
+
+Folgendes ist die Fartstrecke:
+
+``` Rust
+route: Route {
+    stops: [
+        "Freiburg",
+        "Karlsruhe",
+        "Mannheim",
+        "Berlin",
+        "Hamburg",
+    ],
+},
+```
+
+Der generierte Zug ist verfügbar unter: <https://gist.github.com/theKevinKretz/8149ba97c0c1d9cf9dc4abf0723f615e>
 
 
+### Die Reise
+Es wird eine Reise mit dem oben definierten Zug und 20 Passagieren simuliert.
+Hierzu wird in der `main()`-Funktion folgender Code ausgeführt:
+
+``` Rust
+let simulation = Journey::simulate(&train, 20, 0.8);
+```
+
+Folgendes sind die Ergebnisse (betrachtet werden die Passagiere 5 und 6 an den Haltestellen "Freiburg", "Karlsruhe", und "Mannheim".):
+
+``` Rust
+{
+  "station": "Freiburg",
+  "passengers": [
+    // ...
+    {
+      "id": 5,
+      "route_segment": {
+        "start_station": "Karlsruhe",
+        "end_station": "Berlin"
+      },
+      "start_position": [
+        -8.150504046354957,
+        89.6232474341507
+      ],
+      "wish_to_seat": true,
+      "seat": 0
+    },
+    {
+      "id": 6,
+      "route_segment": {
+        "start_station": "Freiburg",
+        "end_station": "Mannheim"
+      },
+      "start_position": [
+        -9.33531507513891,
+        15.98733632802289
+      ],
+      "wish_to_seat": true,
+      "seat": 1001
+    },
+    // ...
+  ]
+},
+{
+  "station": "Karlsruhe",
+  "passengers": [
+    // ...
+    {
+      "id": 5,
+      "route_segment": {
+        "start_station": "Karlsruhe",
+        "end_station": "Berlin"
+      },
+      "start_position": [
+        -8.150504046354957,
+        89.6232474341507
+      ],
+      "wish_to_seat": true,
+      "seat": 2008
+    },
+    {
+      "id": 6,
+      "route_segment": {
+        "start_station": "Freiburg",
+        "end_station": "Mannheim"
+      },
+      "start_position": [
+        -9.33531507513891,
+        15.98733632802289
+      ],
+      "wish_to_seat": true,
+      "seat": 1001
+    },
+    // ...
+  ]
+},
+{
+  "station": "Mannheim",
+  "passengers": [
+    // ...
+    {
+      "id": 5,
+      "route_segment": {
+        "start_station": "Karlsruhe",
+        "end_station": "Berlin"
+      },
+      "start_position": [
+        -8.150504046354957,
+        89.6232474341507
+      ],
+      "wish_to_seat": true,
+      "seat": 2008
+    },
+    {
+      "id": 6,
+      "route_segment": {
+        "start_station": "Freiburg",
+        "end_station": "Mannheim"
+      },
+      "start_position": [
+        -9.33531507513891,
+        15.98733632802289
+      ],
+      "wish_to_seat": true,
+      "seat": 0
+    },
+    // ...
+  ]
+},
+// ...
+```
+Vollständige Simulation unter: <https://gist.github.com/theKevinKretz/1fab1bfe85df9ef22f2258adf84bae55>
+
+In den Ergebnissen ist zu sehen, dass einige Passagiere sich dafür entschieden haben, zu stehen, während andere einen Sitzplatz bevorzugten. Die Passagiere, die sich für einen Sitzplatz entschieden haben, haben auch unterschiedliche Sitzplätze gewählt. Sie steigen außerdem an den richtigen Haltestellen ein und aus.
+
+Die Simulation ist Grundlage für die weitere Arbeit.
 
 
 <!--
 # Kapitel III: Platzanweiser / Optimierung
-
+Es wrid davon ausgegangen, dass sich die Plätze, optimaler Weise innerhalb einer Sitzgruppe befinden sollen.
 -->
 
 
@@ -607,4 +843,4 @@ Performanz
 ### Transparen
 -->
 
-# Quellen
+# Quellen- und Literaturverzeichnis

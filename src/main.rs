@@ -1,38 +1,27 @@
-use std::{fs};
-
-mod train;
-use train::*;
-
-mod request;
-use request::*;
-
-// mod allocator;
-// use allocator::*;
-
-mod simulation;
-use simulation::*;
-
 mod data;
-use data::*;
-
 mod passenger;
-use passenger::*;
+mod request;
+mod simulation;
+mod train;
 
+use request::{Answer, Request};
 
-fn main() {
-    let example_request = Request::example();
-    let route = Route::example();
+#[macro_use]
+extern crate rocket;
+use rocket::serde::json::Json;
 
-    let new_train = Train::new(2, 5, route);
+// fn main() {
+//     let example_request = Request::example();
+//     let answer = example_request.process_std_train();
+//     println!("{:#?}", answer);
+// }
 
-    let simulation = simulate_full_journey(&new_train, 20, 0.8);
+#[post("/example", data = "<request>")]
+fn process_request(request: Json<Request>) -> Json<Answer> {
+    Json(request.into_inner().process_std_train())
+}
 
-    println!("{:#?}", simulation);
-
-    // Write simulation to file
-    let data = format!("{:#?}", simulation);
-    fs::write("simulation.json", data).expect("Unable to write file");
-
-
-    // new_train.visualize();
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![process_request])
 }

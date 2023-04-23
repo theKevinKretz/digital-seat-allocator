@@ -1,0 +1,5794 @@
+{
+  "stops": [
+    {
+      "station": "Freiburg",
+      "passengers": [
+        {
+          "id": "c30f180a-c73e-41a4-baab-f5fe2ace2dad",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -6.121584106796379,
+            242.7348216611356
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "9d3a3299-bd7c-4ade-8511-f528de9b119b",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -2.9496292014832335,
+            299.16112840372494
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "56991834-54e9-418a-906c-446eca1e332c",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.571229731944374,
+            53.38655849606475
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5fae5caa-9ad7-4544-9512-addb3139e1db",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -13.025835087685637,
+            145.53396397429563
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "78768c66-249c-4006-b47a-3bf3bef6ec6d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.6622263322804276,
+            136.32522733792956
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5b4234f9-c005-4dab-9814-741325e5615f",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.6201691566739624,
+            6.232183904833288
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "cf2462b3-a3da-463f-ba7b-3a3da1e331a2",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -6.011203433242976,
+            91.06625950823297
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "2b2af548-5c61-4a49-a3e0-fa4ed9d92cf7",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -3.231011410180381,
+            72.99485245450357
+          ],
+          "wish_to_seat": true,
+          "seat": "5a0d3168-e39a-4a3b-988c-508613bcb329"
+        },
+        {
+          "id": "4bc8eedd-4456-4ebf-9043-8fb0faef1c6c",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -12.46545112009463,
+            158.66053367664225
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "7ec96b1e-721e-4f91-b2be-2f27ec605420",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -2.1448884096676024,
+            96.8384478810892
+          ],
+          "wish_to_seat": true,
+          "seat": "3d6e0731-3e80-4663-a119-afa80b1f5f2f"
+        },
+        {
+          "id": "966b7c67-44db-4636-a0c7-2ad5db86d20d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -3.9926840423590093,
+            284.19762337472
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "4fc6e6e8-5b60-4537-bf2d-b5e6a53da93c",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -13.126751669159125,
+            206.7198884575753
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "b77ec3e6-6dad-4490-b182-9045b2308912",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.0534921851596524,
+            96.31351961121553
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5de94a4c-3416-454a-a857-d7b992c87018",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -5.796423607659281,
+            1.3182604901173844
+          ],
+          "wish_to_seat": true,
+          "seat": "8294cc37-ef27-4df9-b61d-7a39201dd613"
+        },
+        {
+          "id": "414122a8-ef75-4883-9974-a834ef512ef0",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -7.017508604377137,
+            51.35090488511012
+          ],
+          "wish_to_seat": true,
+          "seat": "90f26042-38d2-475f-a0fe-3d7d47fb129c"
+        },
+        {
+          "id": "f9f099ea-b266-42d3-ac6b-3f5e1cf97ac5",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9699399735906733,
+            247.52163552930864
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "08cc7a42-d41e-456a-9ef2-2e943c1fb419",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -8.387682086637554,
+            100.21203540554879
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "268cfab1-859d-4a47-8b14-4281707582da",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9238452097605221,
+            299.1534829650344
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "f6b96b63-25bc-4249-99c1-f2fca1a11728",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -10.412078249664141,
+            12.770077650584089
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4c801d8f-495c-4b8f-ab09-3247077b788e",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.5089754904590202,
+            278.5968547016765
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        }
+      ],
+      "data": {
+        "wifi_data": {
+          "router_data": []
+        },
+        "reservation_data": {
+          "reservations": []
+        },
+        "komfort_check_in_data": {
+          "check_ins": []
+        },
+        "checked_passengers_data": {
+          "checked_passengers": []
+        }
+      }
+    },
+    {
+      "station": "Karlsruhe",
+      "passengers": [
+        {
+          "id": "c30f180a-c73e-41a4-baab-f5fe2ace2dad",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -6.121584106796379,
+            242.7348216611356
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "9d3a3299-bd7c-4ade-8511-f528de9b119b",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -2.9496292014832335,
+            299.16112840372494
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "56991834-54e9-418a-906c-446eca1e332c",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.571229731944374,
+            53.38655849606475
+          ],
+          "wish_to_seat": true,
+          "seat": "80091efa-466d-4e1c-aa8e-9eb22f0d904b"
+        },
+        {
+          "id": "5fae5caa-9ad7-4544-9512-addb3139e1db",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -13.025835087685637,
+            145.53396397429563
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "78768c66-249c-4006-b47a-3bf3bef6ec6d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.6622263322804276,
+            136.32522733792956
+          ],
+          "wish_to_seat": true,
+          "seat": "fcd91886-780d-41f5-bd51-5d61bbedc49b"
+        },
+        {
+          "id": "5b4234f9-c005-4dab-9814-741325e5615f",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.6201691566739624,
+            6.232183904833288
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "cf2462b3-a3da-463f-ba7b-3a3da1e331a2",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -6.011203433242976,
+            91.06625950823297
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "2b2af548-5c61-4a49-a3e0-fa4ed9d92cf7",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -3.231011410180381,
+            72.99485245450357
+          ],
+          "wish_to_seat": true,
+          "seat": "5a0d3168-e39a-4a3b-988c-508613bcb329"
+        },
+        {
+          "id": "4bc8eedd-4456-4ebf-9043-8fb0faef1c6c",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -12.46545112009463,
+            158.66053367664225
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "7ec96b1e-721e-4f91-b2be-2f27ec605420",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -2.1448884096676024,
+            96.8384478810892
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "966b7c67-44db-4636-a0c7-2ad5db86d20d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -3.9926840423590093,
+            284.19762337472
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "4fc6e6e8-5b60-4537-bf2d-b5e6a53da93c",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -13.126751669159125,
+            206.7198884575753
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "b77ec3e6-6dad-4490-b182-9045b2308912",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.0534921851596524,
+            96.31351961121553
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5de94a4c-3416-454a-a857-d7b992c87018",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -5.796423607659281,
+            1.3182604901173844
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "414122a8-ef75-4883-9974-a834ef512ef0",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -7.017508604377137,
+            51.35090488511012
+          ],
+          "wish_to_seat": true,
+          "seat": "90f26042-38d2-475f-a0fe-3d7d47fb129c"
+        },
+        {
+          "id": "f9f099ea-b266-42d3-ac6b-3f5e1cf97ac5",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9699399735906733,
+            247.52163552930864
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "08cc7a42-d41e-456a-9ef2-2e943c1fb419",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -8.387682086637554,
+            100.21203540554879
+          ],
+          "wish_to_seat": true,
+          "seat": "7621249b-8b1c-44a8-b761-ac5daee31bf2"
+        },
+        {
+          "id": "268cfab1-859d-4a47-8b14-4281707582da",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9238452097605221,
+            299.1534829650344
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "f6b96b63-25bc-4249-99c1-f2fca1a11728",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -10.412078249664141,
+            12.770077650584089
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4c801d8f-495c-4b8f-ab09-3247077b788e",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.5089754904590202,
+            278.5968547016765
+          ],
+          "wish_to_seat": true,
+          "seat": "497d9491-550d-43d1-9efa-2001370e028e"
+        }
+      ],
+      "data": {
+        "wifi_data": {
+          "router_data": []
+        },
+        "reservation_data": {
+          "reservations": []
+        },
+        "komfort_check_in_data": {
+          "check_ins": []
+        },
+        "checked_passengers_data": {
+          "checked_passengers": []
+        }
+      }
+    },
+    {
+      "station": "Mannheim",
+      "passengers": [
+        {
+          "id": "c30f180a-c73e-41a4-baab-f5fe2ace2dad",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -6.121584106796379,
+            242.7348216611356
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "9d3a3299-bd7c-4ade-8511-f528de9b119b",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -2.9496292014832335,
+            299.16112840372494
+          ],
+          "wish_to_seat": true,
+          "seat": "012c642d-68df-4ace-b158-87a9a0a5bbf4"
+        },
+        {
+          "id": "56991834-54e9-418a-906c-446eca1e332c",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.571229731944374,
+            53.38655849606475
+          ],
+          "wish_to_seat": true,
+          "seat": "80091efa-466d-4e1c-aa8e-9eb22f0d904b"
+        },
+        {
+          "id": "5fae5caa-9ad7-4544-9512-addb3139e1db",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -13.025835087685637,
+            145.53396397429563
+          ],
+          "wish_to_seat": true,
+          "seat": "28e7a872-ac53-48ea-85c0-330bcb41d839"
+        },
+        {
+          "id": "78768c66-249c-4006-b47a-3bf3bef6ec6d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.6622263322804276,
+            136.32522733792956
+          ],
+          "wish_to_seat": true,
+          "seat": "fcd91886-780d-41f5-bd51-5d61bbedc49b"
+        },
+        {
+          "id": "5b4234f9-c005-4dab-9814-741325e5615f",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.6201691566739624,
+            6.232183904833288
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "cf2462b3-a3da-463f-ba7b-3a3da1e331a2",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -6.011203433242976,
+            91.06625950823297
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "2b2af548-5c61-4a49-a3e0-fa4ed9d92cf7",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -3.231011410180381,
+            72.99485245450357
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4bc8eedd-4456-4ebf-9043-8fb0faef1c6c",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -12.46545112009463,
+            158.66053367664225
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "7ec96b1e-721e-4f91-b2be-2f27ec605420",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -2.1448884096676024,
+            96.8384478810892
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "966b7c67-44db-4636-a0c7-2ad5db86d20d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -3.9926840423590093,
+            284.19762337472
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "4fc6e6e8-5b60-4537-bf2d-b5e6a53da93c",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -13.126751669159125,
+            206.7198884575753
+          ],
+          "wish_to_seat": true,
+          "seat": "143b7ce4-995c-4bff-bd9d-1695e4c71216"
+        },
+        {
+          "id": "b77ec3e6-6dad-4490-b182-9045b2308912",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.0534921851596524,
+            96.31351961121553
+          ],
+          "wish_to_seat": true,
+          "seat": "5a0d3168-e39a-4a3b-988c-508613bcb329"
+        },
+        {
+          "id": "5de94a4c-3416-454a-a857-d7b992c87018",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -5.796423607659281,
+            1.3182604901173844
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "414122a8-ef75-4883-9974-a834ef512ef0",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -7.017508604377137,
+            51.35090488511012
+          ],
+          "wish_to_seat": true,
+          "seat": "90f26042-38d2-475f-a0fe-3d7d47fb129c"
+        },
+        {
+          "id": "f9f099ea-b266-42d3-ac6b-3f5e1cf97ac5",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9699399735906733,
+            247.52163552930864
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "08cc7a42-d41e-456a-9ef2-2e943c1fb419",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -8.387682086637554,
+            100.21203540554879
+          ],
+          "wish_to_seat": true,
+          "seat": "7621249b-8b1c-44a8-b761-ac5daee31bf2"
+        },
+        {
+          "id": "268cfab1-859d-4a47-8b14-4281707582da",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9238452097605221,
+            299.1534829650344
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "f6b96b63-25bc-4249-99c1-f2fca1a11728",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -10.412078249664141,
+            12.770077650584089
+          ],
+          "wish_to_seat": true,
+          "seat": "8294cc37-ef27-4df9-b61d-7a39201dd613"
+        },
+        {
+          "id": "4c801d8f-495c-4b8f-ab09-3247077b788e",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.5089754904590202,
+            278.5968547016765
+          ],
+          "wish_to_seat": true,
+          "seat": "497d9491-550d-43d1-9efa-2001370e028e"
+        }
+      ],
+      "data": {
+        "wifi_data": {
+          "router_data": []
+        },
+        "reservation_data": {
+          "reservations": []
+        },
+        "komfort_check_in_data": {
+          "check_ins": []
+        },
+        "checked_passengers_data": {
+          "checked_passengers": []
+        }
+      }
+    },
+    {
+      "station": "Berlin",
+      "passengers": [
+        {
+          "id": "c30f180a-c73e-41a4-baab-f5fe2ace2dad",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -6.121584106796379,
+            242.7348216611356
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "9d3a3299-bd7c-4ade-8511-f528de9b119b",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -2.9496292014832335,
+            299.16112840372494
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "56991834-54e9-418a-906c-446eca1e332c",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.571229731944374,
+            53.38655849606475
+          ],
+          "wish_to_seat": true,
+          "seat": "80091efa-466d-4e1c-aa8e-9eb22f0d904b"
+        },
+        {
+          "id": "5fae5caa-9ad7-4544-9512-addb3139e1db",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -13.025835087685637,
+            145.53396397429563
+          ],
+          "wish_to_seat": true,
+          "seat": "28e7a872-ac53-48ea-85c0-330bcb41d839"
+        },
+        {
+          "id": "78768c66-249c-4006-b47a-3bf3bef6ec6d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.6622263322804276,
+            136.32522733792956
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5b4234f9-c005-4dab-9814-741325e5615f",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.6201691566739624,
+            6.232183904833288
+          ],
+          "wish_to_seat": true,
+          "seat": "2993e574-27be-4277-8349-59955e4975e0"
+        },
+        {
+          "id": "cf2462b3-a3da-463f-ba7b-3a3da1e331a2",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -6.011203433242976,
+            91.06625950823297
+          ],
+          "wish_to_seat": true,
+          "seat": "3da8bf72-3340-4e75-ad10-8b1302c77bcf"
+        },
+        {
+          "id": "2b2af548-5c61-4a49-a3e0-fa4ed9d92cf7",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -3.231011410180381,
+            72.99485245450357
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4bc8eedd-4456-4ebf-9043-8fb0faef1c6c",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -12.46545112009463,
+            158.66053367664225
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "7ec96b1e-721e-4f91-b2be-2f27ec605420",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -2.1448884096676024,
+            96.8384478810892
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "966b7c67-44db-4636-a0c7-2ad5db86d20d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -3.9926840423590093,
+            284.19762337472
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "4fc6e6e8-5b60-4537-bf2d-b5e6a53da93c",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -13.126751669159125,
+            206.7198884575753
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "b77ec3e6-6dad-4490-b182-9045b2308912",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.0534921851596524,
+            96.31351961121553
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5de94a4c-3416-454a-a857-d7b992c87018",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -5.796423607659281,
+            1.3182604901173844
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "414122a8-ef75-4883-9974-a834ef512ef0",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -7.017508604377137,
+            51.35090488511012
+          ],
+          "wish_to_seat": true,
+          "seat": "90f26042-38d2-475f-a0fe-3d7d47fb129c"
+        },
+        {
+          "id": "f9f099ea-b266-42d3-ac6b-3f5e1cf97ac5",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9699399735906733,
+            247.52163552930864
+          ],
+          "wish_to_seat": true,
+          "seat": "1b3249c5-11c0-4f42-81c7-a0688896abd4"
+        },
+        {
+          "id": "08cc7a42-d41e-456a-9ef2-2e943c1fb419",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -8.387682086637554,
+            100.21203540554879
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "268cfab1-859d-4a47-8b14-4281707582da",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9238452097605221,
+            299.1534829650344
+          ],
+          "wish_to_seat": true,
+          "seat": "a5176cc3-9648-421f-a288-8b2ec0b44491"
+        },
+        {
+          "id": "f6b96b63-25bc-4249-99c1-f2fca1a11728",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -10.412078249664141,
+            12.770077650584089
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4c801d8f-495c-4b8f-ab09-3247077b788e",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.5089754904590202,
+            278.5968547016765
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        }
+      ],
+      "data": {
+        "wifi_data": {
+          "router_data": []
+        },
+        "reservation_data": {
+          "reservations": []
+        },
+        "komfort_check_in_data": {
+          "check_ins": []
+        },
+        "checked_passengers_data": {
+          "checked_passengers": []
+        }
+      }
+    },
+    {
+      "station": "Hamburg",
+      "passengers": [
+        {
+          "id": "c30f180a-c73e-41a4-baab-f5fe2ace2dad",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -6.121584106796379,
+            242.7348216611356
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "9d3a3299-bd7c-4ade-8511-f528de9b119b",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -2.9496292014832335,
+            299.16112840372494
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "56991834-54e9-418a-906c-446eca1e332c",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.571229731944374,
+            53.38655849606475
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5fae5caa-9ad7-4544-9512-addb3139e1db",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -13.025835087685637,
+            145.53396397429563
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "78768c66-249c-4006-b47a-3bf3bef6ec6d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.6622263322804276,
+            136.32522733792956
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5b4234f9-c005-4dab-9814-741325e5615f",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -2.6201691566739624,
+            6.232183904833288
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "cf2462b3-a3da-463f-ba7b-3a3da1e331a2",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -6.011203433242976,
+            91.06625950823297
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "2b2af548-5c61-4a49-a3e0-fa4ed9d92cf7",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Mannheim"
+          },
+          "start_position": [
+            -3.231011410180381,
+            72.99485245450357
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4bc8eedd-4456-4ebf-9043-8fb0faef1c6c",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -12.46545112009463,
+            158.66053367664225
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "7ec96b1e-721e-4f91-b2be-2f27ec605420",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -2.1448884096676024,
+            96.8384478810892
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "966b7c67-44db-4636-a0c7-2ad5db86d20d",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -3.9926840423590093,
+            284.19762337472
+          ],
+          "wish_to_seat": false,
+          "seat": null
+        },
+        {
+          "id": "4fc6e6e8-5b60-4537-bf2d-b5e6a53da93c",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -13.126751669159125,
+            206.7198884575753
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "b77ec3e6-6dad-4490-b182-9045b2308912",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.0534921851596524,
+            96.31351961121553
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "5de94a4c-3416-454a-a857-d7b992c87018",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Karlsruhe"
+          },
+          "start_position": [
+            -5.796423607659281,
+            1.3182604901173844
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "414122a8-ef75-4883-9974-a834ef512ef0",
+          "route_segment": {
+            "start": "Freiburg",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -7.017508604377137,
+            51.35090488511012
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "f9f099ea-b266-42d3-ac6b-3f5e1cf97ac5",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9699399735906733,
+            247.52163552930864
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "08cc7a42-d41e-456a-9ef2-2e943c1fb419",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -8.387682086637554,
+            100.21203540554879
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "268cfab1-859d-4a47-8b14-4281707582da",
+          "route_segment": {
+            "start": "Berlin",
+            "end": "Hamburg"
+          },
+          "start_position": [
+            -0.9238452097605221,
+            299.1534829650344
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "f6b96b63-25bc-4249-99c1-f2fca1a11728",
+          "route_segment": {
+            "start": "Mannheim",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -10.412078249664141,
+            12.770077650584089
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        },
+        {
+          "id": "4c801d8f-495c-4b8f-ab09-3247077b788e",
+          "route_segment": {
+            "start": "Karlsruhe",
+            "end": "Berlin"
+          },
+          "start_position": [
+            -1.5089754904590202,
+            278.5968547016765
+          ],
+          "wish_to_seat": true,
+          "seat": null
+        }
+      ],
+      "data": {
+        "wifi_data": {
+          "router_data": []
+        },
+        "reservation_data": {
+          "reservations": []
+        },
+        "komfort_check_in_data": {
+          "check_ins": []
+        },
+        "checked_passengers_data": {
+          "checked_passengers": []
+        }
+      }
+    }
+  ],
+  "parameters": {
+    "train": {
+      "id": "c6fffe68-5d45-4d95-837e-3f094944876f",
+      "number": "ICE 608",
+      "base_coordinates": [
+        0.0,
+        0.0
+      ],
+      "coach_dimensions": [
+        10.0,
+        60.0
+      ],
+      "coaches": [
+        {
+          "id": "3d0ae3d6-b55d-4f5d-8859-c696f7a2e661",
+          "number": 1,
+          "base_coordinates": [
+            0.0,
+            0.0
+          ],
+          "rows": [
+            {
+              "id": "9d0e4742-d32c-4c7d-b563-8c639c417f03",
+              "segments": [
+                {
+                  "id": "b86a24da-7ef7-4b34-9b0d-8ffd66a4b314",
+                  "row_no": 0,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "8294cc37-ef27-4df9-b61d-7a39201dd613",
+                      "number": 1,
+                      "base_coordinates": [
+                        0.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "567fa016-8205-407c-b676-d4182f797a53",
+                      "number": 2,
+                      "base_coordinates": [
+                        1.2,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "83b9093b-651c-4bf1-baa1-b20da02d846f",
+                  "row_no": 0,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "90f26042-38d2-475f-a0fe-3d7d47fb129c",
+                      "number": 3,
+                      "base_coordinates": [
+                        3.2,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "d9bd0999-6bc9-43fe-8831-e5bd23482cf6",
+              "segments": [
+                {
+                  "id": "8eef79c6-bd81-4941-8fd0-e0771fcf0201",
+                  "row_no": 1,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "b339a445-fdcd-41b1-82c6-eb601c58ca60",
+                      "number": 4,
+                      "base_coordinates": [
+                        0.0,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "aab48b16-2d75-4586-8e4e-eef535c4b3fd",
+                      "number": 5,
+                      "base_coordinates": [
+                        1.2,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "c40efaf2-c03d-46a3-b2d1-0e6998d51dc5",
+                  "row_no": 1,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "aa079695-32cb-43d8-a638-8d3de12485aa",
+                      "number": 6,
+                      "base_coordinates": [
+                        3.2,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "44c5a582-4bab-4c0c-834c-a639bcb5fcb7",
+              "segments": [
+                {
+                  "id": "250829d4-8d11-48a7-8dbd-7634487b1adc",
+                  "row_no": 2,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "7f9451b5-3a0e-4b2a-a7d2-53554cf7d37c",
+                      "number": 7,
+                      "base_coordinates": [
+                        0.0,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "80091efa-466d-4e1c-aa8e-9eb22f0d904b",
+                      "number": 8,
+                      "base_coordinates": [
+                        1.2,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "7b247d7e-be94-473f-9606-811a8cedc975",
+                  "row_no": 2,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "2993e574-27be-4277-8349-59955e4975e0",
+                      "number": 9,
+                      "base_coordinates": [
+                        3.2,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dbb6ae45-9235-4a32-bf3a-efa18d5d42af",
+              "segments": [
+                {
+                  "id": "e4f59adb-9967-4491-a228-c94165b8d8a0",
+                  "row_no": 3,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "11d8ccf9-de6b-46de-829d-46e7f133ff75",
+                      "number": 10,
+                      "base_coordinates": [
+                        0.0,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "44905cc1-e053-4023-93fb-18191fcdfa93",
+                      "number": 11,
+                      "base_coordinates": [
+                        1.2,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "2a3932a5-d7aa-4bde-8efe-47187662c4b1",
+                  "row_no": 3,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "fb82b9bb-cf77-4aa8-a47e-69ffee75f5f9",
+                      "number": 12,
+                      "base_coordinates": [
+                        3.2,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5ee07573-e6f7-4f5e-a86d-4b23a4b6fc17",
+              "segments": [
+                {
+                  "id": "336a17c2-a9d5-492f-976f-faeaee005c74",
+                  "row_no": 4,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "17d9fc2a-c5e4-4a7f-9335-e0bc8cebd092",
+                      "number": 13,
+                      "base_coordinates": [
+                        0.0,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "5b02a8bf-86ca-40cc-b4c8-2ef27bbd5bb9",
+                      "number": 14,
+                      "base_coordinates": [
+                        1.2,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "781b296f-c147-43e8-a549-55d960b30977",
+                  "row_no": 4,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "d9b2d0ef-bd66-4189-830c-571929015e86",
+                      "number": 15,
+                      "base_coordinates": [
+                        3.2,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1eb44400-60fd-4cbe-9ade-f3c76dcc5776",
+              "segments": [
+                {
+                  "id": "08e62526-cabf-4d12-9e3a-9b7bf6adc0cf",
+                  "row_no": 5,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "cc7845e3-37a3-4ee5-9a1b-e0c3285d42f9",
+                      "number": 16,
+                      "base_coordinates": [
+                        0.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "93a6932d-1fce-41fc-afb0-5b859a38de49",
+                      "number": 17,
+                      "base_coordinates": [
+                        1.2,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "445fc3a2-c496-47a9-a9f1-0bf0a6459839",
+                  "row_no": 5,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "51351f5c-ea7a-4323-8a32-7680cec3cb06",
+                      "number": 18,
+                      "base_coordinates": [
+                        3.2,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5d1024ec-1369-4619-aaed-fbbd2f62a4aa",
+              "segments": [
+                {
+                  "id": "274ea5e2-a942-4a3c-bb27-fb285963b0cf",
+                  "row_no": 6,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "8beec1f9-5c80-4709-a091-52519c08400e",
+                      "number": 19,
+                      "base_coordinates": [
+                        0.0,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "2f3f2d6c-0ddd-4d78-a2f0-ecef8e42fce6",
+                      "number": 20,
+                      "base_coordinates": [
+                        1.2,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "5ae1feea-47b7-49b7-8148-b19ad0d1605d",
+                  "row_no": 6,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "1f96d5d7-8263-4cc6-9053-2d72717e4570",
+                      "number": 21,
+                      "base_coordinates": [
+                        3.2,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "18b09056-b3ee-44bd-b1b4-f8e6f364a6fe",
+              "segments": [
+                {
+                  "id": "6efa8fb1-d45f-400f-b8fe-aba0806db67d",
+                  "row_no": 7,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "793fad3d-1265-42cd-a4ba-ef4017aafe35",
+                      "number": 22,
+                      "base_coordinates": [
+                        0.0,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "b8d8e601-b700-4b82-912f-e058f37daa60",
+                      "number": 23,
+                      "base_coordinates": [
+                        1.2,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "23ff4b88-6a36-4e39-843d-51fa719449f4",
+                  "row_no": 7,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "78545618-59de-4394-917a-19a737f1bc33",
+                      "number": 24,
+                      "base_coordinates": [
+                        3.2,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "acc40a45-1769-4e35-a2ec-99b4cb84d91d",
+              "segments": [
+                {
+                  "id": "f86c8170-3200-4f68-ae63-52d4b010ac4e",
+                  "row_no": 8,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "dcdef61b-ac25-49f8-b77d-6d34193246a0",
+                      "number": 25,
+                      "base_coordinates": [
+                        0.0,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "fef38a84-f2bf-439a-b95f-59c16742b865",
+                      "number": 26,
+                      "base_coordinates": [
+                        1.2,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "b162df30-4c8f-46b6-b057-5748d8805993",
+                  "row_no": 8,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "00a57f86-21af-4de1-aa45-746315c36b3e",
+                      "number": 27,
+                      "base_coordinates": [
+                        3.2,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5628720c-026f-483d-87be-41d8dac0298d",
+              "segments": [
+                {
+                  "id": "1121b038-8a73-433c-b3ef-94728b10c58e",
+                  "row_no": 9,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "971b21ce-c241-48dd-b774-f49f73653019",
+                      "number": 28,
+                      "base_coordinates": [
+                        0.0,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "8e9348d5-e2a8-4e88-b9cb-76c68947686d",
+                      "number": 29,
+                      "base_coordinates": [
+                        1.2,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "b748a953-a5a8-4523-b2de-bf30d5de2aed",
+                  "row_no": 9,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "6215c7ac-e9e7-43b0-a9e1-0df608514355",
+                      "number": 30,
+                      "base_coordinates": [
+                        3.2,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            10.0,
+            60.0
+          ]
+        },
+        {
+          "id": "d33fae1d-1009-4b49-addb-7c8b7efbb0f6",
+          "number": 2,
+          "base_coordinates": [
+            0.0,
+            60.0
+          ],
+          "rows": [
+            {
+              "id": "7f786a2c-daad-422c-9926-63fc70dc60cf",
+              "segments": [
+                {
+                  "id": "554deeab-84dc-4bd3-b450-473bf30ec26b",
+                  "row_no": 0,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "5a0d3168-e39a-4a3b-988c-508613bcb329",
+                      "number": 1,
+                      "base_coordinates": [
+                        0.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "15912eb8-2691-4e67-ac00-73e6a0c18d45",
+                  "row_no": 0,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "3d6e0731-3e80-4663-a119-afa80b1f5f2f",
+                      "number": 2,
+                      "base_coordinates": [
+                        2.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "7621249b-8b1c-44a8-b761-ac5daee31bf2",
+                      "number": 3,
+                      "base_coordinates": [
+                        3.2,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4fd11606-6026-4ca6-a6cb-e4adf4b41a11",
+              "segments": [
+                {
+                  "id": "c11eeada-60c4-45dc-a61b-03b7dcb4598c",
+                  "row_no": 1,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "3da8bf72-3340-4e75-ad10-8b1302c77bcf",
+                      "number": 4,
+                      "base_coordinates": [
+                        0.0,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "7afdfe64-d7d2-4e02-806c-0118dd3cf103",
+                  "row_no": 1,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "36f68cb0-73f1-495c-a843-df42a7391f76",
+                      "number": 5,
+                      "base_coordinates": [
+                        2.0,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "fe9a87c0-edcc-4bf9-9c6e-9732db0d2beb",
+                      "number": 6,
+                      "base_coordinates": [
+                        3.2,
+                        1.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "65351e80-b508-4026-bbb5-75441a10f7eb",
+              "segments": [
+                {
+                  "id": "32c4876f-246d-49f5-9d01-027fafad67b7",
+                  "row_no": 2,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "d52c5068-cec7-4321-a098-a319887027a5",
+                      "number": 7,
+                      "base_coordinates": [
+                        0.0,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "edc06eaa-c94c-483f-aa04-84e4eba82644",
+                  "row_no": 2,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "ff546cb8-f8bd-4508-8c74-ffeaf5046528",
+                      "number": 8,
+                      "base_coordinates": [
+                        2.0,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "b11ea478-e277-4eb2-a262-71b08c50d92a",
+                      "number": 9,
+                      "base_coordinates": [
+                        3.2,
+                        2.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fa345dd3-7ac6-4c99-b30e-afaef4a771f0",
+              "segments": [
+                {
+                  "id": "e7ab7a99-0d78-4d90-8bc0-0e5e3898bfde",
+                  "row_no": 3,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "9a67c36d-c22f-4f79-9606-adb33fd59ee7",
+                      "number": 10,
+                      "base_coordinates": [
+                        0.0,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "4e973c56-f223-4b7e-a2a0-b26762ddef05",
+                  "row_no": 3,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "deed87fc-1130-4564-b106-a950a90ad99e",
+                      "number": 11,
+                      "base_coordinates": [
+                        2.0,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "69d74b82-2d80-449a-9ba2-4b576ebba636",
+                      "number": 12,
+                      "base_coordinates": [
+                        3.2,
+                        3.5999999999999996
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "36b86b40-b400-4391-8d46-53b774a8154b",
+              "segments": [
+                {
+                  "id": "c5ffe600-48f9-4155-a275-de5626b4c9cf",
+                  "row_no": 4,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "1fde0246-def9-4d9a-bfb5-2a405b9d633b",
+                      "number": 13,
+                      "base_coordinates": [
+                        0.0,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "861fff4c-94f2-4445-bbe7-d58816e038d9",
+                  "row_no": 4,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "8342175a-f4d8-4296-bd40-51acc66f0e55",
+                      "number": 14,
+                      "base_coordinates": [
+                        2.0,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "352f50d3-6784-4a17-ada4-ea226ba8a958",
+                      "number": 15,
+                      "base_coordinates": [
+                        3.2,
+                        4.8
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3f0332f3-d7b2-46e3-8c49-ea137ae91f39",
+              "segments": [
+                {
+                  "id": "2e0511a0-9376-4e23-9a7e-16f1b8183c40",
+                  "row_no": 5,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "d01b7668-dd01-4c29-8810-872fc86dba1d",
+                      "number": 16,
+                      "base_coordinates": [
+                        0.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "405f64db-8489-49ef-866f-f47bac08e537",
+                  "row_no": 5,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "61e9e6e3-47e2-4488-a75a-32403742258f",
+                      "number": 17,
+                      "base_coordinates": [
+                        2.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "c0789c44-3818-4086-ba1f-70a1681948a7",
+                      "number": 18,
+                      "base_coordinates": [
+                        3.2,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "de0551df-d76e-4da9-b3d8-05a25c809e70",
+              "segments": [
+                {
+                  "id": "52c7b5c8-4719-4132-b97e-2003c7be1bba",
+                  "row_no": 6,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "5ffaa3fd-d27b-4837-ada2-54d10a506db3",
+                      "number": 19,
+                      "base_coordinates": [
+                        0.0,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "414ce041-8caf-4ec5-a91f-fd8cf8331b8a",
+                  "row_no": 6,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "1b6912b3-c96a-425c-a5ad-d71d3e539b07",
+                      "number": 20,
+                      "base_coordinates": [
+                        2.0,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "29fb3b78-5664-4526-96d0-5cb55335894e",
+                      "number": 21,
+                      "base_coordinates": [
+                        3.2,
+                        7.2
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "a984f8d8-d917-4ce6-8cc7-17e649203e8b",
+              "segments": [
+                {
+                  "id": "e3871ce4-f042-4bde-92f6-b90ed845f848",
+                  "row_no": 7,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "3e615d6a-e0cb-4397-a85c-7dbd95695f08",
+                      "number": 22,
+                      "base_coordinates": [
+                        0.0,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "cd4d05af-b377-4c58-9a70-729a0857783f",
+                  "row_no": 7,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "41530cc9-ed3f-48fc-8a38-a03b738e2653",
+                      "number": 23,
+                      "base_coordinates": [
+                        2.0,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a2f15b2f-fb43-4645-81c8-271fc782f5ec",
+                      "number": 24,
+                      "base_coordinates": [
+                        3.2,
+                        8.4
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bda3a398-58a7-403d-a8d3-755f532bda07",
+              "segments": [
+                {
+                  "id": "71f40124-9263-4c17-94e4-8b001d42e92b",
+                  "row_no": 8,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "9804d380-548f-4e4e-ada3-a51b79fe50b6",
+                      "number": 25,
+                      "base_coordinates": [
+                        0.0,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "4e318a84-2644-4bb9-b45e-7263f81d914e",
+                  "row_no": 8,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "df5519fc-de09-4ccf-b20b-5425476fe09d",
+                      "number": 26,
+                      "base_coordinates": [
+                        2.0,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "4dbb2281-9396-4a6f-b10a-6c3c576e211c",
+                      "number": 27,
+                      "base_coordinates": [
+                        3.2,
+                        9.6
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9e1cfb0f-4a54-42bd-a389-cb9079557409",
+              "segments": [
+                {
+                  "id": "8940fe58-0cbe-4e7b-9fa5-0a4a2d77d793",
+                  "row_no": 9,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "b4d993c3-7054-438c-bc3d-eed80b2b21b5",
+                      "number": 28,
+                      "base_coordinates": [
+                        0.0,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "c4d92405-2da5-45ea-864a-7c8cd0b97bbb",
+                  "row_no": 9,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "183e8f4a-f9ee-437e-b6d3-36c49575ea77",
+                      "number": 29,
+                      "base_coordinates": [
+                        2.0,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "ffca58b1-cc62-4e9e-b15a-82c8060b3d5c",
+                      "number": 30,
+                      "base_coordinates": [
+                        3.2,
+                        10.799999999999999
+                      ],
+                      "dimensions": [
+                        1.2,
+                        1.2
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "First",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            10.0,
+            60.0
+          ]
+        },
+        {
+          "id": "1ff5c778-5fdc-4f52-9d9d-60e9877fd2cc",
+          "number": 3,
+          "base_coordinates": [
+            0.0,
+            120.0
+          ],
+          "rows": [
+            {
+              "id": "c65ba8d2-ace9-4c4c-8e8d-1e435bc66c6e",
+              "segments": [
+                {
+                  "id": "703d573d-26f7-40c9-ae83-70d56e6b49a8",
+                  "row_no": 0,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "fcd91886-780d-41f5-bd51-5d61bbedc49b",
+                      "number": 1,
+                      "base_coordinates": [
+                        0.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "1976e726-b69f-4ab3-a2ee-fa4a6b070692",
+                      "number": 2,
+                      "base_coordinates": [
+                        1.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "ae8ba3a6-03dd-4483-bc37-4b7f06fe5eca",
+                  "row_no": 0,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "28e7a872-ac53-48ea-85c0-330bcb41d839",
+                      "number": 3,
+                      "base_coordinates": [
+                        2.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "14fafc57-8415-4e4b-bc90-accbf14d9ef7",
+                      "number": 4,
+                      "base_coordinates": [
+                        3.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ab8c000e-8fef-491b-8fef-c784bcf9f1a2",
+              "segments": [
+                {
+                  "id": "797f48d5-4225-4daf-b4c7-ebe0f0c18897",
+                  "row_no": 1,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "9121c311-9676-46b3-94b0-e43d9ed7e7d0",
+                      "number": 5,
+                      "base_coordinates": [
+                        0.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "835cd8b0-bfd3-4a99-941d-9b0cc901e2de",
+                      "number": 6,
+                      "base_coordinates": [
+                        1.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "e9201e69-bdcc-4d76-b1ee-2405f2d68262",
+                  "row_no": 1,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "99558bcd-7e4c-4b30-8322-b7291b5ad0e6",
+                      "number": 7,
+                      "base_coordinates": [
+                        2.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "51ebd22b-893d-4b3b-a6c4-b50046fc327a",
+                      "number": 8,
+                      "base_coordinates": [
+                        3.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "d232c63e-6fcd-4d51-9b39-e5001c757922",
+              "segments": [
+                {
+                  "id": "1bbcd614-c064-413d-a9be-5b5972d2ea00",
+                  "row_no": 2,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "cf9ad91d-ce3b-4945-92c5-614565cb4b24",
+                      "number": 9,
+                      "base_coordinates": [
+                        0.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d9e33682-86fc-4a70-af2d-0f4bc6272ebd",
+                      "number": 10,
+                      "base_coordinates": [
+                        1.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "3a376376-1b1f-47fd-ae4a-b0151d1c85f5",
+                  "row_no": 2,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "043ec580-7520-4bfe-9c68-e7caa168f841",
+                      "number": 11,
+                      "base_coordinates": [
+                        2.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "2a95804d-2866-429a-9d4f-99f23ca98010",
+                      "number": 12,
+                      "base_coordinates": [
+                        3.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5a440b80-45f8-487f-9360-289bb058a847",
+              "segments": [
+                {
+                  "id": "d4543340-2eca-409b-887a-49c58f4c1f8c",
+                  "row_no": 3,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "e2d09891-92b4-4b69-998b-79b16c539f2b",
+                      "number": 13,
+                      "base_coordinates": [
+                        0.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a7458e36-4ebf-4487-9ba7-7d7e4e487a95",
+                      "number": 14,
+                      "base_coordinates": [
+                        1.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "ae7466eb-b6f8-4320-a5d0-13a3e08157b1",
+                  "row_no": 3,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "9a17430e-de60-458a-9eb5-98a14db1ff7e",
+                      "number": 15,
+                      "base_coordinates": [
+                        2.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "5f6c91e6-1960-4add-b5b8-f20fef5e97d6",
+                      "number": 16,
+                      "base_coordinates": [
+                        3.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5dbe9635-3e22-4289-933c-91b3bdfb4c48",
+              "segments": [
+                {
+                  "id": "36a4ad89-4b97-43d4-9607-2777235573f6",
+                  "row_no": 4,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "d60475b1-dbb7-40d1-89c5-121268ce336c",
+                      "number": 17,
+                      "base_coordinates": [
+                        0.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "16ae5f0b-3827-43da-874c-b8c5107bff7e",
+                      "number": 18,
+                      "base_coordinates": [
+                        1.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "bfd6ca2f-21d8-45ee-8c0c-4efcd925b926",
+                  "row_no": 4,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "f3345310-4b1d-4924-a739-6dc7109275a5",
+                      "number": 19,
+                      "base_coordinates": [
+                        2.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "ab196544-5d33-4a3a-aa02-be41eafc7aa6",
+                      "number": 20,
+                      "base_coordinates": [
+                        3.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aebe61a0-195b-491e-af61-6bef3b01d9be",
+              "segments": [
+                {
+                  "id": "e10e4f71-9a83-4039-8328-f33e56c622fa",
+                  "row_no": 5,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "b8724f79-49e2-484c-95bd-ab7941697527",
+                      "number": 21,
+                      "base_coordinates": [
+                        0.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "30d58195-c22a-405d-a713-75557a6eee08",
+                      "number": 22,
+                      "base_coordinates": [
+                        1.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "99fcc760-d5fc-4241-91a7-41fd0c0d6767",
+                  "row_no": 5,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "70a3986b-ef0c-471c-88e2-b6de98141e2e",
+                      "number": 23,
+                      "base_coordinates": [
+                        2.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d8a25ab0-96bd-4fd7-8707-f943a04b4fe8",
+                      "number": 24,
+                      "base_coordinates": [
+                        3.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4ca6c0a5-3f3c-45ac-9f2e-8fa5f751b782",
+              "segments": [
+                {
+                  "id": "f731a966-7fa8-41d4-afbf-598a43e1e3a6",
+                  "row_no": 6,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "d3cec541-c102-47dc-896b-1db5ee0b310e",
+                      "number": 25,
+                      "base_coordinates": [
+                        0.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a5f3c599-947d-4c49-a47e-1699c409a2b5",
+                      "number": 26,
+                      "base_coordinates": [
+                        1.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "230b5ce0-5815-4f1d-ab22-83fa267f8ac5",
+                  "row_no": 6,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "68390fe9-0030-44de-baad-df58380cd237",
+                      "number": 27,
+                      "base_coordinates": [
+                        2.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "e81677e4-6c85-4952-9da2-5ca66e849284",
+                      "number": 28,
+                      "base_coordinates": [
+                        3.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b55187be-1e0d-4295-9476-231687f5af32",
+              "segments": [
+                {
+                  "id": "49d138fb-397f-469d-939d-987c9f2c299c",
+                  "row_no": 7,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "dbe5ada2-f777-494c-bec8-e18a83aa871d",
+                      "number": 29,
+                      "base_coordinates": [
+                        0.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "388df90c-79ab-4880-b993-bda1c6d2db30",
+                      "number": 30,
+                      "base_coordinates": [
+                        1.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "74c32d65-e566-4ff2-b076-24e5767cec96",
+                  "row_no": 7,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "25d2f086-0768-4bb3-b059-e53757e88611",
+                      "number": 31,
+                      "base_coordinates": [
+                        2.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d6797f76-a4d4-4837-8c89-d95da88502f7",
+                      "number": 32,
+                      "base_coordinates": [
+                        3.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "747ce213-0b62-458f-8330-e0bf5362c170",
+              "segments": [
+                {
+                  "id": "37d2a90b-e70c-4bf4-b298-623e7865e726",
+                  "row_no": 8,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "44fcfea9-9f25-4674-9ced-b11c0c6cf233",
+                      "number": 33,
+                      "base_coordinates": [
+                        0.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a23edc09-97ba-4625-ba37-d674f09f6b5f",
+                      "number": 34,
+                      "base_coordinates": [
+                        1.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "ee236c58-b7f9-48b9-8c7c-74c7d893cab8",
+                  "row_no": 8,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "45b7626f-d214-4930-814f-e23e1819c52c",
+                      "number": 35,
+                      "base_coordinates": [
+                        2.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d8fa2f7b-396e-4f4f-83a7-f42c1d8d804e",
+                      "number": 36,
+                      "base_coordinates": [
+                        3.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "e6f4e7d6-a21f-4b95-9d2a-00708c1b60a4",
+              "segments": [
+                {
+                  "id": "770538e1-5ef3-4247-9b95-28e2fed7950c",
+                  "row_no": 9,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "0505aa29-7819-4f1e-84f3-c999a0014f46",
+                      "number": 37,
+                      "base_coordinates": [
+                        0.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "2da5f633-3cea-478d-b1d4-725f25b40cd9",
+                      "number": 38,
+                      "base_coordinates": [
+                        1.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "d2d965ef-4ea5-4836-acca-841563a2d529",
+                  "row_no": 9,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "e4c5b6d0-76e0-49a4-80f8-62682e9842bb",
+                      "number": 39,
+                      "base_coordinates": [
+                        2.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "708611c3-c3f5-4f7d-8aae-35f77139e2d1",
+                      "number": 40,
+                      "base_coordinates": [
+                        3.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            10.0,
+            60.0
+          ]
+        },
+        {
+          "id": "d6836ecd-f9a2-4c52-8af5-d4957654abf8",
+          "number": 4,
+          "base_coordinates": [
+            0.0,
+            180.0
+          ],
+          "rows": [
+            {
+              "id": "3b8ab95a-4203-458b-848c-13505c76fbd7",
+              "segments": [
+                {
+                  "id": "acb5c501-a578-4317-b64e-8a4f10071c19",
+                  "row_no": 0,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "4a9a1f0d-7980-4c5c-a1ff-66f577286600",
+                      "number": 1,
+                      "base_coordinates": [
+                        0.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "143b7ce4-995c-4bff-bd9d-1695e4c71216",
+                      "number": 2,
+                      "base_coordinates": [
+                        1.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "a1186674-68a0-4c61-80bd-bb1ad818d60f",
+                  "row_no": 0,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "50b95ced-d294-4fda-bad5-d660a4e768a3",
+                      "number": 3,
+                      "base_coordinates": [
+                        2.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "542b969d-69a1-487e-b9b1-345a900c550a",
+                      "number": 4,
+                      "base_coordinates": [
+                        3.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "a15c8e50-8288-49b8-abf1-286fb6bd245f",
+              "segments": [
+                {
+                  "id": "9313e48d-c3a1-4084-afa8-b7cbf82c1c0b",
+                  "row_no": 1,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "62af906a-a871-4ab3-a032-bcaa6903bcef",
+                      "number": 5,
+                      "base_coordinates": [
+                        0.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d96cd27b-676d-4e83-aecc-28ca0ccc5edf",
+                      "number": 6,
+                      "base_coordinates": [
+                        1.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "2f6dea60-ee41-40c6-9c2f-1078aa1cd44c",
+                  "row_no": 1,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "d52998d6-0d8a-4a7b-ab07-8b96f883fea0",
+                      "number": 7,
+                      "base_coordinates": [
+                        2.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "476cb5c2-c137-4ea1-8ad1-c8ab41035e2f",
+                      "number": 8,
+                      "base_coordinates": [
+                        3.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1b918baa-b6da-4006-b875-dd9d0a4e543b",
+              "segments": [
+                {
+                  "id": "02fa327e-640a-45e5-a560-e7ab3d5b5cf0",
+                  "row_no": 2,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "fcc7f5f3-8a29-4c9f-899a-e75694974199",
+                      "number": 9,
+                      "base_coordinates": [
+                        0.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "0401b160-3177-417d-a602-6797d4e2400d",
+                      "number": 10,
+                      "base_coordinates": [
+                        1.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "5c71963f-edee-4665-88b5-58a642cf8923",
+                  "row_no": 2,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "99069722-2180-4a46-be53-0584b0ffd88c",
+                      "number": 11,
+                      "base_coordinates": [
+                        2.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "7acbe5b3-c879-41f2-b489-81dec5baa88a",
+                      "number": 12,
+                      "base_coordinates": [
+                        3.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ad1b4db3-7e42-45f1-a2e2-3fabb4a89afd",
+              "segments": [
+                {
+                  "id": "8cf23460-fe04-4967-9057-fa4a03b1722a",
+                  "row_no": 3,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "d8aa3caf-2be4-498b-83e9-508558377a17",
+                      "number": 13,
+                      "base_coordinates": [
+                        0.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "6713331b-2879-45bb-8eaa-1b1467d354b3",
+                      "number": 14,
+                      "base_coordinates": [
+                        1.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "44a97aca-cb7f-4886-a9f6-eacbb998f205",
+                  "row_no": 3,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "a1f82e6c-6b03-4adf-bf74-29aa24482665",
+                      "number": 15,
+                      "base_coordinates": [
+                        2.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "b0cdef48-d35e-4340-86a1-5fd835a99152",
+                      "number": 16,
+                      "base_coordinates": [
+                        3.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "f0777905-2b46-4dd5-91d3-8a2c389c762f",
+              "segments": [
+                {
+                  "id": "78515018-668a-40fe-bee1-3e7955499db2",
+                  "row_no": 4,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "aa77e5c4-070b-4124-9b8c-67e16473452c",
+                      "number": 17,
+                      "base_coordinates": [
+                        0.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "695be96f-67bc-403f-925c-9864138c9371",
+                      "number": 18,
+                      "base_coordinates": [
+                        1.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "2470db93-5e96-43cb-b987-152b7eaa921b",
+                  "row_no": 4,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "49ca4d4a-24f1-42bd-abfc-57eeefe2b0e2",
+                      "number": 19,
+                      "base_coordinates": [
+                        2.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "ec2255a7-2012-47e5-ba61-0d689fd7236a",
+                      "number": 20,
+                      "base_coordinates": [
+                        3.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "7398b85d-90e7-4755-afb9-2c28d9f5bd17",
+              "segments": [
+                {
+                  "id": "026e634c-7218-4fe6-89da-4c54e4a0bd02",
+                  "row_no": 5,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "4b4688e6-c0e8-4547-834b-d8c49c12c49a",
+                      "number": 21,
+                      "base_coordinates": [
+                        0.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d7afa943-35e8-45cb-a635-56d19284f4a0",
+                      "number": 22,
+                      "base_coordinates": [
+                        1.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "28e69365-3ee5-4212-acd3-c0a34c22a219",
+                  "row_no": 5,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "17535b85-7be8-4bf4-9899-2a3dc5df0618",
+                      "number": 23,
+                      "base_coordinates": [
+                        2.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "59f688e9-a54b-4f07-b1ac-2fdd7c6f95af",
+                      "number": 24,
+                      "base_coordinates": [
+                        3.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "58543160-b64b-4829-91f1-2695cca83197",
+              "segments": [
+                {
+                  "id": "b0b80176-d222-4763-8896-42c09eb37432",
+                  "row_no": 6,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "cc2600e8-e090-4d4b-8cd2-c6d6eb38b5b7",
+                      "number": 25,
+                      "base_coordinates": [
+                        0.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "12f84b5c-c68e-4ac7-bdf6-ef15482d3be9",
+                      "number": 26,
+                      "base_coordinates": [
+                        1.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "14559342-9645-4a48-8d9b-3b0b767f7de4",
+                  "row_no": 6,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "a2e3c9f1-9f95-47ce-951f-e4d85b7aade1",
+                      "number": 27,
+                      "base_coordinates": [
+                        2.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "b6a441e5-621f-4fc0-aa36-4a07551023b2",
+                      "number": 28,
+                      "base_coordinates": [
+                        3.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c4ecdacd-df0c-4781-ba91-e00cb2c16668",
+              "segments": [
+                {
+                  "id": "99774b77-9504-4361-bb7e-a31b2eacae36",
+                  "row_no": 7,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "e397db9d-543e-44da-9bb6-e231994eb1bd",
+                      "number": 29,
+                      "base_coordinates": [
+                        0.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "29a495eb-8f70-4fcd-8d29-eac70e75c74d",
+                      "number": 30,
+                      "base_coordinates": [
+                        1.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "ce61e295-eebf-48f6-a272-9ed26c0ba69b",
+                  "row_no": 7,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "b0a71297-3ac4-4d22-91de-03ef5257864f",
+                      "number": 31,
+                      "base_coordinates": [
+                        2.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "9a83d7c5-d253-4c08-9eb9-8390a59610b0",
+                      "number": 32,
+                      "base_coordinates": [
+                        3.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8eabbfd4-6d4d-48e2-812c-930b972ef77e",
+              "segments": [
+                {
+                  "id": "04345bd2-81a1-48e1-b550-747a2ad462e1",
+                  "row_no": 8,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "025ff126-2732-4013-91c8-777550e214b4",
+                      "number": 33,
+                      "base_coordinates": [
+                        0.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "aa9a2d34-2393-43a0-bc76-8cbbfc47e083",
+                      "number": 34,
+                      "base_coordinates": [
+                        1.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "608de33b-0414-474e-aadc-ee053b90ad29",
+                  "row_no": 8,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "39481e0f-78d0-46b5-86d4-223b60efac48",
+                      "number": 35,
+                      "base_coordinates": [
+                        2.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "cf80be23-4617-4606-a575-008484a9cef6",
+                      "number": 36,
+                      "base_coordinates": [
+                        3.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "f1531d17-8111-44ee-b01f-c2276932f38d",
+              "segments": [
+                {
+                  "id": "ba731bc2-3bad-4bc8-b516-c495fd534775",
+                  "row_no": 9,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "47bc7272-29c6-4805-af0f-25f17a36a6f1",
+                      "number": 37,
+                      "base_coordinates": [
+                        0.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "47a578d7-4154-48b9-b26d-d36bbbe8815a",
+                      "number": 38,
+                      "base_coordinates": [
+                        1.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "5cd98361-318d-4081-9e72-33eb379e325a",
+                  "row_no": 9,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "5443a905-bdf9-466b-9bec-a3500b1d5cc9",
+                      "number": 39,
+                      "base_coordinates": [
+                        2.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a409b057-8f2b-44ed-b2bb-38620f46c53b",
+                      "number": 40,
+                      "base_coordinates": [
+                        3.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            10.0,
+            60.0
+          ]
+        },
+        {
+          "id": "28293645-a6a3-415c-b8f5-482d6e8aee1b",
+          "number": 5,
+          "base_coordinates": [
+            0.0,
+            240.0
+          ],
+          "rows": [
+            {
+              "id": "47b47f8e-4c04-4e33-9fcd-0ef738cb7f12",
+              "segments": [
+                {
+                  "id": "9aa3cd61-10bc-4f73-8b47-506f4a1b95ec",
+                  "row_no": 0,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "0c50ccfb-c7b5-4d1a-809c-c8ca10251162",
+                      "number": 1,
+                      "base_coordinates": [
+                        0.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "497d9491-550d-43d1-9efa-2001370e028e",
+                      "number": 2,
+                      "base_coordinates": [
+                        1.0,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "3f0342dd-7f63-4c6b-9a7e-ba97cc79eae6",
+                  "row_no": 0,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "84d6f88e-a4ef-44ee-84c6-3042814610c7",
+                      "number": 3,
+                      "base_coordinates": [
+                        2.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a879ffe3-6dfa-46e5-9880-d39798ba8de7",
+                      "number": 4,
+                      "base_coordinates": [
+                        3.6,
+                        0.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.5,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "336d857e-d26c-42c4-a2f4-2c0639fcfe51",
+              "segments": [
+                {
+                  "id": "6e188869-d572-4179-a14b-4c28caa303d1",
+                  "row_no": 1,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "617e4fc3-aa98-4b68-b51e-2a1d13d8eccb",
+                      "number": 5,
+                      "base_coordinates": [
+                        0.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "f15bdb2e-cba2-4446-887a-d795052e8dfd",
+                      "number": 6,
+                      "base_coordinates": [
+                        1.0,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "006f1d53-2515-4158-b209-d5707d25412c",
+                  "row_no": 1,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "012c642d-68df-4ace-b158-87a9a0a5bbf4",
+                      "number": 7,
+                      "base_coordinates": [
+                        2.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "1b3249c5-11c0-4f42-81c7-a0688896abd4",
+                      "number": 8,
+                      "base_coordinates": [
+                        3.6,
+                        1.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.45,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "edf8c703-fdc3-4e62-8db6-6b2ebd916835",
+              "segments": [
+                {
+                  "id": "76006412-da41-43b6-b3b0-bbd455896425",
+                  "row_no": 2,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "2e42c58f-b754-4c77-84f3-1213794b05ec",
+                      "number": 9,
+                      "base_coordinates": [
+                        0.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "a5176cc3-9648-421f-a288-8b2ec0b44491",
+                      "number": 10,
+                      "base_coordinates": [
+                        1.0,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "7059ae40-d138-4fb9-9b0e-0c7ba5e6e64d",
+                  "row_no": 2,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "b9ca4c9c-26eb-453b-90c5-a4f3d6654f70",
+                      "number": 11,
+                      "base_coordinates": [
+                        2.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "d0338cba-ef4f-4305-afe5-c51722f4bc91",
+                      "number": 12,
+                      "base_coordinates": [
+                        3.6,
+                        2.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.4,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "e2589ef7-3a14-4e4c-8ffa-c447575b1d84",
+              "segments": [
+                {
+                  "id": "2dad261c-80ed-4e53-aab2-a07a5f28a949",
+                  "row_no": 3,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "d4b4e44b-846b-46dc-9b95-5fb5f9409027",
+                      "number": 13,
+                      "base_coordinates": [
+                        0.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "71f5af26-af21-405d-8238-86dca1b2e585",
+                      "number": 14,
+                      "base_coordinates": [
+                        1.0,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "39df6d7b-dae8-402b-b67b-c3b307a48a6f",
+                  "row_no": 3,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "b71dc3e8-7274-40cd-9cc0-7bfe0a6226c5",
+                      "number": 15,
+                      "base_coordinates": [
+                        2.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "189afd07-c7f9-428b-afc0-f9e6a29e59e1",
+                      "number": 16,
+                      "base_coordinates": [
+                        3.6,
+                        3.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.35,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "a7913298-b78a-4ef1-a543-05b409cfca03",
+              "segments": [
+                {
+                  "id": "cda968fb-34c9-4fb1-a3f3-a203634f8904",
+                  "row_no": 4,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "0e11ae2a-3e10-47b2-a06b-9d3713af79e7",
+                      "number": 17,
+                      "base_coordinates": [
+                        0.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "8e7fc273-de9f-4a3a-aec4-8af23eaf52b6",
+                      "number": 18,
+                      "base_coordinates": [
+                        1.0,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "9e64397b-555e-4e38-b630-d1aee8c3b3f8",
+                  "row_no": 4,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "fd9a18da-83f5-4685-944a-b49c6866e215",
+                      "number": 19,
+                      "base_coordinates": [
+                        2.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "6cc947af-9f41-4bfc-9b81-8452c86f0796",
+                      "number": 20,
+                      "base_coordinates": [
+                        3.6,
+                        4.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.3,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dabaf0a4-bc47-41a7-a716-9267ce170072",
+              "segments": [
+                {
+                  "id": "d18d3850-955e-4ba6-89a9-b7b1924471a5",
+                  "row_no": 5,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "17138783-b53b-4be3-a76a-fb68abd64009",
+                      "number": 21,
+                      "base_coordinates": [
+                        0.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "e22141ea-4989-4456-96b1-2dd4229f188a",
+                      "number": 22,
+                      "base_coordinates": [
+                        1.0,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "acea176e-fd81-4d5f-b88c-8d42ad9c4d33",
+                  "row_no": 5,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "42bba498-75c4-4acc-aef7-99ef9a30ea66",
+                      "number": 23,
+                      "base_coordinates": [
+                        2.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "68231bdd-394a-40a8-b147-9f21b891083e",
+                      "number": 24,
+                      "base_coordinates": [
+                        3.6,
+                        5.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.25,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0cee9023-fdb5-4b4e-b017-43e9be1ca28c",
+              "segments": [
+                {
+                  "id": "3d4cb24e-b3f0-453b-b399-f0e256a58306",
+                  "row_no": 6,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "be3ac9e6-20b1-42df-9ed0-f5a2f084f0d8",
+                      "number": 25,
+                      "base_coordinates": [
+                        0.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "1be82576-cd27-49e4-848a-46e868516007",
+                      "number": 26,
+                      "base_coordinates": [
+                        1.0,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "e2090c24-9155-429d-a4e9-0359214e1ee8",
+                  "row_no": 6,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "89bb4abc-72f5-430b-be1c-7d7e35855d00",
+                      "number": 27,
+                      "base_coordinates": [
+                        2.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "f9987db2-b067-49ec-9711-a87085486753",
+                      "number": 28,
+                      "base_coordinates": [
+                        3.6,
+                        6.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.2,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "875ab0b2-7401-4648-a867-9df3fc7bc946",
+              "segments": [
+                {
+                  "id": "9be6f3b5-05d2-49bc-b250-27512d6f4fbb",
+                  "row_no": 7,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "4c4e7d30-cf5b-427f-88be-2f957424b00d",
+                      "number": 29,
+                      "base_coordinates": [
+                        0.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "f5485f21-5250-4bbd-b999-1f381da9d143",
+                      "number": 30,
+                      "base_coordinates": [
+                        1.0,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "c1fe7fae-37fd-4726-9946-32bc22fd6a39",
+                  "row_no": 7,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "0ca4a8ea-c667-454e-bca3-64d7a37f5695",
+                      "number": 31,
+                      "base_coordinates": [
+                        2.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "e3841a20-72f9-4c28-b53c-279511777c17",
+                      "number": 32,
+                      "base_coordinates": [
+                        3.6,
+                        7.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.15,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9309c0f5-2695-40ce-9704-b1304a1d4625",
+              "segments": [
+                {
+                  "id": "fc679118-d9a5-46c0-b1ac-065e7cfc5038",
+                  "row_no": 8,
+                  "side": "Left",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "99abd88b-e4ab-4858-86ab-c689268e7b02",
+                      "number": 33,
+                      "base_coordinates": [
+                        0.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "9b8940d8-e487-40d1-96d9-a0df1d6763c3",
+                      "number": 34,
+                      "base_coordinates": [
+                        1.0,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "5c8b8749-0a0e-40fd-81d0-203d3ead76c4",
+                  "row_no": 8,
+                  "side": "Right",
+                  "orientation": "Forward",
+                  "seats": [
+                    {
+                      "id": "a00614eb-c89f-4557-bc09-2eea35bfe483",
+                      "number": 35,
+                      "base_coordinates": [
+                        2.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "478fbede-5677-4285-b83c-06ad70b59e4e",
+                      "number": 36,
+                      "base_coordinates": [
+                        3.6,
+                        8.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Forward",
+                      "distance_to_exit": 0.1,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "d0b29b93-260a-49e7-be9b-bae6ce1ee89e",
+              "segments": [
+                {
+                  "id": "90a2bbca-b1da-4f61-9dd0-138ba6b8721f",
+                  "row_no": 9,
+                  "side": "Left",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "d198e8ea-e355-4ae1-8ac7-5a6d91ae85e9",
+                      "number": 37,
+                      "base_coordinates": [
+                        0.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "188a8b5a-10e7-4c7b-acd4-b4c51612183f",
+                      "number": 38,
+                      "base_coordinates": [
+                        1.0,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                },
+                {
+                  "id": "864031dc-657a-4d83-b358-e75f329eb3bd",
+                  "row_no": 9,
+                  "side": "Right",
+                  "orientation": "Backward",
+                  "seats": [
+                    {
+                      "id": "306e1dc5-f05d-4b6e-858f-e6a377d982e2",
+                      "number": 39,
+                      "base_coordinates": [
+                        2.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Aisle",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    },
+                    {
+                      "id": "5b955dc7-69fd-41bd-8aa0-f2fb07975bc0",
+                      "number": 40,
+                      "base_coordinates": [
+                        3.6,
+                        9.0
+                      ],
+                      "dimensions": [
+                        1.0,
+                        1.0
+                      ],
+                      "seat_type": "Window",
+                      "limited_view": false,
+                      "class": "Second",
+                      "orientation": "Backward",
+                      "distance_to_exit": 0.05,
+                      "distance_to_dining": 0.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            10.0,
+            60.0
+          ]
+        }
+      ],
+      "route": {
+        "stops": [
+          "Freiburg",
+          "Karlsruhe",
+          "Mannheim",
+          "Berlin",
+          "Hamburg"
+        ]
+      },
+      "ticket_inspector": {
+        "position": [
+          0.0,
+          0.0
+        ],
+        "direction": "Forward",
+        "speed": 0.0
+      }
+    },
+    "passengers_count": 20,
+    "wish_to_seat_chance": 0.8
+  }
+}
