@@ -1,9 +1,8 @@
-use rand::Rng;
 use std::fs;
 
 use serde::{Deserialize, Serialize};
 
-use crate::passenger::Passenger;
+use crate::passengers::Passengers;
 use crate::train::Train;
 use crate::data::Data;
 
@@ -12,19 +11,49 @@ pub struct Parameters {
     train: Train,
     passengers_count: i32,
     wish_to_seat_chance: f64,
+    average_devices_per_passenger: f64,
+    komfort_check_in_chance: f64,
 }
 
 impl Parameters {
-    pub fn new(train: Train, passengers_count: i32, wish_to_seat_chance: f64) -> Parameters {
+    pub fn new(train: Train, passengers_count: i32, wish_to_seat_chance: f64, average_devices_per_passenger: f64, komfort_check_in_chance: f64) -> Parameters {
         Parameters {
             train,
             passengers_count,
             wish_to_seat_chance,
+            average_devices_per_passenger,
+            komfort_check_in_chance,
         }
     }
 
     pub fn example() -> Parameters {
-        Parameters::new(Train::example(), 20, 0.8)
+        Parameters::new(
+            Train::example(),
+            10,
+            0.8,
+            0.7,
+            0.3,
+        )
+    }
+
+    pub fn train(&self) -> &Train {
+        &self.train
+    }
+
+    pub fn passengers_count(&self) -> i32 {
+        self.passengers_count
+    }
+
+    pub fn wish_to_seat_chance(&self) -> f64 {
+        self.wish_to_seat_chance
+    }
+
+    pub fn average_devices_per_passenger(&self) -> f64 {
+        self.average_devices_per_passenger
+    }
+
+    pub fn komfort_check_in_chance(&self) -> f64 {
+        self.komfort_check_in_chance
     }
 }
 
@@ -49,55 +78,21 @@ impl Simulation {
     /// Simulate journey.
     pub fn run(&mut self) {
         // Generate passengers
-        let mut passengers = Vec::new();
-
-        for passenger_id in 0..self.parameters.passengers_count {
-            // Choose random start station
-            let route_segment = self.parameters.train.route().random_segment(); // Make route segment random
-            let distance_from_train = rand::thread_rng().gen_range(0.0..15.0); // Random distance from train
-            let y_position =
-                rand::thread_rng().gen_range(0.0..self.parameters.train.dimensions().1); // Random y position near train
-            let wish_to_seat = rand::thread_rng().gen_bool(self.parameters.wish_to_seat_chance); // Random wish to seat
-
-            let passenger = Passenger::new(
-                route_segment,
-                (-distance_from_train, y_position),
-                wish_to_seat,
-            );
-
-            passengers.push(passenger);
-        }
+        let mut passengers = Passengers::generate(&self.parameters);
 
         // Simulate journey
-        // Collect passengers at each stop
-        // Collect data at each stop
-
-        for stop in self.parameters.train.route().stops() {
+        for station in self.parameters.train.route().stops() {
             // Simulate stop
 
             // Simulate passengers
-            for passenger_id in 0..self.parameters.passengers_count {
-                let mut passenger_clone = passengers[passenger_id as usize].clone();
-
-                // Check if passenger enters at stop
-                if &passenger_clone.route_segment().start == stop {
-                    passenger_clone.board(&self.parameters.train, &passengers); // TODO - Use real passengers
-                }
-
-                // Check if passenger exits at stop
-                if &passenger_clone.route_segment().end == stop {
-                    passenger_clone.exit();
-                }
-
-                passengers[passenger_id as usize] = passenger_clone;
-            }
+            passengers.board_all(&self.parameters.train, station);
 
             // Generate Data
             let data = Data::generate(&self.parameters.train, &passengers);
 
             // Add stop to journey
             let stop = Stop {
-                station: stop.clone(),
+                station: station.clone(),
                 passengers: passengers.clone(),  // Collect passengers at stop
                 data                             // Collect data at stop
             };
@@ -115,11 +110,15 @@ impl Simulation {
         let data = serde_json::to_string_pretty(&self).unwrap();
         fs::write(path, data).expect("Unable to write file");
     }
+
+    pub fn train(&self) -> &Train {
+        &self.parameters.train
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Stop {
     station: String,
-    passengers: Vec<Passenger>,
+    passengers: Passengers,
     data: Data,
 }

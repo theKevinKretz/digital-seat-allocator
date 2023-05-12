@@ -1,22 +1,17 @@
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
-
 use rand::Rng;
-
-use crate::passenger::Passenger;
 
 // Train Structs
 // These structs are used to store the train properties
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Train {
-    id: Uuid,                           // Train id
-    number: String,                     // Train number (e.g. "ICE 608")
-    base_coordinates: (f64, f64),       // (x, y)
-    coach_dimensions: (f64, f64),       // Dimensions of one coach (x, y)
-    coaches: Vec<Coach>,                // [coach]
-    route: Route,                       // Route
-    ticket_inspector: TicketInspector,  // Ticket inspector
+    id: Uuid,                          // Train id
+    base_coordinates: Position,        // (x, y)
+    coaches: Vec<Coach>,               // [coach]
+    dimensions: (f64, f64),            // (width, length)
+    route: Route,                      // Route
 }
 
 impl Train {
@@ -25,22 +20,20 @@ impl Train {
     /// # Arguments
     /// * `coach_count` - Number of coaches in the train.
     /// * `coach_size` - Number of rows of seats in each coach.
-    pub fn new(coach_count: i32, coach_size: i32, route: Route) -> Train {
+    pub fn new(coach_count: i32, coach_size: i32, route: Route, routers_per_coach: u32) -> Train {
         // Generate train
         let mut train = Train {
             id: Uuid::new_v4(),
-            number: "ICE 608".to_string(), // TODO - Make this a parameter
-            base_coordinates: (0.0, 0.0),
-            coach_dimensions: (10., 60.), // TODO make this related to coach_size
+            base_coordinates: Position { x: 0.0, y: 0.0 },
             coaches: Vec::new(),
+            dimensions: (0.0, 0.0),
             route,
-            ticket_inspector: TicketInspector::new(),
         };
 
-        let mut coach_base_coordinates = (0.0, 0.0);
+        let mut coach_base_coordinates = Position { x: 0.0, y: 0.0 };
 
         // Generate coaches
-        for coach_number in 1..coach_count + 1 {
+        for coach_number in 0..coach_count {
             // Random coach class (1 = first, 2 = second)
             let coach_class = match &coach_number {
                 // TODO - Make this a parameter
@@ -75,14 +68,14 @@ impl Train {
             let max_row_no = coach_size;
 
             let mut rows = Vec::new();
-            let mut seat_base_coordinates = (0.0, 0.0);
+            let mut seat_base_coordinates = Position { x: 0.0, y: 0.0 };
 
             let mut full_seat_no = 1;
 
             for row_no in 0..max_row_no {
                 let mut row = Row::new();
 
-                seat_base_coordinates.0 = 0.0;
+                seat_base_coordinates.x = 0.0;
 
                 let row_forward = match row_no {
                     0 => true,
@@ -95,10 +88,8 @@ impl Train {
                     false => Orientation::Backward,
                 };
 
-                let mut left_row_segment =
-                    RowSegment::new(row_no, Side::Left, &orientation);
-                let mut right_row_segment =
-                    RowSegment::new(row_no, Side::Right, &orientation);
+                let mut left_row_segment = RowSegment::new(row_no, Side::Left, &orientation);
+                let mut right_row_segment = RowSegment::new(row_no, Side::Right, &orientation);
 
                 for seat_no_in_row in 0..row_length {
                     let rows_from_exit = ((row_no - max_row_no) as f64 / 2.).abs();
@@ -112,8 +103,13 @@ impl Train {
                     let seat = Seat {
                         id: Uuid::new_v4(),
                         number: full_seat_no,
-                        class: coach_class.clone(),
+                        coach_number,
+                        sequence_class: coach_class.clone(),
                         base_coordinates: seat_base_coordinates,
+                        full_base_coordinates: Position {
+                            x: seat_base_coordinates.x() + coach_base_coordinates.x(),
+                            y: seat_base_coordinates.y() + coach_base_coordinates.y(),
+                        },
                         dimensions: seat_size,
                         orientation: orientation.clone(),
                         seat_type,
@@ -123,7 +119,7 @@ impl Train {
                     };
 
                     if seat_no_in_row == aisle_after_seat {
-                        seat_base_coordinates.0 += aisle_width;
+                        seat_base_coordinates.x += aisle_width;
                     }
 
                     if seat_no_in_row <= aisle_after_seat {
@@ -133,58 +129,63 @@ impl Train {
                     }
 
                     full_seat_no += 1;
-                    seat_base_coordinates.0 += seat_size.0;
+                    seat_base_coordinates.x += seat_size.0;
                 }
 
                 row.segments.push(left_row_segment);
                 row.segments.push(right_row_segment);
 
                 rows.push(row);
-                seat_base_coordinates.1 += seat_size.1;
+                seat_base_coordinates.y += seat_size.1;
+            }
+
+            let dimensions = (
+                (seat_base_coordinates.x + seat_size.0) as usize,
+                (seat_base_coordinates.y + seat_size.1) as usize,
+            );
+
+            // Add routers
+            let mut routers = Vec::new();
+            if routers_per_coach > 0 {
+                for i in 0..routers_per_coach {
+                    let x_position = dimensions.0 as f64 / 2.0;
+                    let y_position = (i as f64 + 0.5) * dimensions.1 as f64 / routers_per_coach as f64;
+                    let coordinates = Position { x: x_position, y: y_position };
+
+                    let full_coordinates = Position {
+                        x: train.base_coordinates().x() + coordinates.x(),
+                        y: train.base_coordinates().y() + coordinates.y(),
+                    };
+                    routers.push(Router::new(coordinates, full_coordinates));
+                }
             }
 
             // Generate coach
-            let mut coach = Coach {
+            let coach = Coach {
                 id: Uuid::new_v4(),
                 number: coach_number,
-                base_coordinates: coach_base_coordinates,
+                base_coordinates_in_train: coach_base_coordinates,
                 rows,
-                dimensions: train.coach_dimensions,
+                dimensions,
+                routers,
             };
 
             train.coaches.push(coach);
-            coach_base_coordinates.1 += train.coach_dimensions.1;
+            coach_base_coordinates.y += dimensions.1 as f64;
         }
+
+        let train_dimensions = (
+            coach_base_coordinates.x + train.coaches[train.coaches.len() - 1].dimensions.0 as f64,
+            coach_base_coordinates.y + train.coaches[train.coaches.len() - 1].dimensions.1 as f64,
+        );
+
+        train.dimensions = train_dimensions;
+
         train
     }
 
     pub fn example() -> Train {
-        Train::new(5, 10, Route::example())
-    }
-
-    pub fn occupation(&self, passengers: &Vec<Passenger>) -> Vec<Uuid> {
-        passengers
-            .iter()
-            .filter_map(|passenger| {
-                if let Some(seat_id) = passenger.seat_id() {
-                    if seat_id != Uuid::nil() {
-                        return Some(seat_id);
-                    }
-                }
-                None
-            })
-            .collect()
-    }
-
-    pub fn coach_dimensions(&self) -> (f64, f64) {
-        self.coach_dimensions
-    }
-
-    pub fn dimensions(&self) -> (f64, f64) {
-        (
-            self.coach_dimensions.1,
-            self.coach_dimensions.1 * self.coaches.len() as f64,
-        )
+        Train::new(5, 10, Route::example(), 2)
     }
 
     pub fn route(&self) -> &Route {
@@ -199,8 +200,12 @@ impl Train {
         self.coaches.len()
     }
 
-    pub fn base_coordinates(&self) -> (f64, f64) {
-        self.base_coordinates
+    pub fn base_coordinates(&self) -> &Position {
+        &self.base_coordinates
+    }
+
+    pub fn dimensions(&self) -> (f64, f64) {
+        self.dimensions
     }
 
     pub fn seats(&self) -> Vec<&Seat> {
@@ -229,12 +234,12 @@ impl Train {
         number_of_seats
     }
 
-    pub fn seat(&self, seat_id: Uuid) -> Option<&Seat> {
+    pub fn get_seat(&self, seat_id: &Uuid) -> Option<&Seat> {
         for coach in self.coaches.iter() {
             for row in coach.rows.iter() {
                 for row_segment in row.segments.iter() {
                     for seat in row_segment.seats.iter() {
-                        if seat.id == seat_id {
+                        if seat.id() == seat_id {
                             return Some(seat);
                         }
                     }
@@ -243,24 +248,35 @@ impl Train {
         }
         None
     }
+
+    pub fn routers(&self) -> Vec<&Router> {
+        let mut routers = Vec::new();
+        for coach in self.coaches.iter() {
+            for router in coach.routers.iter() {
+                routers.push(router);
+            }
+        }
+        routers
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Coach {
     id: Uuid,                     // Unique identifier
-    number: i32,                  // Coach number (e.g. 1, 2, 3, ...)
-    base_coordinates: (f64, f64), // (x, y - relative to train base coordinates)
+    number: i32,                  // Coach number (e.g. 0, 1, 2, 3, ...)
+    base_coordinates_in_train: Position, // (x, y - relative to train base coordinates)
     rows: Vec<Row>,               // List of seat rows
-    dimensions: (f64, f64),       // (width, height)
+    dimensions: (usize, usize),   // (width, height)
+    routers: Vec<Router>,         // List of routers
 }
 
 impl Coach {
-    pub fn number(&self) -> i32 {
-        self.number
-    }
+    // fn number(&self) -> i32 {
+    //     self.number
+    // }
 
-    pub fn base_coordinates(&self) -> (f64, f64) {
-        self.base_coordinates
+    pub fn base_coordinates(&self) -> &Position {
+        &self.base_coordinates_in_train
     }
 
     pub fn seat_groups(&self) -> Vec<SeatGroup> {
@@ -315,18 +331,18 @@ impl Coach {
         seat_groups
     }
 
-    pub fn dimensions(&self) -> (f64, f64) {
+    pub fn dimensions(&self) -> (usize, usize) {
         self.dimensions
     }
 
-    pub fn center_coordinates(&self) -> (f64, f64) {
-        (
-            self.base_coordinates.0 + self.dimensions.0 / 2.0,
-            self.base_coordinates.1 + self.dimensions.1 / 2.0,
-        )
+    fn center_coordinates(&self) -> Position {
+        Position {
+            x: self.base_coordinates_in_train.x() + self.dimensions.0 as f64 / 2.0,
+            y: self.base_coordinates_in_train.y() + self.dimensions.1 as f64 / 2.0,
+        }
     }
 
-    pub fn seats_count(&self) -> usize {
+    fn seats_count(&self) -> usize {
         let mut seats_count = 0;
         for row in self.rows.iter() {
             for row_segment in row.segments.iter() {
@@ -335,16 +351,24 @@ impl Coach {
         }
         seats_count
     }
+
+    pub fn routers(&self) -> &Vec<Router> {
+        &self.routers
+    }
+
+    pub fn id(&self) -> Uuid {
+        self.id
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Row {
-    id: Uuid,                   // Row id (e.g. 1, 2, 3, ...)
-    segments: Vec<RowSegment>,  // List of row segments
+    id: Uuid,                  // Row id (e.g. 1, 2, 3, ...)
+    segments: Vec<RowSegment>, // List of row segments
 }
 
 impl Row {
-    pub fn new() -> Row {
+    fn new() -> Row {
         Row {
             id: Uuid::new_v4(),
             segments: Vec::new(),
@@ -354,15 +378,15 @@ impl Row {
 
 #[derive(Debug, Serialize, Deserialize)]
 struct RowSegment {
-    id: Uuid,                   // Row segment id
-    row_no: i32,                // Row number (e.g. 1, 2, 3, ...)
-    side: Side,                 // Left or Right from aisle
-    orientation: Orientation,   // Forward or Backward
-    seats: Vec<Seat>,           // List of seats
+    id: Uuid,                 // Row segment id
+    row_no: i32,              // Row number (e.g. 1, 2, 3, ...)
+    side: Side,               // Left or Right from aisle
+    orientation: Orientation, // Forward or Backward
+    seats: Vec<Seat>,         // List of seats
 }
 
 impl RowSegment {
-    pub fn new(row_no: i32, side: Side, orientation: &Orientation) -> RowSegment {
+    fn new(row_no: i32, side: Side, orientation: &Orientation) -> RowSegment {
         RowSegment {
             id: Uuid::new_v4(),
             row_no,
@@ -377,33 +401,52 @@ impl RowSegment {
 pub struct Seat {
     id: Uuid,                     // Seat id
     number: i32,                  // Seat number (e.g. 1, 2, 3, ...)
-    base_coordinates: (f64, f64), // (x, y - relative to coach base coordinates)
+    coach_number: i32,            // Coach number (e.g. 0, 1, 2, 3, ...)
+    base_coordinates: Position, // (x, y - relative to coach base coordinates)
+    full_base_coordinates: Position, // (x, y - relative to train base coordinates)
     dimensions: (f64, f64),       // (x, y)
     seat_type: SeatType,          // Window or Aisle
     limited_view: bool,           // if seat is next to a window
-    class: SequenceClass,         // First or Second class
+    sequence_class: SequenceClass, // First or Second class
     orientation: Orientation,     // Forward or Backward relative to the train
     distance_to_exit: f64,        // Distance to the nearest exit
     distance_to_dining: f64,      // Distance to the nearest dining car
 }
 
 impl Seat {
-    fn center_coordinates(&self) -> (f64, f64) {
-        (
-            self.base_coordinates.0 + self.dimensions.0 / 2.0,
-            self.base_coordinates.1 + self.dimensions.1 / 2.0,
-        )
+    pub fn id(&self) -> &Uuid {
+        &self.id
     }
 
-    pub fn occupied(&self, passengers: &Vec<Passenger>) -> bool {
-        for passenger in passengers.iter() {
-            if let Some(seat_id) = passenger.seat_id() {
-                if seat_id == self.id {
-                    return true;
-                }
-            }
+    pub fn full_center_coordinates(&self) -> Position {
+        Position {
+            x: self.full_base_coordinates.x() + self.dimensions.0 / 2.0,
+            y: self.full_base_coordinates.y() + self.dimensions.1 / 2.0,
         }
-        false
+    }
+
+    pub fn base_coordinates(&self) -> &Position {
+        &self.base_coordinates
+    }
+
+    pub fn full_base_coordinates(&self) -> &Position {
+        &self.full_base_coordinates
+    }
+
+    pub fn dimensions(&self) -> (f64, f64) {
+        self.dimensions
+    }
+
+    pub fn coach_number(&self) -> i32 {
+        self.coach_number
+    }
+
+    pub fn is_window(&self) -> bool {
+        self.seat_type == SeatType::Window
+    }
+
+    pub fn distance_to_car_end(&self) -> f64 {
+        self.distance_to_exit
     }
 }
 
@@ -419,7 +462,7 @@ enum Orientation {
     Backward,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 enum SeatType {
     Window,
     Aisle,
@@ -432,20 +475,19 @@ pub struct Route {
 }
 
 impl Route {
-    pub fn new(stops: Vec<String>) -> Route {
+    fn new(stops: Vec<String>) -> Route {
         Route { stops }
     }
 
-    pub fn example() -> Route {
-        Route {
-            stops: vec![
+    fn example() -> Route {
+        Route::new(vec![
                 "Freiburg".to_string(),
                 "Karlsruhe".to_string(),
                 "Mannheim".to_string(),
                 "Berlin".to_string(),
                 "Hamburg".to_string(),
             ],
-        }
+        )
     }
 
     pub fn random_segment(&self) -> RouteSegment {
@@ -464,23 +506,25 @@ impl Route {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct RouteSegment {
-    pub start: String,
-    pub end: String,
+    start: String,
+    end: String,
 }
 
 impl RouteSegment {
     pub fn new(start: String, end: String) -> RouteSegment {
-        RouteSegment {
-            start,
-            end,
-        }
+        RouteSegment { start, end }
     }
 
     pub fn example() -> RouteSegment {
-        RouteSegment::new(
-            "Berlin".to_string(),
-            "Hamburg".to_string()
-        )
+        RouteSegment::new("Berlin".to_string(), "Hamburg".to_string())
+    }
+
+    pub fn start(&self) -> &String {
+        &self.start
+    }
+
+    pub fn end(&self) -> &String {
+        &self.end
     }
 }
 
@@ -511,35 +555,22 @@ impl SeatGroup {
         self.seats.len()
     }
 
-    pub fn center_coordinates(&self, train: &Train) -> (f64, f64) {
-        let mut x = 0.0;
-        let mut y = 0.0;
+    pub fn full_center_coordinates(&self, train: &Train) -> Position {
+        let mut x_sum: f64 = 0.0;
+        let mut y_sum: f64 = 0.0;
         for seat_id in &self.seats {
-            let seat = train.seat(*seat_id);
-            let seat_coordinates = seat.unwrap().center_coordinates();
-            x += seat_coordinates.0;
-            y += seat_coordinates.1;
+            let seat_option = train.get_seat(seat_id);
+            if let Some(seat) = seat_option {
+                let seat_coordinates = seat.full_center_coordinates();
+                x_sum += seat_coordinates.x();
+                y_sum += seat_coordinates.y();
+            } else {
+                panic!("Seat not found");
+            }
         }
-        (x / self.seats.len() as f64, y / self.seats.len() as f64)
-    }
-}
-
-// Ticket Inspector
-#[derive(Debug, Serialize, Deserialize)]
-pub struct TicketInspector {
-    // id: i32,
-    position: (f64, f64),
-    direction: Orientation,
-    speed: f64,
-}
-
-impl TicketInspector {
-    fn new() -> TicketInspector {
-        TicketInspector {
-            // id: 0,
-            position: (0.0, 0.0),
-            direction: Orientation::Forward,
-            speed: 0.0,
+        Position {
+            x: x_sum / self.seats.len() as f64,
+            y: y_sum / self.seats.len() as f64
         }
     }
 }
@@ -548,4 +579,57 @@ impl TicketInspector {
 enum Side {
     Left,
     Right,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Router {
+    id: Uuid,
+    coordinates: Position,
+    full_coordinates: Position,
+}
+
+impl Router {
+    fn new(coordinates: Position, full_coordinates: Position) -> Router {
+        Router {
+            id: Uuid::new_v4(),
+            coordinates,
+            full_coordinates,
+        }
+    }
+
+    pub fn id(&self) -> Uuid {
+        self.id
+    }
+
+    pub fn position(&self) -> &Position {
+        &self.full_coordinates
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone, Copy)]
+pub struct Position {
+    x: f64,
+    y: f64,
+}
+
+impl Position {
+    pub fn new(x: f64, y: f64) -> Position {
+        Position { x, y }
+    }
+
+    pub fn coordinates(&self) -> (f64, f64) {
+        (self.x, self.y)
+    }
+
+    pub fn x(&self) -> f64 {
+        self.x
+    }
+
+    pub fn y(&self) -> f64 {
+        self.y
+    }
+
+    pub fn distance_to(&self, other: &Position) -> f64 {
+        ((self.x - other.x).powi(2) + (self.y - other.y).powi(2)).sqrt()
+    }
 }
