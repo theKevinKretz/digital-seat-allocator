@@ -1,10 +1,10 @@
+use std::iter::Sum;
+
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use ndarray::Array2;
+use ndarray::{Array2, Zip};
 use image::{ImageBuffer, Rgb};
-use plotters::prelude::*; // TODO - Remove
-use rand::prelude::*;
 
 use crate::data::Data;
 use crate::simulation::Simulation;
@@ -64,7 +64,7 @@ impl Request {
 
     pub fn process_std_train(&self) -> Answer {
         // TODO - Get real data from API (cooperation needed)
-        // Get exaple data from simulation
+        // Get example data from simulation
 
         let scale: usize = 10; // TODO - Make this a parameter
 
@@ -83,47 +83,75 @@ impl Request {
 
         // Generate heatmaps
         let mut i = 0;
-        let mut wifi_heatmaps = Vec::new();
+        let mut heat_coaches = Vec::new();
 
         for coach in train.coaches() {
             // Generate heatmap
-            let mut box_size = coach.dimensions();
-            box_size = (box_size.0 * scale, box_size.1 * scale);  // Higher resolution
+            let box_size = ((coach.dimensions().0 * scale as f64) as usize, (coach.dimensions().1 * scale as f64) as usize);  // Higher resolution
             let mut heatmap = Array2::<f64>::zeros(box_size);
 
             // Add Wi-Fi data
+            let mut seats_probabilities_from_wifi = HeatCoach::from_coach(coach);
+
             let tolerance = 5.0;  // TODO - Make this a parameter
 
             for sensor in coach.routers() {
                 let sensor_pos = sensor.position().coordinates();
-            
-                for x in 0..box_size.0 {
-                    for y in 0..box_size.1 {
-                        let point_distance = ((x as f64 / scale as f64 - sensor_pos.0).powi(2) + (y as f64 / scale as f64 - sensor_pos.1).powi(2)).sqrt(); // Divide by 10 to get real coordinates
+                for connection in data.router_data(sensor.id()).connections() {
+                    // Calculate heatmap
+                    let device_distance = 1.0 / connection.strength();
 
-                        for connection in data.router_data(sensor.id()).connections() {
-                            let device_distance = 1.0 / connection.strength();
+                    let mut new_heatmap = Array2::<f64>::zeros(box_size);
+
+                    for x in 0..box_size.0 {
+                        for y in 0..box_size.1 {
+                            let point_distance = ((x as f64 / scale as f64 - sensor_pos.0).powi(2) + (y as f64 / scale as f64 - sensor_pos.1).powi(2)).sqrt(); // Divide by 10 to get real coordinates
 
                             let difference = (device_distance - point_distance).abs();
 
                             let value = (tolerance - difference) / tolerance; // Doc: hm_wifi
 
                             if value > 0.0 {
-                                heatmap[(x, y)] += value; // TODO - dont ignore existing values
+                                new_heatmap[(x, y)] = value;
                             }
                         }
                     }
+
+                    // Normalize new_heatmap (everything adds up to 1.0; do this before next step, as people can be outside of seat)
+                    let sum = new_heatmap.sum();
+                    if sum > 0.0 {
+                        new_heatmap.mapv_inplace(|x| x / sum);
+                    }
+
+                    // Translate into HeatCoach
+                    let mut person_seat_probabilities = HeatCoach::from_coach(coach);
+
+                    // Add probabilities
+                    for seat in person_seat_probabilities.seats.iter_mut() {
+                        for x in 0..box_size.0 {
+                            if seat.area.0.x() < x as f64 / scale as f64 && (x as f64/ scale as f64) < seat.area.1.x() {
+                                for y in 0..box_size.1 {
+                                    if seat.area.0.y() < y as f64 / scale as f64 && (y as f64 / scale as f64) < seat.area.1.y() {
+                                        seat.probability += new_heatmap[(x, y)];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // TODO - Add probabilities to seats_probabilities_from_wifi
                 }
             }
         
-            // Normalize heatmap // TODO - Make unnecessary
-            // let max_value: f64 = heatmap.fold(0.0, |acc: f64, &x| x.max(acc));
+            // For Visualization
+            let max_value: f64 = heatmap.fold(0.0, |acc: f64, &x| x.max(acc));
             // println!("Max value: {}", max_value);
-            // heatmap.mapv_inplace(|x| x / max_value);
-
+            heatmap.mapv_inplace(|x| x / max_value);
             Self::plot_heatmap(&heatmap, i).unwrap();
             i += 1;
-            wifi_heatmaps.push(heatmap);
+            
+            seats_probabilities_from_wifi.plot(i);
+
+            heat_coaches.push(seats_probabilities_from_wifi);
         }
 
         // Process seats
@@ -139,7 +167,7 @@ impl Request {
             // From Wi-Fi data
             let mut wifi_sum = 0.0;
 
-            let heatmap = &wifi_heatmaps[train_seat.coach_number() as usize];
+            // TODO let heatmap = &wifi_heatmaps[train_seat.coach_number() as usize];
             
             let low_x = (train_seat.base_coordinates().x() * scale as f64) as usize;
             let low_y = (train_seat.base_coordinates().y() * scale as f64) as usize;
@@ -149,7 +177,7 @@ impl Request {
             for x in low_x..high_x {
                 for y in low_y..high_y {
                     if low_x < x && x < high_x && low_y < y && y < high_y {
-                        wifi_sum += heatmap[(x, y)];
+                        // TODO wifi_sum += heatmap[(x, y)];
                     }
                 }
             }
@@ -192,6 +220,8 @@ impl Request {
         let path = format!("heatmap_{}.png", id);
 
         imgbuf.save(path)?;
+
+        println!("{:#?}", heatmap);
     
         Ok(())
     }
@@ -296,15 +326,71 @@ impl Answer {
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(crate = "rocket::serde")]
-pub struct HeatTrain {
+pub struct HeatCoach {
+    dimensions: (f64, f64),
     seats: Vec<HeatSeat>
+}
+
+impl HeatCoach {
+    fn new(dimensions: (f64, f64)) -> HeatCoach {
+        HeatCoach {
+            dimensions,
+            seats: Vec::new(),
+        }
+    }
+
+    fn from_coach(coach: &train::Coach) -> HeatCoach {
+        let mut heat_coach = HeatCoach::new(coach.dimensions());
+
+        for seat in coach.seats() {
+            heat_coach.seats.push(HeatSeat {
+                id: *seat.id(),
+                area: seat.area(),
+                probability: 0.0,
+            });
+        }
+
+        heat_coach
+    }
+
+    fn plot(&self, id: i32) -> Result<(), Box<dyn std::error::Error>> {
+        let scale = 10;
+        let mut imgbuf = ImageBuffer::<Rgb<u8>, Vec<u8>>::new((self.dimensions.0 * scale as f64) as u32, (self.dimensions.1 * scale as f64) as u32);
+
+        for seat in self.seats.iter() {
+            // Add rectangle
+            let low_x = (seat.area.0.x() * scale as f64) as u32;
+            let low_y = (seat.area.0.y() * scale as f64) as u32;
+            let high_x = (seat.area.1.x() * scale as f64) as u32;
+            let high_y = (seat.area.1.y() * scale as f64) as u32;
+
+            for x in low_x..high_x {
+                for y in low_y..high_y {
+                    if x >= imgbuf.width() || y >= imgbuf.height() {
+                        println!("Out of bounds: ({}, {})", x, y);
+                        println!("Dimensions: ({}, {})", imgbuf.width(), imgbuf.height());
+                        println!("Seat: {:#?}", seat);
+                        continue;
+                    }
+                    let pixel = imgbuf.get_pixel_mut(x, y);
+                    *pixel = Rgb([255, 0, 0]); // TODO use (seat.probability * 255.0).abs() as u8
+                }
+            }
+        }
+    
+        let path = format!("heatmap_coach_{}.png", id);
+
+        imgbuf.save(path)?;
+    
+        Ok(())
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(crate = "rocket::serde")]
 pub struct HeatSeat {
     id: Uuid,
-    position: Position,
+    area: (Position, Position),
     probability: f64,
 }
 

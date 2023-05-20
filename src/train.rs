@@ -1,3 +1,4 @@
+use plotters::style::text_anchor::Pos;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use rand::Rng;
@@ -140,16 +141,16 @@ impl Train {
             }
 
             let dimensions = (
-                (seat_base_coordinates.x + seat_size.0) as usize,
-                (seat_base_coordinates.y + seat_size.1) as usize,
+                (seat_base_coordinates.x + seat_size.0),
+                (seat_base_coordinates.y + seat_size.1),
             );
 
             // Add routers
             let mut routers = Vec::new();
             if routers_per_coach > 0 {
                 for i in 0..routers_per_coach {
-                    let x_position = dimensions.0 as f64 / 2.0;
-                    let y_position = (i as f64 + 0.5) * dimensions.1 as f64 / routers_per_coach as f64;
+                    let x_position = dimensions.0 / 2.0;
+                    let y_position = (i as f64 + 0.5) * dimensions.1 / routers_per_coach as f64;
                     let coordinates = Position { x: x_position, y: y_position };
 
                     let full_coordinates = Position {
@@ -171,12 +172,12 @@ impl Train {
             };
 
             train.coaches.push(coach);
-            coach_base_coordinates.y += dimensions.1 as f64;
+            coach_base_coordinates.y += dimensions.1;
         }
 
         let train_dimensions = (
-            coach_base_coordinates.x + train.coaches[train.coaches.len() - 1].dimensions.0 as f64,
-            coach_base_coordinates.y + train.coaches[train.coaches.len() - 1].dimensions.1 as f64,
+            coach_base_coordinates.x + train.coaches[train.coaches.len() - 1].dimensions.0,
+            coach_base_coordinates.y + train.coaches[train.coaches.len() - 1].dimensions.1,
         );
 
         train.dimensions = train_dimensions;
@@ -266,7 +267,7 @@ pub struct Coach {
     number: i32,                  // Coach number (e.g. 0, 1, 2, 3, ...)
     base_coordinates_in_train: Position, // (x, y - relative to train base coordinates)
     rows: Vec<Row>,               // List of seat rows
-    dimensions: (usize, usize),   // (width, height)
+    dimensions: (f64, f64),       // (width, height)
     routers: Vec<Router>,         // List of routers
 }
 
@@ -331,7 +332,7 @@ impl Coach {
         seat_groups
     }
 
-    pub fn dimensions(&self) -> (usize, usize) {
+    pub fn dimensions(&self) -> (f64, f64) {
         self.dimensions
     }
 
@@ -358,6 +359,18 @@ impl Coach {
 
     pub fn id(&self) -> Uuid {
         self.id
+    }
+
+    pub fn seats(&self) -> Vec<&Seat> {
+        let mut seats = Vec::new();
+        for row in self.rows.iter() {
+            for row_segment in row.segments.iter() {
+                for seat in row_segment.seats.iter() {
+                    seats.push(seat);
+                }
+            }
+        }
+        seats
     }
 }
 
@@ -418,6 +431,21 @@ impl Seat {
         &self.id
     }
 
+    pub fn base_coordinates(&self) -> &Position {
+        &self.base_coordinates
+    }
+
+    pub fn center_coordinates(&self) -> Position {
+        Position {
+            x: self.base_coordinates.x() + self.dimensions.0 / 2.0,
+            y: self.base_coordinates.y() + self.dimensions.1 / 2.0,
+        }
+    }
+
+    pub fn full_base_coordinates(&self) -> &Position {
+        &self.full_base_coordinates
+    }
+
     pub fn full_center_coordinates(&self) -> Position {
         Position {
             x: self.full_base_coordinates.x() + self.dimensions.0 / 2.0,
@@ -425,12 +453,17 @@ impl Seat {
         }
     }
 
-    pub fn base_coordinates(&self) -> &Position {
-        &self.base_coordinates
-    }
-
-    pub fn full_base_coordinates(&self) -> &Position {
-        &self.full_base_coordinates
+    pub fn area(&self) -> (Position, Position) {
+        (
+            Position {
+                x: self.base_coordinates().x(),
+                y: self.base_coordinates().y(),
+            },
+            Position {
+                x: self.base_coordinates().x() + self.dimensions.0,
+                y: self.base_coordinates().y() + self.dimensions.1,
+            },
+        )
     }
 
     pub fn dimensions(&self) -> (f64, f64) {

@@ -77,9 +77,16 @@ impl Passengers {
     // }
 
     pub fn devices(&self) -> Vec<Uuid> {
-        self.passengers
+        self.on_train()
             .iter()
             .flat_map(|passenger| passenger.devices.clone())
+            .collect()
+    }
+
+    pub fn on_train(&self) -> Vec<&Passenger> {
+        self.passengers
+            .iter()
+            .filter(|passenger| passenger.on_train())
             .collect()
     }
 
@@ -105,6 +112,7 @@ pub struct Passenger {
     position: Position,             // (x, y - relative to train base coordinates)
     devices: Vec<Uuid>,             // Device UUIDs (e.g. ["e7a6ef08-9b9a-4e8d-9dce-94c76f0e8e29"])
     uses_komfort_check_in: bool,    // true: passenger uses komfort check-in, false: passenger uses normal check-in
+    on_train: bool,                 // true: passenger is on train, false: passenger is not on train
 }
 
 impl Passenger {
@@ -129,12 +137,14 @@ impl Passenger {
             devices_count,
             devices,
             uses_komfort_check_in,
+            on_train: false,
         }
     }
 
     /// Choose a seat in the train and sit down
     pub fn board(&mut self, train: &Train, passengers: Passengers, stop: &String) {
-        if self.route_segment().start() == stop && self.wish_to_seat {
+        if self.route_segment().start() == stop {
+
             // Choose closest coach
             let mut closest_coach_distance = std::f64::MAX;
             let mut closest_coach = &train.coaches()[0];
@@ -152,90 +162,96 @@ impl Passenger {
 
             let coach = closest_coach;
 
+            let start_y_rel_to_coach_base = self.position.y() - coach.base_coordinates().y();
+
             // Start position relative to coach
             let start_position_relative_to_coach = Position::new (
                 (self.position.x() % coach.dimensions().0 as f64) / coach.dimensions().0 as f64,
-                (self.position.y() % coach.dimensions().1 as f64) / coach.dimensions().1 as f64,
+                start_y_rel_to_coach_base / coach.dimensions().1 as f64,
             );
 
             // Choose closest door
-            let closest_door = if start_position_relative_to_coach.y() >= 0.0 && start_position_relative_to_coach.y() <= 0.5 {
+            let closest_door = ((start_position_relative_to_coach.y() - start_position_relative_to_coach.y()) / coach.dimensions().1 as f64).abs();
+            if !(closest_door == 0.0 || closest_door == 1.0) {
                 // 0: back, 1: front
-                0
-            } else if start_position_relative_to_coach.y() > 0.5 && start_position_relative_to_coach.y() <= 1.0 {
-                1
-            } else {
                 panic!("Invalid start position relative to coach")
             };
 
-            // Start y position in coach relative to coach
-            let rel_start_y = closest_door as f64 * coach.dimensions().1 as f64; // TODO - See below
+            // Enter train
+            self.on_train = true;
+            self.position = Position::new(
+                coach.dimensions().0 as f64 * 0.5,
+                coach.base_coordinates().y() + (coach.dimensions().1 as f64 * closest_door));
 
-            // Choose seat group
-            // Get seat groups
-            let seat_groups = coach.seat_groups();
+            if self.wish_to_seat {
+                // Choose seat group
+                // Get seat groups
+                let seat_groups = coach.seat_groups();
 
-            // Evaluate seat groups
-            let mut seat_group_evaluations = Vec::new();
+                // Evaluate seat groups
+                let mut seat_group_evaluations = Vec::new();
 
-            for seat_group in &seat_groups {
-                // Count occupied seats in seat group
-                let mut occupied_seats = 0;
-                for seat_id in seat_group.seats() {
-                    for passenger in passengers.all() {
-                        if let Some(passenger_seat_id) = passenger.seat_id() {
-                            if *seat_id == passenger_seat_id {
-                                occupied_seats += 1;
+                for seat_group in &seat_groups {
+                    // Count occupied seats in seat group
+                    let mut occupied_seats = 0;
+                    for seat_id in seat_group.seats() {
+                        for passenger in passengers.all() {
+                            if let Some(passenger_seat_id) = passenger.seat_id() {
+                                if *seat_id == passenger_seat_id {
+                                    occupied_seats += 1;
+                                }
                             }
                         }
                     }
+
+                    let capacity = 1 - occupied_seats;
+
+                    // Calculate relative available seat capacity
+                    let relative_available_seat_capacity =
+                        1.0 - (occupied_seats as f64 / seat_group.size() as f64);
+
+                    // Calculate distance to start position in coach
+                    let distance = seat_group.full_center_coordinates(train).distance_to(self.position());
+
+                    // Calculate evaluation
+                    let evaluation = relative_available_seat_capacity * (1.0 - distance);
+
+                    // Add evaluation to list
+                    seat_group_evaluations.push((seat_group.id(), capacity, evaluation));
                 }
 
-                let capacity = 1 - occupied_seats;
+                // Filter seat groups by capacity
+                seat_group_evaluations.retain(|seat_group_evaluation| seat_group_evaluation.1 > 0);
 
-                // Calculate relative available seat capacity
-                let relative_available_seat_capacity =
-                    1.0 - (occupied_seats as f64 / seat_group.size() as f64);
+                if !seat_group_evaluations.is_empty() {
+                    // Sort seat groups by evaluation
+                    seat_group_evaluations.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
 
-                // Calculate distance to start position in coach
-                let distance = (seat_group.full_center_coordinates(train).y() - rel_start_y).abs(); // TODO - BUG!! - This is not the correct distance (should be full center coordinates of door)
+                    // Choose seat group
+                    let seat_group_id = seat_group_evaluations[0].0;
 
-                // Calculate evaluation
-                let evaluation = relative_available_seat_capacity * (1.0 - distance);
+                    // Get seat group
+                    let seat_group = seat_groups
+                        .iter()
+                        .find(|seat_group| seat_group.id() == seat_group_id)
+                        .unwrap();
 
-                // Add evaluation to list
-                seat_group_evaluations.push((seat_group.id(), capacity, evaluation));
-            }
+                    // Filter seats by occupation
+                    let mut seats = seat_group.seats().clone();
+                    seats.retain(|seat_id| !self.occupied_seat(&passengers, Some(*seat_id)));
 
-            // Filter seat groups by capacity
-            seat_group_evaluations.retain(|seat_group_evaluation| seat_group_evaluation.1 > 0);
+                    // Choose seat in seat group
+                    let seat_id = seats[rand::thread_rng().gen_range(0..seats.len())]; // Random seat in seat group
 
-            if !seat_group_evaluations.is_empty() {
-                // Sort seat groups by evaluation
-                seat_group_evaluations.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
-
-                // Choose seat group
-                let seat_group_id = seat_group_evaluations[0].0;
-
-                // Get seat group
-                let seat_group = seat_groups
-                    .iter()
-                    .find(|seat_group| seat_group.id() == seat_group_id)
-                    .unwrap();
-
-                // Filter seats by occupation
-                let mut seats = seat_group.seats().clone();
-                seats.retain(|seat_id| !self.occupied_seat(&passengers, Some(*seat_id)));
-
-                // Choose seat in seat group
-                let seat_id = seats[rand::thread_rng().gen_range(0..seats.len())]; // Random seat in seat group
-
-                // Sit down
-                self.sit(Some(seat_id));
+                    // Sit down
+                    self.position = train.get_seat(&seat_id).unwrap().full_center_coordinates();
+                    self.sit(Some(seat_id));
+                }
             }
         }
+
         if self.route_segment().end() == stop {
-            self.sit(None);
+            self.exit();
         }
     }
 
@@ -248,6 +264,11 @@ impl Passenger {
 
     pub fn sit(&mut self, seat_id: Option<Uuid>) {
         self.seat_id = seat_id;
+    }
+
+    pub fn exit(&mut self) {
+        self.seat_id = None;
+        self.on_train = false;
     }
 
     // Getters
@@ -269,6 +290,10 @@ impl Passenger {
 
     pub fn uses_komfort_check_in(&self) -> bool {
         self.uses_komfort_check_in
+    }
+
+    pub fn on_train(&self) -> bool {
+        self.on_train
     }
 }
 

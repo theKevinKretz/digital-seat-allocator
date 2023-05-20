@@ -29,7 +29,7 @@ impl Parameters {
     pub fn example() -> Parameters {
         Parameters::new(
             Train::example(),
-            10,
+            1000,
             0.8,
             0.7,
             0.3,
