@@ -3,6 +3,10 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use rand::Rng;
 
+const DEFAULT_COACH_COUNT: i32 = 5;
+const DEFAULT_COACH_SIZE: i32 = 10;
+const DEFAULT_ROUTERS_PER_COACH: u32 = 2;
+
 // Train Structs
 // These structs are used to store the train properties
 
@@ -185,8 +189,12 @@ impl Train {
         train
     }
 
+    pub fn id(&self) -> Uuid {
+        self.id
+    }
+
     pub fn example() -> Train {
-        Train::new(5, 10, Route::example(), 2)
+        Train::new(DEFAULT_COACH_COUNT, DEFAULT_COACH_SIZE, Route::example(), DEFAULT_ROUTERS_PER_COACH)
     }
 
     pub fn route(&self) -> &Route {
@@ -240,7 +248,7 @@ impl Train {
             for row in coach.rows.iter() {
                 for row_segment in row.segments.iter() {
                     for seat in row_segment.seats.iter() {
-                        if seat.id() == seat_id {
+                        if seat.id() == *seat_id {
                             return Some(seat);
                         }
                     }
@@ -258,6 +266,14 @@ impl Train {
             }
         }
         routers
+    }
+
+    pub fn seat_groups(&self) -> Vec<SeatGroup> {
+        let mut all_groups = Vec::new();
+        for coach in self.coaches() {
+            all_groups.extend(coach.seat_groups());
+        }
+        all_groups
     }
 }
 
@@ -427,8 +443,8 @@ pub struct Seat {
 }
 
 impl Seat {
-    pub fn id(&self) -> &Uuid {
-        &self.id
+    pub fn id(&self) -> Uuid {
+        self.id
     }
 
     pub fn base_coordinates(&self) -> &Position {

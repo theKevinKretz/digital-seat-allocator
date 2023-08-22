@@ -11,25 +11,42 @@ use train::Train;
 extern crate rocket;
 use rocket::serde::json::Json;
 
-fn main() {
-    let example_request = Request::example();
-    let answer = example_request.process_std_train();
-    println!("{:#?}", answer);
+use crate::simulation::Simulation;
+
+// fn main() {
+//     // Run simulation
+//     let mut simulation: Simulation = Simulation::example();
+//     simulation.run();
+//     simulation.save("simulation.json");
+
+//     // Get example request
+//     let request = Request::example();
+
+//     // Process request
+//     let answer = request.process_on_simulation(&simulation);
+
+//     // Print answer seat
+//     let answer_seat = simulation.train().get_seat(&answer.seats()[0]);
+//     println!("Seat: {:#?}", answer_seat);
+
+//     // Evaluate answer
+// }
+
+#[post("/example", data = "<request>")]
+fn process_request(request: Json<Request>) -> Json<Answer> {
+    let mut simulation: Simulation = Simulation::example();
+    simulation.run();
+    Json(request.process_on_simulation(&simulation))
 }
 
-// #[post("/example", data = "<request>")]
-// fn process_request(request: Json<Request>) -> Json<Answer> {
-//     Json(request.into_inner().process_std_train())
-// }
+#[post("/example")]
+fn get_train() -> Json<Train> {
+    Json(Train::example())
+}
 
-// #[post("/example")]
-// fn get_train() -> Json<Train> {
-//     Json(Train::example())
-// }
-
-// #[launch]
-// fn rocket() -> _ {
-//     rocket::build()
-//         .mount("/allocator", routes![process_request])
-//         .mount("/dev", routes![get_train])
-// }
+#[launch]
+fn rocket() -> _ {
+    rocket::build()
+        .mount("/allocator", routes![process_request])
+        .mount("/dev", routes![get_train])
+}

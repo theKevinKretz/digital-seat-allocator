@@ -6,6 +6,12 @@ use crate::passengers::Passengers;
 use crate::train::Train;
 use crate::data::Data;
 
+const DEFAULT_PASSENGERS_COUNT: i32 = 1000;
+const DEFAULT_WISH_TO_SEAT_CHANCE: f64 = 0.8;
+const DEFAULT_AVERAGE_DEVICES_PER_PASSENGER: f64 = 0.7;
+const DEFAULT_KOMFORT_CHECK_IN_CHANCE: f64 = 0.3;
+
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Parameters {
     train: Train,
@@ -29,10 +35,10 @@ impl Parameters {
     pub fn example() -> Parameters {
         Parameters::new(
             Train::example(),
-            1000,
-            0.8,
-            0.7,
-            0.3,
+            DEFAULT_PASSENGERS_COUNT,
+            DEFAULT_WISH_TO_SEAT_CHANCE,
+            DEFAULT_AVERAGE_DEVICES_PER_PASSENGER,
+            DEFAULT_KOMFORT_CHECK_IN_CHANCE,
         )
     }
 

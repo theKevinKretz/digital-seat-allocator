@@ -2,9 +2,8 @@
 title: Entwicklung eines digitalen Platzanweisers für Züge des Fernverkehrs
 subtitle: "Erhöhung der Pünktlichkeit durch Reduzierung von Haltezeitüberschreitungen"
 author: Kevin Kretz
-date: \today
-# abstract: |
-#     SRC Abstract
+date: 21. Mai 2023
+# abstract:
 bibliography: [docs/main.bib]
 csl: docs/ieee-with-url.csl
 link-citations: true
@@ -38,9 +37,23 @@ Es ist bekannt, dass die Züge des größten deutschen Eisenbahnunternehmen, der
 Dass die Deutsche Bahn AG grundsätzlich Interesse an einem solchen System hat, zeigen die Bemühungen, ein ähnliches System für den Regionalverkehr einzuführen. [@presseinformationen_2023]
 Das am 8. Januar 2023 in einer Pressemitteilung angekündigte System soll durch ein dreistufiges Ampelsystem anzeigen, wie hoch die Auslastung in bestimmten Zugteilen ist. Die Einführung dieses Systems ist jedoch aufgrund der Notwendigkeit von Sensoren nicht nur teuer, sondern auch schlecht skalierbar, weshalb es planmäßig bis Ende 2024 in gerade einmal einem Viertel der Regionalverkehrszüge zum Einsatz kommen wird. [@presseinformationen_2023]
 
-# Kapitel I: Konzeption
+# Methodik
 
-Das Grundkonzept für den digitalen Platzanweiser basiert darauf, Passagiere gezielt zu freien Sitzplätzen zu lotsen. Hierzu werden verschiedene Daten genutzt anhand derer zunächst freie Sitzplätze ermittelt und im Anschluss geeignete Plätze nach den individuellen Wünschen des Fahrgasts vorgeschlagen werden.
+
+## Konzept
+
+Das Grundkonzept für den digitalen Platzanweiser basiert darauf, Passagiere gezielt zu freien Sitzplätzen zu lotsen. Hierzu werden verschiedene Daten genutzt anhand derer zunächst freie Sitzplätze ermittelt und im Anschluss geeignete Plätze nach den individuellen Wünschen des Clients vorgeschlagen werden.
+Die Sitzplätze werden so gewählt, dass sie sich innerhalb einer Sitzgruppe befinden. Sitzgruppen haben in Zügen maximal vier Plätze, eine Anfrage an den Platzanweiser kann somit bis zu vier Sitzplätze enthalten.
+
+Das System berechnet für jeden Platz im Zug die _Wahrscheinlichkeit, frei zu sein_, _Fittings_ und _Scores_.
+Das _Fitting_ beschreibt das Übereinstimmen von Platzanforderungen und Platzeigenschaften,
+Ein Score besteht aus der Wahrscheinlichkeit, frei zu sein und dem Fitting, wobei die beiden Teile nach dem Security Ratio gewichtet werden.
+Fittings und folglich Scores werden für jeden Platz für jede Platzanfrage berechnet. Somit hat ein Platz je nach Anfrage bis zu vier Scores.
+
+Im Anschluss werden durch einen Algorithmus die besten Sitzplätze ausgewählt. Der Algorithmus berücksichtigt hierbei folgende Kriterien:
+- Jeder einzelnen Platzanfrage muss ein Sitzplatz zugeordnet werden.
+- Die Summe der Scores der Plätze für die zugeordnete Anfrage soll maximal sein.
+- Alle Sitzplätze müssen sich innerhalb derselben Sitzgruppe befinden.
 
 ## Anforderungen
 
@@ -51,13 +64,9 @@ Bei der Entwicklung eines Konzepts für einen digitalen Platzanweiser gilt es, e
 Zuverlässig akkurate Ergebnisse zu generieren ist die Grundlage der Arbeit.
 Der vorgeschlagene Sitzplatz soll möglichst über die gesamte Fahrtdauer hinweg frei sein.
 
-<!--#### Unterstützung unterschiedlicher ICE-Typen
+#### Flexibilität
 
-Das Programm unterstützt verschiedene Arten von ICE-Zügen (z.B. ICE 1 bis 4) und kann die Sitzplatzverfügbarkeit für jeden Typ entsprechend erfassen und anzeigen.-->
-
-#### Variable Start- und Endpunkte von Fahrten und Reservierungen
-
-Das Programm ist in der Lage, variable Start- und Endpunkte von Fahrten und Reservierungen zu berücksichtigen und die Sitzplatzverfügbarkeit entsprechend anzupassen.
+Das Programm soll verschiedene Zugtypen unterstützen, ohne dass große Anpassungen nötig sind.
 
 #### Berücksichtigung unterschiedlicher Anforderungen der Gäste
 
@@ -68,27 +77,9 @@ Das Programm bietet die Möglichkeit, unterschiedliche Anforderungen der Gäste 
 Wenn das softwarebasierte Projekt steht, kann es mit wenig Aufwand einer Große Zahl von Zügen und Fahrgästen zur Verfügung gestellt werden.
 Dies wird ermöglicht, indem ein kosteneffizienter Ansatz ohne benötigtte Sensoren verfolgt wird.
 
-### Multi-Tenancy
-
-Mehrere Nutzer sollen das System gleichzeitig verwenden können.
-Das Programm soll nicht mehrere zum gleichen Sitzplatz lotsen.
-
 ### Erweiterbarkeit
 
 Das System kann einfach um zusätzliche Datenquellen erweitert werden.
-
-### Datenschutz
-
-Das System ist datenschutzfreundlich gestaltet.
-Es erfüllt die strengen deutschen und europäischen Standards im Datenschutz.
-So ist für die Verwendung des Programms keine Angabe personenbezogener Daten notwendig. - Übermittelt werden lediglich solche Daten, die zu einer Verbesserung der Ergebnisse beitragen. Welche Daten über welche Schnittstelle übermittelt werden, ist der entsprechenden Schnittstellenbeschreibung zu entnehmen (siehe unten).
-Solche Daten stellen ein Berechtigtes Interesse gem. Art. 6 Abs. 1 Bst. f DSGVO dar. <!--SRC-->
-
-## Ansatz
-
-Diese Grafik veranschaulicht die Gesamtstruktur des Programms.
-
-![Programmstruktur - Übersicht](docs/paper/assets/programmstruktur.tiff)
 
 ## Datenquellen
 
@@ -119,43 +110,58 @@ Stattdessen auf intelligente und flexible Softwarelösungen zu setzen ist erfolg
 Die Erfassung belegter Sitzplätze wäre zwar technisch möglich, jedoch birgt ein solches System ein Risiko für Missbrauch und Hackerangriffe.
 
 Auch schränkt die dauerhafte Verwendung der aufgenommenen Videodaten die Freiheiten der Fahrgäste ein.
-Berechtigte Interessen der DB sind hierbei bisher lediglich *"die Aufklärung und Verhinderung von Straftaten sowie der Schutz von Leben, Gesundheit und Freiheit von Beschäftigten und Kunden, sowie die Beweissicherung im Ereignisfall"*. [Deutsche Bahn] <!--SRChttps://www.dbregio.de/home/datenschutz-video--> 
+Berechtigte Interessen der DB sind hierbei bisher lediglich *"die Aufklärung und Verhinderung von Straftaten sowie der Schutz von Leben, Gesundheit und Freiheit von Beschäftigten und Kunden, sowie die Beweissicherung im Ereignisfall"*. [Deutsche Bahn]
 
-Diese Interessen aus Komfortgründen zu erweitern wäre nicht richtig.
+## Simulation
 
-## Algorithmen
+### Ziele und Einschränkungen
 
-### Datengenerator
+Simulationen spiegeln nicht zwangsläufig die Realität wider. Das kann dazu führen, dass sich die gewonnenen Ergebnisse nicht vollumfänglich in der Realität beobachten lassen.
 
-Zunächst wird ein Programm entwickelt, welches realistische Daten generiert, die es dem System zur Verfügung stellt.
+Der Vorteil von Computersimulationen ist jedoch, dass sich durch sie schnell und ohne großen Aufwand die Qualität des Systems in verschiedensten Bedingungen bewerten lässt.
+Die Simulation hilft dabei, Vorgänge im System zu verstehen und sie zu optimieren.
 
-Durch Anpassung der Parameter können verschiedene Verhaltensweisen von Fahrgästen simuliert werden.
-Außerdem ist ein Sammeln echter Daten zunächst nicht nötig.
-
-Spätere Studien mit echten Daten werden, sofern möglich, durchgeführt.
-
-#### Simulation des Fahrgastverhaltens
+### Simulation des Fahrgastverhaltens
 
 Die Auswahl der Sitzplätze durch die Fahrgäste wird simuliert. Das Verhalten von Fahrgästen beim Einstieg in Züge zeigt, welche Eigenschaften ihnen besonders wichtig sind.
 Leere Sitzgruppen werden anderen stark vorgezogen. Die Sitzgruppe, in der die kleinste Anzahl von Menschen sitzt, wird den anderen vorgezogen. Die Sitze in Fahrtrichtung sind beliebter als die Sitze entgegen der Fahrtrichtung. Sitze an Fenstern sind beliebter als Sitze an den Gängen. Der Sitzplatz, der diagonal zum besetzten Sitzplatz liegt wird gegenüber der anderen bevorzugt. [@schottl2017investigating]
 
 Diese Regeln finden sich in der Programmstruktur des Datengenerators als "*Verhalten*" wieder.
 
-#### Berechnung der Eingangsdaten
+### Datengenerator
 
-Die finalen Daten, mit denen im nächsten Schritt der Wahrscheinlichkeitsgenerator arbeiten kann, werden wie folgt generiert:
+Zunächst wird ein Programm entwickelt, welches realistische Daten generiert, die es dem System zur Verfügung stellt.
 
-* Zunächst wird ein zufälliger Wert $0,2 < k_{d/p} < 0,9$ generiert, der die durchschnittliche Zahl der Geräte $d$ pro Fahrgast $p$ angibt. Dieser ist zufällig, da er stark von den Gebieten abhängt, durch welche ein Zug fährt und ansonsten unabhängig von den anderen generierten Daten ist. Der Wert dient weiterhin lediglich der Ermittlung der relativen Anzahl von Fahrgästen pro Wagon (siehe unten), weshalb seine Größe kaum eine Rolle spielt.
+Die folgende Grafik veranschaulicht die Struktur des Datengenerators.
+
+![Datengenerator - Programmstruktur](docs/paper/assets/datengenerator.tiff)
+
+Durch Anpassung der Parameter können verschiedene Verhaltensweisen von Fahrgästen simuliert werden.
+Außerdem ist ein Sammeln echter Daten zunächst nicht nötig.
+
+Aus dem Fahrgastverhalten (siehe weiter oben) werden Regeln abgeleitet, nach denen die Qualität eines Platzes bewertet wird.
+
+Je weniger Menschen in einer Sitzgruppe sitzen, desto beliebter ist diese.
+Je mehr beliebte Sitzgruppen in einem Zugteil, desto beliebter. [@zhang2008modeling]
+
+Daraus folgt: Nicht die totale Anzahl von Menschen in einem Zugteil ist relevant, sondern auch deren Verteilung.
+
+
+Wenn der Passagier sitzen will:
+Zugteil wählen
+Sitzgruppe wählen
+Sitzplatz wählen
+
+Aus den Zahlen der Studie lassen sich außerdem Standardregeln zum Ranking der Qualität von Sitzplätzen erstellen. [@zhang2008modeling] -->
+
+Die Daten, mit denen im nächsten Schritt der Wahrscheinlichkeitsgenerator arbeiten kann, werden wie folgt generiert:
+* Zunächst wird ein zufälliger Wert $k_{d/p}$ als Parameter eingelesen, der die durchschnittliche Zahl der Geräte $d$ pro Fahrgast $p$ angibt. Dieser ist zufällig, da er stark von den Gebieten abhängt, durch welche ein Zug fährt und ansonsten unabhängig von den anderen generierten Daten ist. Der Wert dient weiterhin lediglich der Ermittlung der relativen Anzahl von Fahrgästen pro Wagon (siehe unten), weshalb seine Größe kaum eine Rolle spielt.
 * Gleiches wird für den Anteil der Fahrgäste, die den Komfort Check-in bzw. eine Reservierung nutzen, getan. Hierbei ist der Bereich, in dem sich der Wert befindet, kleiner.
 * Der Kontrolleur läuft in der Simulation durch den Zug und erfasst die Daten der Fahrgäste, die er kontrolliert. Sie stehen ab dem Zeitpunkt der Kontrolle dem System zur Verfügung.
 
 Hieraus lassen sich nun mit einfacher Mathematik die Daten berechnen, die dem Programm zur Verfügung gestellt werden.
 
-#### Programmstruktur des Datengenerators
-
-Die folgende Grafik veranschaulicht die Struktur des Datengenerators.
-
-![Programmstruktur - Datengenerator](docs/paper/assets/datengenerator.tiff)
+## Algorithmen
 
 ### Wahrscheinlichkeiten für Sitze ermitteln
 
@@ -163,7 +169,7 @@ Es wird ein Programm entwickelt, welches aus bestimmten Daten die Auslastung des
 Ziel ist es hierbei, möglichst genaue Angaben zur Sitzplatzbelegung zu machen.
 Zunächst werden die Zusammenhänge von Eingangsdaten zur Belegung der Sitzplätze mathematisch beschrieben.
 
-#### Definitonen
+#### Definitionen
 
 Die (absolute) Auslastung beschreibt den Anteil der belegten Plätze.
 
@@ -248,20 +254,12 @@ Die Wahrscheinlichkeit besetzt zu sein $p_{reserved}$ ist:
 $p_{reserved} = p_{random} + (1-p_{random}) * k_{res}$
 
 #### Komfort Check-in
-
 Bei Nutzung des Komfort Check-in bestätigt der Fahrgast, dass er sich auf einem bestimmten Sitzplatz befindet. Dieser kann im Voraus reserviert worden sein, muss aber nicht. <!--SRC-->
 Entsprechende Sitzplätze sind zu $k_{KCI}$ belegt.
 
 Die Wahrscheinlichkeit besetzt zu sein $p_{KCI}$ ist:
 
 $p_{KCI} = p_{random} + (1-p_{random}) * k_{KCI}$
-
-#### Kontrollierte Plätze <!-- ERGÄNZEN -->
-
-Kontrollierte Plätze sind zu einer Wahrscheinlichkeit von $k_{con}$ tatsächlich belegt.
-    <!-- Fehler des Kontrolleurs möglich (eingerechnet)
-    Umsetzen möglich (muss extra eingerechnet werden) -->
-$p_r = x$
 
 #### $k$-Werte
 
@@ -283,33 +281,11 @@ $k_{KCI} = 95\%$
 Die Daten von Kontrolleuren sind sehr zuverlässig, da sie sehen, wo sich Fahrgäste befinden. Da menschliche Fehler jedoch nicht auszuschließen sind, gilt:  
 $k_{con} = 99\%$
 
-### Optimalen Sitzplatz / Sitzgruppe wählen
+Bei den angegebenen Werten hantelt es sich um Standardwerte, die in der Realität regional unterschiedlich sind. Daher $k$-Werte sind im Programm anpassbare Parameter, sodass das Programm in verschiedenen Regionen eingesetzt werden kann.
 
-Die Daten zur Auslastung werden an den eigentlichen Platzanweiser (PA) übermittelt, der den Fahrgästen die Sitzplätze zuweist.
-Das Programm funktioniert durch ein Zusammenspiel mehrerer Teile.
-
-
-#### Folgerungen aus dem Fahrgastverhalten
-
-Aus dem Fahrgastverhalten (siehe weiter oben) werden Regeln abgeleitet, nach denen die Qualität eines Platzes bewertet wird.
-
-Je weniger Menschen in einer Sitzgruppe sitzen, desto beliebter ist diese.
-Je mehr beliebte Sitzgruppen in einem Zugteil, desto beliebter. [@zhang2008modeling]
-
-Daraus folgt: Nicht die totale Anzahl von Menschen in einem Zugteil ist relevant, sondern auch deren Verteilung.
-
-<!--
-Wenn der Passagier sitzen will:
-Zugteil wählen
-Sitzgruppe wählen
-Sitzplatz wählen -->
-
-Aus den Zahlen der Studie lassen sich außerdem Standardregeln zum Ranking der Qualität von Sitzplätzen erstellen. [@zhang2008modeling]
-
-#### Benutzerdefinierte Regeln zum Ranking
+#### Benutzerdefinierte Sitzplatzanforderungen
 
 Der Nutzer soll auch selbst Kriterien festlegen können, die ihm bei der Wahl eines Sitzplatzes wichtig sind.
-Vielen Menschen sind hierbei die folgenden Eigenschaften eines Platzes Wichtig: <!--SRC-->
 
 * Platz am Fenster / Platz am Gang (binär)
 * Entfernung zum Speisewagen (float)
@@ -318,13 +294,11 @@ Vielen Menschen sind hierbei die folgenden Eigenschaften eines Platzes Wichtig: 
 
 *Erläuterungen:* Plätze an den Enden von Wagons sind näher an den Toiletten und (Not-)Ausgängen. Sie sind jedoch weniger geeignet für Menschen, denen schnell übel wird, da dort die Auslenkung des Zugs in Kurven höher ist als in der Mitte des Waggons.
 
-Die mit *float* gekennzeichneten Werte sind Werte zwischen Null und Eins. Ist ein Platz beispielsweise in der Mitte eines Waggons, so erhält er die für die Eigenschaft *Entfernung von Waggonenden* den Wert $1$. Befindet er sich am Ende eines Waggons, so ist der Wert gleich $0$.
+Die mit *float* gekennzeichneten Werte sind Werte zwischen Null und Eins. Ist ein Platz beispielsweise in der Mitte eines Waggons, so erhält er die für die Eigenschaft *Entfernung von Waggonenden* den Wert $1$. Befindet er sich am Ende eines Waggons, so ist der Wert gleich $0$. -->
 
 Die Eignungen der einzelnen Werte lässt sich wie folgt berechnen (Beispiel für Entfernung vom Speisewagen):
 
 $v_{distance to dining car} = \frac{1}{|optimum - actual value|}$
-
-<!-- TODO use minimation / maximation instead -->
 
 Der Wert liegt zwischen Null und Eins.
 
@@ -344,126 +318,27 @@ Es gilt $0 \leq r \leq 1$.
 Die Formel für den Gesamtscore $score_{seat}$ eines Sitzplatzes lautet:  
 $score_{seat} = r * p_{seat} + (1-r) * v_{seat}$
 
-### Auswahl und Ranking der Optionen
-
-Zur Auswahl der möglichen Sitzplätze wird ein Algorithmus verwendet, der eine Kombination aus Gesamtscore $score_{seat}$ und gewünschter Anordnung der Sitzplätze berücksichtigt.
-Es werden mehrere Algorithmen implementiert und Simulationen durchgeführt, um den besten zu ermitteln.
-
-#### Multi-Objective Optimization Algorithm
-Eine Möglichkeit ist ein sogenannter *Multi-Objective Optimization Algorithm*, wie der *Non-dominated Sorting Genetic Algorithm (NSGA-II)*. <!--SRC-->
-Dieser Algorithmus kann mehrere Ziele gleichzeitig berücksichtigen und ein Ranking der möglichen Plätze aufgrund der Prioritäten des Nutzers erstellen.
-
-#### Alternativen
-Auch die Verwendungen eines *Decision Tree*- oder eines *Random Forest*-Algorithmus stellen Optionen dar. <!--SRC-->
-Darüber hinaus dienen *Genetische Algorithmen* der Berechnung.
-
-### Multi-Tendency
-
-Damit eine hohe Zahl von Nutzern das System nutzen kann, ist es nötig, dass die einzelnen Instanzen des Programms miteinander im Austausch stehen und so verhindern, dass mehrere Personen zum gleichen Sitzplatz gelotst werden.
-
-## Simulation
-
-### Ziele und Einschränkungen
-
-Simulationen spiegeln nicht zwangsläufig die Realität wider. Das kann dazu führen, dass sich die gewonnenen Ergebnisse nicht vollumfänglich in der Realität beobachten lassen.
-
-Der Vorteil von Computersimulationen ist jedoch, dass sich durch sie schnell und ohne großen Aufwand die Qualität des Systems in verschiedensten Bedingungen bewerten lässt.
-Die Simulation hilft dabei, Vorgänge im System zu verstehen und sie zu optimieren.
-
-### Herangehensweise
-
-<!-- ADD CONTENT -->
-
-## Schnittstellen
-
-Damit es möglichst einfach ist, von dem Programm zu profitieren, müssen Syssteme von Apps und Bahnunternehmen mit dem Programm kommunizieren können.
-Um diese Kommunikation zwischen Computern zu ermöglichen, sind Schnittstellen erforderlich.
-Eine Schnittstelle definiert Regeln und Protokolle für die Übertragung von Daten und die Interaktion der Systeme.
-Sie stellt eine gemeinsame Sprache für die Übertragung von Daten bereit.
-Die implementierten Schnittstellen nutzen das JSON-Format zum Austausch von Daten.
-Das Format eigent sich für diesen Zweck, da es sprachenunabhängig und für den Menschen gut lesbar ist, was es einfach macht, Schnittstellen zu verknüpfen. <!--SRC-->
-
-Im folgenden werden die Schnittstellen des Programms, sowie deren Zweck und der Umfang der auszutauschenden Daten erläutert.
-
-### Datenerhebung
-
-Die Schnittstellen zur Datenerhebung muss den entsprechenden APIs des Bahnunternehmens angepasst werden. Die Deutsche Bahn AG stellt unter anderem im *API Marketplace* Lösungen zur Verfügung.
-Es sind mehrere verschiedene Schnittstellen nötig, da keine einzelne API alle Daten zur Verfügung stellt.
-
-#### Ausgetauschte Daten
-* ICE-Typ
-* ICE-Nummer
-* Informationen zum Streckenverlauf
-* Daten zu Reservierungen
-  * Einstiegsbahnhof
-  * Ausstiegsbahnhof
-* Daten zum Komfort Check-in
-  * Position
-  * Ausstiegsbahnhof
-* Daten zu WLAN-Geräte in Waggons
-  * Waggon
-* Daten zu kontrollierten Gästen
-  * Ausstiegsbahnhof
-
-### Andere Instanzen
-
-Zur Kommunikation mit anderen Instanzen des Programms ist ebenfalls eine Schnittstelle nötig.
-
-#### Ausgetauschte Daten
-* ICE-Nummer
-* Einstiegsbahnhof
-* Ausstiegsbahnhof
-* Empfohlene Sitzplätze für Nutzer
-* ggf. Anforderungen des Nutzers
-
-### Apps
-
-#### Eingehende Daten
-* ICE-Nummer
-* Einstiegsbahnhof
-* Ausstiegsbahnhof
-* Anforderungen des Nutzers
-* ggf. Position des Nutzers
-
-#### Ausgehende Daten
-* Empfohlene Sitzplätze für Nutzer
-
-### Züge und Bahnhöfe
-
-#### Eingehend
-* ICE-Nummer
-
-#### Ausgehend
-* Auslastungen einzelner Waggons
-
-# Kapitel II: Struktur und Simulation
-
-In diesem Kapitel wird die Struktur und Simulation des entwickelten Systems zur Vorhersage freier Sitzplätze in Zügen vorgestellt. Zunächst werden die grundlegenden Entscheidungsaspekte wie Rekonstruierbarkeit und Wahl der Programmiersprache erläutert. Anschließend werden die verschiedenen Module und Strukturen des Systems beschrieben, die für die Modellierung von Zügen, Passagieren und deren Interaktionen verantwortlich sind. Schließlich wird die Umsetzung einer Beispiel-Simulation vorgestellt, um die Funktionsweise des Systems zu verdeutlichen und dessen Anwendbarkeit zu demonstrieren.
-
-Der angefertigte Code ist verfügbar unter: <https://github.com/theKevinKretz/digital-seat-allocator/tree/main/src>
-
-## Grundlegende Entscheidungsaspekte
-
-### Rekonstruierbarkeit als Grundlage für Falsifizierbarkeit
+## Rekonstruierbarkeit als Grundlage für Falsifizierbarkeit
 Um die wissenschaftliche Integrität des entwickelten Systems sicherzustellen, ist es wichtig, dass die Ergebnisse reproduzierbar und damit auch falsifizierbar sind. Dies wird durch folgende Maßnahmen erreicht:
 
-  * **Offenlegung des Codes**: Der gesamte Quellcode des Systems wird öffentlich zugänglich gemacht, um eine unabhängige Überprüfung und Nachvollziehbarkeit der Ergebnisse zu ermöglichen.
+  * **Offenlegung des Quelltextes**: Der gesamte Quelltext des Systems wird öffentlich zugänglich gemacht, um eine unabhängige Überprüfung und Nachvollziehbarkeit der Ergebnisse zu ermöglichen. Der angefertigte Quelltext ist verfügbar unter: <https://github.com/theKevinKretz/digital-seat-allocator/tree/main/src>
   * **Dokumentation der verwendeten Bibliotheken**: Alle im System verwendeten externen Bibliotheken werden eindeutig aufgelistet, um die Nachvollziehbarkeit und Reproduzierbarkeit der Ergebnisse zu gewährleisten.
   * **Versionskontrolle mit Git**: Das System verwendet Git als Versionskontrollsystem, um die Historie der Codeänderungen nachvollziehbar zu machen und die Zusammenarbeit zwischen Entwicklern zu erleichtern.
 
-### Wahl der Programmiersprache
+
+## Wahl der Programmiersprache
 
 Das System wird in der Programmiersprache Rust entwickelt. Rust ist eine leistungsstarke und sichere Programmiersprache, die sich besonders für die Entwicklung von skalierbaren und datenintensiven Systemen eignet. Die folgenden Vorteile von Rust haben zur Wahl dieser Programmiersprache geführt:
 
 * **Performance**: Rust wurde für hohe Leistung entwickelt und bietet durch effiziente Speicherverwaltung und geringen Overhead eine verbesserte Performance. Dies ist besonders wichtig für datenintensive Systeme wie dieses.
-* **Speichersicherheit**: Die Sprache verfügt über Mechanismen, um Speicherfehler wie Pufferüberläufe, Nullzeigerdereferenzierung und andere sicherheitskritische Fehler zu vermeiden. Spätenstens beim Bedienen mehrerer Nutzer ist dies von großer Bedeutung.
+* **Speichersicherheit**: Die Sprache verfügt über Mechanismen, um Speicherfehler wie Pufferüberläufe, Nullzeigerdereferenzierung und andere sicherheitskritische Fehler zu vermeiden. Spätestens beim Bedienen mehrerer Nutzer ist dies von großer Bedeutung.
 * **Skalierbarkeit**: Rust unterstützt die Entwicklung von skalierbaren Systemen durch die Möglichkeit, nativen Code auszuführen, der auf verschiedenen Plattformen, einschließlich Cloud-Infrastrukturen und verteilten Systemen, lauffähig ist.
 * **Strenge Typisierung**: Rust verwendet ein strenges Typsystem, das dazu beiträgt, Fehler in der Programmlogik frühzeitig zu erkennen und die Codequalität zu erhöhen.
 
 Durch die Verwendung von Rust als Programmiersprache wird ein solides Fundament für die Entwicklung eines leistungsstarken, sicheren und skalierbaren Simulationssystems geschaffen.
 
 
-## Strukturen und Fuktionen
+## Wichtige Strukturen und Funktionen
 
 Dieses Schaubild zeigt die Aufteilung der im ersten Kapitel beschriebenen Komponenten auf sechs Module. Im Folgenden wird erläutert, wie es zu dieser Aufteilung kommt und wie die Module aufgebaut sind.
 
@@ -498,7 +373,7 @@ pub struct Coach {
 }
 ```
 
-#### `Row` - Sitzreihe
+#### `Row` - Eine Sitzreihe
 Die Row-Struktur enthält eine ID und eine Liste von Sitzreihen-Segmenten.
 ``` Rust
 struct Row {
@@ -507,7 +382,7 @@ struct Row {
 }
 ```
 
-#### `RowSegment` - Sitzreihensektion
+#### `RowSegment` - Eine Sitzreihensektion
 Die RowSegment-Struktur enthält eine ID, die Nummer der Sitzreihe, die Seite (links oder rechts) und die Orientierung (vorwärts oder rückwärts). Sie enthält auch eine Liste von Sitzen.
 ``` Rust
 struct RowSegment {
@@ -519,7 +394,7 @@ struct RowSegment {
 }
 ```
 
-#### `Seat` - Sitzplatz
+#### `Seat` - Ein Sitzplatz
 Ein Sitzplatz stellt die kleinste Einheit in einem Zug dar.
 Die Seat-Struktur enthält die Informationen zu einem einzelnen Sitz, einschließlich seiner ID, Nummer, Koordinaten, Abmessungen, Typ (Fenster oder Gang), Klasse (erste oder zweite), Orientierung (vorwärts oder rückwärts), Abstand zum nächsten Ausgang und Abstand zum nächsten Speisewagen.
 ``` Rust
@@ -543,9 +418,7 @@ Die `RouteSegment`-Struktur enthält die Start- und Endstation eines Routensegme
 
 Die `SeatGroup`-Struktur enthält die ID und eine Liste von Sitz-IDs, die zu einer Gruppe gehören. Die Funktion center_coordinates berechnet die Koordinaten des Mittelpunkts einer Sitzgruppe.
 
-
-
-#### Sitzgruppe
+#### Eine Sitzgruppe
 ``` Rust
 pub struct SeatGroup {
     id: i32,
@@ -559,12 +432,15 @@ Die Struktur `SeatGroup` ist wichtig, da sie eine Gruppierung von Sitzplätzen i
 
 Die Funktion `new()` ist ein Konstruktor der `Train`-Klasse, der ein neues `Train`-Objekt erstellt. Die Funktion nimmt drei Parameter entgegen: `coach_count`, `coach_size` und `route`. Der Parameter `coach_count` gibt die Anzahl der Waggons im Zug an, `coach_size` bestimmt die Anzahl der Sitzreihen in jedem Waggon, und `route` ist ein `Route`-Objekt, das die Zugroute repräsentiert. Die Funktion generiert dann den Zug mit den gegebenen Parametern, erstellt Waggons und Sitzreihen, bestimmt die Sitzpositionen und -eigenschaften und fügt sie entsprechend in die Struktur des Zuges ein.
 
-### Modul: `passenger.rs` - Der Mensch
+### `passengers.rs` - Die Menschen
 Die Passagier-Komponente ist ein wichtiger Bestandteil des gesamten Simulationssystems. Sie modelliert das Verhalten von Passagieren innerhalb des Zuges und ermöglicht die Analyse der Auswirkungen von verschiedenen Verkehrs- und Betriebsbedingungen auf die Passagiere. In diesem Kapitel wird die Struktur der Passagier-Komponente erläutert.
+
+#### Klasse `Passengers`
+Die Hauptklasse der Passagier-Komponente ist die Klasse `Passengers`. Sie dient dazu, das Verhalten der Menschenmenge modellieren. 
 
 #### Klasse `Passenger`
 
-Die Hauptklasse der Passagier-Komponente ist die `Passenger`-Klasse. Sie repräsentiert einen einzelnen Passagier und speichert Informationen über dessen Zustand, wie zum Beispiel den aktuellen Sitzplatz, die gewünschte Route und die start_position innerhalb des Zuges. Die Klasse bietet Methoden zur Simulation des Verhaltens eines Passagiers, wie das Einsteigen und Aussteigen aus dem Zug, das Wechseln von Sitzplätzen und das Suchen nach freien Sitzplätzen.
+Die zweite Klasse der Passagier-Komponente ist die `Passenger`-Klasse. Sie repräsentiert einen einzelnen Passagier und speichert Informationen über dessen Zustand, wie zum Beispiel den aktuellen Sitzplatz, die gewünschte Route und die start_position innerhalb des Zuges. Die Klasse bietet Methoden zur Simulation des Verhaltens eines Passagiers, wie das Einsteigen und Aussteigen aus dem Zug, das Wechseln von Sitzplätzen und das Suchen nach freien Sitzplätzen.
 
 Die wichtigsten Attribute der `Passenger`-Klasse sind:
 
@@ -626,20 +502,17 @@ let seat_group_id = seat_group_evaluations[0].0;
 
 Schließlich wählt der Passagier einen freien Sitzplatz in der ausgesuchten Sitzgruppe aus.
 
-### `data.rs` - Schnittstelle zum Zug
+### `data.rs` - Datenmanagement
 Um eine Vorhersage darüber zu treffen, welche Plätze in einem Zug wahrscheinlich frei sind, werden verschiedene Daten aus dem Zug gesammelt und verwaltet. Dazu gehören Informationen zu WLAN-Geräten, Reservierungen, Komfort Check-Ins und kontrollierten Fahrgästen. 
 
 Die Input-Daten werden in verschiedenen Datenstrukturen abgelegt. Die WiFi-Daten beinhalten Informationen über die Signalstärke der Router in den verschiedenen Zugwaggons. Die Reservierungsdaten enthalten Angaben zu den reservierten Sitzen auf den verschiedenen Streckenabschnitten. Die Daten zum Komfort Check-In geben Auskunft darüber, welche Sitze von den Passagieren für den Komfort Check-In ausgewählt wurden. Die Daten zu kontrollierten Fahrgästen enthalten Informationen darüber, welche Sitze von Kontrolleuren überprüft wurden. 
 
 Die Verwaltung der Input-Daten erfolgt durch die Strukturen Data, WiFiData, ReservationData, KomfortCheckInData und CheckedPassengersData. Die Struktur Data dient dabei als übergeordnete Struktur, welche alle anderen Datentypen umfasst.
 
-Die Daten werden in der Simulation mitheilfe eines Generators aus der Verteilung der Fahrgäste im Zug und weiterer Parameter, den $k$-Werten, errechnet.
+Die Daten werden in der Simulation mithilfe eines Generators aus der Verteilung der Fahrgäste im Zug und weiterer Parameter, den $k$-Werten, errechnet.
 
-### `request.rs` - Schnittstelle zum Client
-Im Modul `request.rs` wird eine Schnittstelle zur Entgegennahme von Anfragen definiert. Die Anfragen enthalten Informationen zu den vom Nutzer (Client) gewünschten Sitzplätzen, wie beispielsweise Fensterplatz, Nähe zum Ausgang oder zur Speisewagen. Zudem wird der Zug identifiziert, in dem die Platzsuche stattfinden soll, sowie das Segment der Zugstrecke, auf dem sich der Client befindet. Die Klasse des Zuges wird ebenfalls angegeben.
-
-Die Implementierung umfasst die Definition von Datenstrukturen wie `Request` und `SeatRequirements`, die die Anfrageparameter speichern. Eine Beispielanfrage wird durch die Funktion `example()` erstellt.
-
+#### `data.generate()` - Das Herz der Simulation
+Diese Funktion generiert alle von den simulierten Fahrgästen im Zug erzeugten Daten.
 
 ### `simulation.rs` - Der Zug. In Bewegung.
 Das Modul `simulation.rs` dient der Generierung von Daten, indem es eine Zugfahrt simuliert. Die Struktur `Journey` repräsentiert eine Zugfahrt, die simuliert werden soll. Die Methode `simulate()` nimmt drei Parameter entgegen: einen `Train`, eine Anzahl von Passagieren `passengers_count` und eine `wish_to_seat_chance`, die die Wahrscheinlichkeit angibt, dass ein Passagier sich hinsetzen möchte. In dieser Methode werden Passagiere generiert, die zufällig an verschiedenen Haltestellen ein- und aussteigen (Verhalten bei der Platzwahl: siehe `passenger.rs`). An jeder Haltestelle wird auch eine Aufzeichnung erstellt, die die Anzahl der Passagiere und ihre Platzbelegung enthält. Die gesamte Zugfahrt wird als `Journey` Struktur zurückgegeben.
@@ -656,25 +529,14 @@ Diese Herangehensweise hat mehrere Vorteile:
 
 3. **Datenerfassung**: Die Simulation erfasst wichtige Daten wie die Anzahl der Passagiere und ihre Platzbelegung, die zur Optimierung des Betriebs genutzt werden können.
 
+### `request.rs` - Schnittstelle zum Client
+Im Modul `request.rs` wird eine Schnittstelle zur Entgegennahme von Anfragen definiert. Die Anfragen enthalten Informationen zu den vom Nutzer (Client) gewünschten Sitzplätzen, wie beispielsweise Fensterplatz, Nähe zum Ausgang oder zur Speisewagen. Zudem wird der Zug identifiziert, in dem die Platzsuche stattfinden soll, sowie das Segment der Zugstrecke, auf dem sich der Client befindet. Die Klasse des Zuges wird ebenfalls angegeben.
 
-<!-- TODO: Wird im nächsten Kapitel genauer erläutert 
-### `allocator.rs`
-Weist einen Platz zu
-Sicherheitsfaktor wägt ab zwischen
-  Wahrscheinlichkeit für Platz, frei zu sein
-  Erfüllung der benutzerdefinierten Anforderungen an den Platz
+Die Funktion `request.process()` enthält den eigentlichen Platzanweiser (siehe Platzanweiser).
 
-#### Wahrscheinlichkeitsgenerator
+# Ergebnisse
 
-Der Wahrscheinlichkeitsgenerator errechnet anhand der Daten des Datengenerators die Wahrscheinlichkeiten der Belegtheit der Plätze.
--->
-
-
-
-## Simulation
-<!-- TODO: Hier Ausführung der Simulation und Ergebnisse erläutern -->
-
-### Der Zug
+## Der Zug
 Zunächt wird die Reisestrecke festgelegt. Hierzu wird die Beispielstrecke verwendet.
 Als kleines Beispiel wird ein Zug mit zwei Waggons und der Waggongröße 5 generiert.
 
@@ -683,7 +545,7 @@ let route = Route::example();
 let train = Train::new(2, 5, route);
 ```
 
-Folgendes ist die Fartstrecke:
+Folgendes ist die Fahrstrecke:
 
 ``` Rust
 route: Route {
@@ -699,8 +561,7 @@ route: Route {
 
 Der generierte Zug ist verfügbar unter: <https://gist.github.com/theKevinKretz/8149ba97c0c1d9cf9dc4abf0723f615e>
 
-
-### Die Reise
+## Die Reise
 Es wird eine Reise mit dem oben definierten Zug und 20 Passagieren simuliert.
 Hierzu wird in der `main()`-Funktion folgender Code ausgeführt:
 
@@ -743,39 +604,7 @@ Folgendes sind die Ergebnisse (betrachtet werden die Passagiere 5 und 6 an den H
     },
     // ...
   ]
-},
-{
-  "station": "Karlsruhe",
-  "passengers": [
-    // ...
-    {
-      "id": 5,
-      "route_segment": {
-        "start_station": "Karlsruhe",
-        "end_station": "Berlin"
-      },
-      "start_position": [
-        -8.150504046354957,
-        89.6232474341507
-      ],
-      "wish_to_seat": true,
-      "seat": 2008
-    },
-    {
-      "id": 6,
-      "route_segment": {
-        "start_station": "Freiburg",
-        "end_station": "Mannheim"
-      },
-      "start_position": [
-        -9.33531507513891,
-        15.98733632802289
-      ],
-      "wish_to_seat": true,
-      "seat": 1001
-    },
-    // ...
-  ]
+  // ...
 },
 {
   "station": "Mannheim",
@@ -812,35 +641,239 @@ Folgendes sind die Ergebnisse (betrachtet werden die Passagiere 5 und 6 an den H
 },
 // ...
 ```
-Vollständige Simulation unter: <https://gist.github.com/theKevinKretz/1fab1bfe85df9ef22f2258adf84bae55>
+Die vollständige Simulation ist abrufbar unter: <https://gist.github.com/theKevinKretz/1fab1bfe85df9ef22f2258adf84bae55>
 
 In den Ergebnissen ist zu sehen, dass einige Passagiere sich dafür entschieden haben, zu stehen, während andere einen Sitzplatz bevorzugten. Die Passagiere, die sich für einen Sitzplatz entschieden haben, haben auch unterschiedliche Sitzplätze gewählt. Sie steigen außerdem an den richtigen Haltestellen ein und aus.
 
 Die Simulation ist Grundlage für die weitere Arbeit.
 
+## Der Platzanweiser
 
-<!--
-# Kapitel III: Platzanweiser / Optimierung
-Es wrid davon ausgegangen, dass sich die Plätze, optimaler Weise innerhalb einer Sitzgruppe befinden sollen.
--->
+Der Platzanweiser wurde nach dem oben beschriebenen Konzept (vgl. Konzept) in Rust umgesetzt.
+
+### Wahrscheinlichkeitsgenerator
+
+Der Platzanweiser erstellt anhand der Daten Heatmaps, welche übereinandergelegt werden und so die Wahrscheinlichkeiten für Plätze angeben, frei zu sein.
+Diese Abbildung zeigt, wie die Funktion aufgrund der Signalstärke eines WLAN-Geräts die wahrscheinlichsten Positionen des Besitzers im Wagon ausfindig macht. Der helle Kreis repräsentiert die berechnete Entfernung vom Router in dessen Mitte. Der Kreis ist unscharf, eine als Parameter einstellbare Ungenauigkeit beachtet wird.
+
+![Eine Heatmap für die Wahrscheinlichkeit der Position eines Passagiers basierend auf den WLAN-Daten seines Geräts](docs/paper/assets/heatmap_0.png)
+
+Die übereinandergelegten Heatmaps der verschiedenen Datenquellen ergeben werden an den Stellen, wo sich Plätze befinden aufsummiert, um die Wahrscheinlichkeit des Platzes, frei zu sein zu berechnen.
+
+### Bewertung der Sitzplätze
+
+Der Platzanweiser überprüft, wie gut die einzelnen Sitzplätze zu den Anfragen passen.
+Die Bewertung der Sitzplätze erfolgt anhand der oben definierten Formeln.
+
+### Auswahl der optimalen Plätze
+
+Zur Auswahl der möglichen Sitzplätze wird ein Algorithmus verwendet, der eine Kombination aus Gesamtscore $score_{seat}$ und optimalen Anordnung der Sitzplätze berücksichtigt.
+Es wurden mehrere Algorithmen implementiert und Simulationen durchgeführt, um den besten zu ermitteln.
+
+#### Trial and Error
+
+*Genetische Algorithmen* sind von der Evolution inspiriert. Sie erstellen zunächst zufällige Wahlen von Sitzplätzen, bewerten diese und rekombinieren die besten und mutieren die Ergebnisse schließlich zufällig. Dieser Prozess geschieht über mehrere Iterationen. Um einen genetischen Algorithmus zu verwenden müssen einige weitere Parameter definiert werden. [@Mirjalili2019] Dazu gehören zum Beispiel die Zahl der erstellten Varianten, sowie die Mutationsrate. Der Prozess stellte sich als wenig performant heraus und lieferte bei vertretbaren Iterationszahlen noch keine sinnvollen Ergebnisse.
+
+Eine Möglichkeit ist ein sogenannter *Multi-Objective Optimization Algorithm*, wie der *Non-dominated Sorting Genetic Algorithm (NSGA-II)*. [@wang2011improved]]
+Dieser Algorithmus kann mehrere Ziele gleichzeitig berücksichtigen und ein Ranking der möglichen Plätze aufgrund der Prioritäten des Nutzers erstellen.
+Probleme machte dieser Algorithmus bei der Definition des Ziels, dass die Plätze nah beisammen sein sollen. Zwar wird die Entfernung der Plätze minimiert, doch befinden sie sich teils Rücken an Rücken, was denkbar unsinnig ist.
+
+#### `SeatFinder` - Gemeinsame Sitzgruppe garantiert
+
+Der `SeatFinder` ist ein neu entwickelter Algorithmus, welcher garantiert, dass die empfohlenen Sitzplätze in einer Sitzgruppe sind. Hierfür wird die bestehende Einteilung in Sitzgruppen genutzt.
+Der neue Algorithmus iteriert über eine Liste aller Sitzgruppen und betrachtet die Sitze darin.
+Bei _einem_ angefragtem Platz wird lediglich Rücksicht auf den Score des Platzes genommen.
+Bei _zwei bis vier_ Anfragen werden nur Plätze zugewiesen, welche sich innerhalb derselben Sitzgruppe befinden.
+Hierzu werden die Anfragen bestmöglich auf 
+Die größtmögliche Sitzgruppe besteht aus zwei gegenüberliegenden Sitzpaaren und somit vier Plätzen. Diese Limitierung ermöglicht es, ohne weitere, komplexere Algorithmen durch Ausprobieren die optimale Verteilung der Anfragen auf die Plätze zu finden. Die Sitzgruppe mit dem höchsten Gesamtscore wird ausgewählt.
+Bei _mehr als vier_ angefragten Plätzen wird der NSGA-II verwendet.
+
+### Beispiel
+Folgendes ist eine Beispielanfrage an den Platzanweiser:
+``` Rust
+Request {
+    security_ratio: 0.1,
+    seats: vec![
+        SeatRequirements {
+            window: SingleBinaryRequirement {
+                value: true,
+                weight: 0.7,
+            },
+            close_to_car_end: SingleBinaryRequirement {
+                value: false,
+                weight: 0.2,
+            },
+            close_to_dining: SingleBinaryRequirement {
+                value: true,
+                weight: 0.5,
+            },
+        },
+    ],
+    journey: Journey {
+        route_segment: RouteSegment::example(),
+        train_name: "ICE 608".to_string(),
+        seat_class: "Second".to_string(),
+    },
+}
+```
+
+Das System gibt folgende Antwort zurück:
+``` Rust
+Seat {
+    id: f967644d-eb9f-486a-9baf-23db863d6e73,
+    number: 12,
+    coach_number: 3,
+    base_coordinates: {
+      x: 3.6,
+      y: 2.0
+    },
+    full_base_coordinates: {
+      x: 3.6,
+      y: 39.39999999999999
+    },
+    dimensions: [
+      1.0,
+      1.0
+    ],
+    seat_type: Window,
+    limited_view: false,
+    sequence_class: Second,
+    orientation: Forward,
+    distance_to_exit: 0.4,
+    distance_to_dining: 0.0
+  }
+```
+
+Es lässt sich erkennen, dass das System einen Platz gefunden hat, der alle Wünsche des Clients erfüllt. Bei Betrachtung der Simulationsdatei fällt jedoch auf, dass der Platz nicht frei ist. Das liegt daran, dass in der Anfrage ein extrem niedriges Security Ratio von 0,1 angegeben wurde. Erhöht man das Security Ratio auf den Standardwert von 0,5, so findet der Platzanweiser in diesem Beispiel in 15 von 20 Fällen einen freien Platz.
+
+## Struktur
+
+Es hat sich gezeigt, dass eine klare Trennung von Modulen in diesem Projekt enorm sinnvoll ist. Die Trennung ermöglicht es, den Teil `Train` während der gesamten Simulation konstant zu halten und die Änderungen lediglich auf den Teil `Passengers` zu beschränken. Das verhindert Redundanz in den Daten, welche sich unter anderem negativ auf die Performanz auswirken würde.
+Die ursprüngliche Gliederung in sechs Module und eine Hauptdatei wurde nur minimal geändert, indem das Modul `allocator.rs` in die Funktion `request.process()` umgewandelt wurde.
+
+## Passagiere. Plural.
+
+Eine große Verbesserung in der Zuverlässigkeit des Programms brachte die Einführung der Klasse `Passengers` mit sich, welche der Klasse `Passenger` übergeordnet ist. Sie berücksichtigt, dass sich Menschen in einer Menge betrachtet anders verhalten als isoliert.
+
+# Diskussion
+
+## Simulation
+
+Zur Entwicklung des digitalen Platzanweisers wurde zunächst ein Modell von Zug, Passagieren und Daten in Form einer **Simulation** geschaffen.
+Positionen innerhalb des Modells wurden zweidimensional dargestellt und die Zeit kommt als dritte Dimension hinzu. Die Simulation bildet die Grundlage für die Entwicklung des Platzanweisers.
+Das Verhalten des Simulators zu designen erforderte drei Arten von Daten:
+1. Zunächst gibt es **fest definierte Abläufe**, die auf Grundlage anderer Arbeiten implementiert wurden. Dazu gehört beispielsweise das Einstiegsverhalten der Passagiere.
+2. Besonders für das menschliche Verhalten müssen **Zufallswerte auf Grundlage von Statistiken** generiert werden.
+3. Um einen möglichst Variablen Einsatz des Programms zu ermöglichen, gibt es diverse **Parameter**, die angepasst werden können.
+``` Rust
+const DEFAULT_PASSENGERS_COUNT: i32 = 1000;
+const DEFAULT_WISH_TO_SEAT_CHANCE: f64 = 0.8;
+const DEFAULT_AVERAGE_DEVICES_PER_PASSENGER: f64 = 0.7;
+const DEFAULT_KOMFORT_CHECK_IN_CHANCE: f64 = 0.3;
+
+const DEFAULT_COACH_COUNT: i32 = 5;
+const DEFAULT_COACH_SIZE: i32 = 10;
+const DEFAULT_ROUTERS_PER_COACH: u32 = 2;
+
+const SCALE: usize = 10;
+const WIFI_DISTANCE_TOLERANCE: f64 = 5.0;
+```
+Die Menge der drei Arten von Daten ist vielversprechend im Bezug auf die Genauigkeit der Simulation. Besonders im richtig angepassten Zustand liefert sie so schlüssige Ergebnisse. Es gilt jedoch zu beachten, dass es sich bei dem Modell um eine stark vereinfachte und verallgemeinerte Abbildung der Realität handelt. Die Simulation ist geprägt von Zufällen, welche über die Zeit die Zahl der möglichen Zustände exponentiell steigen lassen. Es war richtig, zunächst eine Simulation zu entwickeln, da sie ausreicht, um einen guten Platzanweiser zu entwickeln, doch empfiehlt es sich, das System ausgiebig anhand echter Daten zu testen.
 
 
-<!--
-# Kapitel IV: Verhaltenspsychologie
+## Anwendungsgebiete
 
-Persönliche Fehlertoleranz
-  Sicherheitsfaktor
-Konzept für mobile App
-Benutzerfreundlichkeit
-  Anfragen stellen
-  Ergebnisse aufbereiten
-Performanz
+### Mobile App
+Damit der Platzanweiser für jeden zugänglich ist, bietet es sich an, ihn in Form einer App anzubieten.
+Ein Nutzer soll Platzanfragen an das System senden können. Hierzu muss eine API-Schnittstelle bereitgestellt werden, welche seine Reisedaten und Platzanforderungen entgegennimmt.
 
-## Persönliche Fehlertoleranz
+#### Eingehende Daten
+* ICE-Nummer
+* Einstiegsbahnhof
+* Ausstiegsbahnhof
+* Anforderungen des Nutzers
+* ggf. Position des Nutzers
 
-### Genauigkeit
+Beispiel:
+``` Rust
+pub struct Request {
+    security_ratio: f64,          // Security ratio (e.g. 0.8)
+    journey: Journey,             // Journey request
+    seats: Vec<SeatRequirements>, // List of wished seats [SeatRequirements]
+}
+```
 
-### Transparen
--->
+#### Ausgehende Daten
+* Empfohlene Sitzplätze für Nutzer
+* Wahrscheinlichkeitsverteilung der Sitzplätze
+
+Je nach den Anforderungen der App kann eine Antwort des digitalen Platzanweisers wie folgt aussehen:
+``` Rust
+pub struct Answer {
+    seat_probabilities: Vec<f64>,
+    seats: Vec<Uuid>,
+}
+```
+
+#### Konzept: Mobile App
+
+Eine mobile App für den digitalen Platzanweiser könnte wie folgt aussehen:
+
+![Konzept für mobile App](docs/paper/assets/mobile-app-concept-01.png){ width=250px }
+![Konzept für mobile App](docs/paper/assets/mobile-app-concept-02.png){ width=250px }
+
+### Züge und Bahnhöfe
+Außen an Zügen oder an den Bahnsteigen kann eine Anzeige der Platzauslastung sinnvoll sein, um Menschen, die den digitalen Platzanweiser nicht als mobile App nutzen, zu freien Plätzen zu lotsen. Diese Funktionalität wird seitens des Systems bereits unterstützt. Es bedarf lediglich der Einrichtung einer API-Schnittstelle zum Datentransfer.
+
+
+## Ausblick
+
+### Deployment
+Damit es möglichst einfach ist, von dem Programm zu profitieren, müssen Systeme von Apps und Bahnunternehmen mit dem Programm kommunizieren können.
+Um diese Kommunikation zwischen Computern zu ermöglichen, sind Schnittstellen erforderlich.
+Eine Schnittstelle definiert Regeln und Protokolle für die Übertragung von Daten und die Interaktion der Systeme.
+Sie stellt eine gemeinsame Sprache für die Übertragung von Daten bereit.
+Die implementierten Schnittstellen nutzen das JSON-Format zum Austausch von Daten.
+Das Format eignet sich für diesen Zweck, da es sprachunabhängig und für den Menschen gut lesbar ist, was es einfach macht, Schnittstellen zu verknüpfen.
+
+Im Folgenden werden die Schnittstellen des Programms, sowie deren Zweck und der Umfang der auszutauschenden Daten erläutert.
+
+#### Schnittstellen zur Datenerhebung
+
+Die Schnittstellen zur Datenerhebung müssen den entsprechenden APIs des Bahnunternehmens angepasst werden. Die Deutsche Bahn AG stellt unter anderem im *API Marketplace* Lösungen zur Verfügung.
+Die benötigten Daten werden aktuell nicht angeboten, weshalb eine Kooperation mit dem Bahnunternehmen nötig wäre.
+
+**Ausgetauschte Daten**
+
+* ICE-Typ
+* ICE-Nummer
+* Informationen zum Streckenverlauf
+* Daten zu Reservierungen
+  * Einstiegsbahnhof
+  * Ausstiegsbahnhof
+* Daten zum Komfort Check-in
+  * Position
+  * Ausstiegsbahnhof
+* Daten zu WLAN-Geräte in Waggons
+  * Waggon
+* Daten zu kontrollierten Gästen
+  * Ausstiegsbahnhof
+
+### Erweiterungsmöglichkeiten
+
+Denkbare Erweiterungsmöglichkeiten sind Filter für Größe der Sitzgruppe, sowie die Möglichkeit, mehr als vier Plätze anfragen. Um mehr als vier Plätze anfragen zu können, können die ursprünglichen Algorithmen zur Platzwahl wiederhergestellt werden. Hierzu sind einige Anpassungen im Quelltext notwendig.
+Damit eine hohe Zahl von Nutzern das System nutzen kann, ist es nötig, dass die einzelnen Instanzen des Programms miteinander im Austausch stehen und so verhindern, dass mehrere Personen zum gleichen Sitzplatz gelotst werden.
+
+
+# Fazit
+Insgesamt zeigt das entwickelte System des digitalen Platzanweisers großes Potenzial für die Verbesserung der Sitzplatzfindung in Zügen. Durch die Kombination von verschiedenen Datenquellen und die Implementierung von effizienten Algorithmen konnte ein System entwickelt werden, das Passagieren gezielte Vorschläge für freie Sitzplätze macht und dabei ihre individuellen Wünsche berücksichtigt.
+
+Die Erstellung einer soliden Simulation und die klare Trennung der verschiedenen Module haben dazu beigetragen, ein robustes und leicht erweiterbares System zu schaffen. Trotzdem sollte das System weiterhin anhand echter Daten getestet und optimiert werden, um die Genauigkeit und Zuverlässigkeit der Sitzplatzzuweisung sicherzustellen.
+
+Die vorgestellten Anwendungsgebiete, wie die Integration in eine mobile App oder die Anzeige der Platzauslastung an Zügen und Bahnhöfen, zeigen die vielfältigen Einsatzmöglichkeiten des digitalen Platzanweisers. Durch die Bereitstellung von API-Schnittstellen und die Zusammenarbeit mit Bahnunternehmen kann das System weiter verbreitet und für eine große Anzahl von Nutzern zugänglich gemacht werden.
+
+Einige mögliche Erweiterungen, wie die Implementierung von Filtern für die Größe der Sitzgruppe oder die Möglichkeit, mehr als vier Plätze anzufragen, könnten das System noch flexibler und benutzerfreundlicher gestalten. Zukünftige Entwicklungen sollten darauf abzielen, die Kommunikation zwischen verschiedenen Instanzen des Programms zu ermöglichen, um eine hohe Nutzerzahl zu unterstützen und sicherzustellen, dass mehrere Personen nicht zum gleichen Sitzplatz gelotst werden.
+
+Das Konzept des digitalen Platzanweisers zeigt, dass durch den Einsatz von modernen Technologien und Algorithmen die Erfahrung von Zugreisenden verbessert werden kann. Die erfolgreiche Umsetzung dieses Projekts eröffnet weitere Möglichkeiten für die Entwicklung von intelligenten Systemen zur Verbesserung des öffentlichen Verkehrs.
 
 # Quellen- und Literaturverzeichnis
