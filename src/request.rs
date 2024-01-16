@@ -257,9 +257,7 @@ impl Request {
                 score -= seat_request.close_to_car_end.weight * seat.distance_to_car_end();
             }
 
-            if requirements.close_to_dining.value = seat.is_close_to_dining() {
-                score += requirements.close_to_dining.weight;
-            }
+            // TODO - Calculate distance to dining car
 
             scores.push(score)
         }

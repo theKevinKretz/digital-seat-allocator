@@ -497,6 +497,10 @@ impl Seat {
     pub fn distance_to_car_end(&self) -> f64 {
         self.distance_to_exit
     }
+
+    pub fn distance_to_dining(&self) -> f64 {
+        self.distance_to_dining
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
